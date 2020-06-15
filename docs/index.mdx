@@ -3,9 +3,9 @@ title: Getting started
 name: Getting started
 ---
 
-# Getting started
+import Link from 'next/link'
 
-## About
+# Getting started
 
 This is a app to make easily the document write and read for the other users.
 
@@ -21,5 +21,56 @@ yarn add static-doc
 npm install static-doc
 ```
 
-## Usage
+## Configure scripts (optional)
 
+Insert these commands into your `package.json`:
+
+```json
+"scripts": {
+  "docs:dev": "static-doc dev",
+  "docs:build": "static-doc build",
+  "docs:serve": "static-doc build && static-doc start"
+}
+```
+
+By default your documents should be in the doc folder at the root of the project, but this can be changed by passing a directory as an argument. Example: `static-doc dev ./my-docs`
+
+## Docs directory
+
+Here will be the .mdx and .md files that will be interpreted will generate the pages. See an example file:
+
+```yaml
+---
+title: Hello world
+name: My first doc
+---
+
+# Hello world
+
+This is an example file!
+```
+
+What is between the dashes are page properties, [see more here](/page-properties).
+
+## Configuration
+
+You may need to change the logo, write the name of the app and/or change the order of the menu. To do this, create a `.config` file inside your `docs directory`.
+
+```json
+{
+  "name": "⚡ Static Docs",
+  "menu": [
+    "index.mdx",
+    {
+      "name": "Github",
+      "icon": {
+        "dark": "assets/github-icon-dark.svg",
+        "light": "assets/github-icon-light.svg"
+      },
+      "to": "https://github.com/Maycon-Santos/static-doc"
+    }
+  ]
+}
+```
+
+[Click here](/configuration) to learn more about `.config`.

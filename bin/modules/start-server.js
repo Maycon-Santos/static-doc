@@ -8,7 +8,8 @@ const {
 
 const {
   sourcePath,
-  originPagesDir
+  originPagesDir,
+  nextBinPath
 } = require('../../config/build-time')
 
 const loadUserConfig = require('./load-user-config')
@@ -18,11 +19,9 @@ const {
 } = require('yargs')
 
 function resolveNextJsArgs () {
-  const nextBin = resolve(__dirname, '../../node_modules/.bin/next')
-
   return [
-    nextBin,
-    argv._[0],
+    nextBinPath,
+    'dev',
     sourcePath,
     `--port ${argv.port}`
   ]

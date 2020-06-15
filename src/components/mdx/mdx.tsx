@@ -47,7 +47,7 @@ export const table = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export const code = ({ children, className }: { children: string, className: string }) => {
+export const code = ({ children = '', className }: { children: string, className: string }) => {
   const language = className?.replace(/language-/, '') as Language
   const syntaxHighlight = useSyntaxHighlight()
   const { backgroundColor } = syntaxHighlight.plain

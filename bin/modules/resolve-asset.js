@@ -10,6 +10,10 @@ const {
 } = require('fs')
 
 const {
+  argv
+} = require('yargs')
+
+const {
   assetsDir,
   assetsDestinyPath,
   docsOriginPath
@@ -31,5 +35,5 @@ module.exports = function resolveAsset (assetDir) {
     // It has already been linked
   }
 
-  return '/' + join(assetsDir, assetName)
+  return join(assetsDir, assetName)
 }

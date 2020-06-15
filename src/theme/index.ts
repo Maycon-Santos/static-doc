@@ -26,7 +26,8 @@ const theme: Theme = {
   ],
   fontFamilies: {
     primary: ['Open Sans', 'sans-serif'],
-    menu: ['Open Sans', 'sans-serif']
+    menu: ['Open Sans', 'sans-serif'],
+    logo: ['Open Sans', 'sans-serif']
   },
   colors: {
     light: {
@@ -76,7 +77,7 @@ const theme: Theme = {
             text: '#50fa7b'
           },
           {
-            types: ['class-name'],
+            types: ['class-name', 'property', 'atrule'],
             text: '#8be9fd'
           },
           {

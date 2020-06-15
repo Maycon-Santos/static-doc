@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { useColor } from 'hooks/use-color'
 import { useSpacing } from 'hooks/use-spacing'
 import { useColorMode } from 'hooks/use-color-mode'
@@ -78,6 +78,7 @@ export const ColorModeSwitchButton = styled.button`
   margin-left: auto;
   outline: none;
   cursor: pointer;
+  transition: all 300ms linear;
 
   &.light {
     border: 4px ${() => useColor('dark')} solid;

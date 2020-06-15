@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 import { useColor } from 'hooks/use-color'
 import { useSpacing } from 'hooks/use-spacing'
 import { useFontSize } from 'hooks/use-font-size'
@@ -112,7 +112,7 @@ export const hr = styled.hr`
 
 export const inlineCode = styled.code`
   display: inline-block;
-  margin: ${() => useSpacing(0, 1)};
+  margin: ${() => useSpacing(2, 1)};
   padding: ${() => useSpacing(2, 3)};
   background-color: ${() => useColorMode({ light: useColor('gray', 300), dark: useColor('gray', 400) })};
   border-radius: ${({ theme }) => theme.radii.radius}px;
@@ -121,7 +121,7 @@ export const inlineCode = styled.code`
 
 export const code = styled.pre`
   overflow: auto;
-  margin: ${() => useSpacing(4, 1)};
+  margin: ${() => useSpacing(4, 0)};
   padding: ${() => useSpacing(4)};
   box-sizing: border-box;
   border-radius: ${({ theme }) => theme.radii.radius}px;

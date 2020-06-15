@@ -2,3 +2,94 @@
 title: Theme
 name: Theme
 ---
+
+import theme from 'theme'
+import * as MDXComponents from 'components/mdx'
+
+# Theme
+
+There is an object Theme which is where the style variables are configured.
+
+## Creating your theme
+
+In the `.config` file you can write the style variables within the key theme:
+
+```json
+{
+    "name": "⚡ Static Docs",
+    "theme": {
+        // Configuration here
+    }
+}
+```
+
+### Fonts
+
+You can import fonts from google and then name where each font should be used:
+
+```json
+{
+    "name": "⚡ Static Docs",
+    "theme": {
+        "googleFonts": [{
+            "name": "Open Sans",
+            "weights": [400, 600, 700]
+        }],
+        "fontFamilies": {
+            "primary": ["Open Sans", "sans-serif"],
+            "menu": ["Open Sans", "sans-serif"],
+            "logo": ["Open Sans", "sans-serif"]
+        },
+        "fontWeights": {
+            "body": 400,
+            "semiBold": 600,
+            "bold": 700
+        }
+    }
+}
+```
+
+`googleFonts` You must receive the font names as they are in google fonts and their weights.  
+`fontFamilies` Must receive the places where the font families are to be used.  
+`fontWeights` You must receive the weights for each part of the site.
+
+### Default color mode
+
+```json
+{
+    "name": "⚡ Static Docs",
+    "theme": {
+      "colorMode": "dark"
+    }
+}
+```
+
+`colorMode` should receive standard color mode, which is how the user will see on the first access.
+
+### Colors
+
+Below you will see the colors by color mode. It is worth remembering that if the current color mode does not have the color set, the application takes from another color mode for this color.
+
+```json
+{
+    "name": "⚡ Static Docs",
+    "theme": {
+        "colors": {
+            "light": {
+              // Light mode colors
+            },
+            "dark": {
+              // Dark mode colors
+            }
+        }
+    }
+}
+```
+
+### Default theme
+
+With all this in mind, you can override or add new variables to the `theme`. Below you will see the original `theme`:
+
+<MDXComponents.code className="language-json">
+{JSON.stringify(theme, null, 4)}
+</MDXComponents.code>

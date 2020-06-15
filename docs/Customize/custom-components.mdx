@@ -1,0 +1,62 @@
+---
+title: Custom components
+name: Custom components
+---
+
+import * as MDXComponents from 'components/mdx'
+
+# Custom components
+
+All custom components must be placed in the `.components` folder in your docs directory.
+You can customize any component in [this list](https://github.com/Maycon-Santos/static-doc/tree/master/src/components), just create a file of the same name.
+Remember that the layout component is the parent component of all.
+
+```diff
+docs/
+  ├── index.mdx
++├── .components
++│      ├── logo.tsx
++│      └── menu.tsx
+  └── ...rest
+```
+
+## Some features:
+
+- You must not and cannot import content from outside the `.components` folder (Except packages in node_modules);
+- You can import the hooks as follows: `import { useMenu } from 'hooks'`.  
+The same goes for other components: `import Logo from 'components/logo'`;
+
+## Hooks
+
+[Here](https://github.com/Maycon-Santos/static-doc/tree/master/src/hooks) you can see the complete list of hooks.
+It has hooks for various style attributes and hooks for content, such as `useMenu`.
+
+## Style
+
+The project uses styled-components, but you can follow this [Nextjs tutorial](https://nextjs.org/blog/styling-next-with-styled-jsx). Nextjs is the foundation of the project..
+
+## An example file
+
+```tsx
+import React from 'react'
+import userConfig from 'data/user-config'
+import { useColorMode } from 'hooks/use-color-mode'
+import { Wrapper, LogoImage } from './logo.styled'
+
+export default function Logo () {
+  const logoImage = useColorMode({
+    light: userConfig.logo.light,
+    dark: userConfig.logo.dark
+  }) as string
+
+  return (
+    <Wrapper>
+      {logoImage ? (
+        <LogoImage src={logoImage} alt={userConfig.name} title={userConfig.name} />
+      ) : (
+        userConfig.name
+      )}
+    </Wrapper>
+  )
+}
+```

@@ -10,6 +10,8 @@ const {
   devDir
 } = require('./config/build-time')
 
+const loadUserConfig = require('./src/data/get-user-config')
+
 const resolveCustomComponents = require('./nextjs-utils/resolve-custom-components')
 
 function removeYAML () {
@@ -22,9 +24,20 @@ const withMDX = require('@next/mdx')({
   }
 })
 
+const userConfig = loadUserConfig()
+const isDev = process.env.NODE_ENV !== 'production'
+
 module.exports = withMDX({
   pageExtensions: ['ts', 'tsx', 'mdx'],
-  distDir: process.env.NODE_ENV === 'production' ? buildDir : devDir,
+  distDir: isDev ? devDir : buildDir,
+  assetPrefix: userConfig.baseUrl,
+  generateBuildId: async () => {
+    if (process.env.BUILD_ID) {
+      return process.env.BUILD_ID
+    } else {
+      return `${new Date().getTime()}`
+    }
+  },
   webpack (config) {
     config.module.rules.forEach(rule => {
       const ruleString = rule.test ? rule.test.toString() : ''

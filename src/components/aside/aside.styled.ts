@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 import { useColor } from 'hooks/use-color'
 import { useColorMode } from 'hooks/use-color-mode'
 

@@ -14,6 +14,7 @@ const userConfigPath = resolve(docsOriginPath, '.config')
 const assetsDir = '.assets'
 const assetsDestinyPath = resolve(sourcePath, `public/${assetsDir}`)
 const originalComponentsDir = 'components'
+const outPath = resolve(sourcePath, 'out')
 
 module.exports = {
   docsOriginPath,
@@ -30,6 +31,8 @@ module.exports = {
   customComponentsDestinyPath: resolve(sourcePath, '.components'),
   originalComponentsDir,
   originalComponentsPath: resolve(sourcePath, originalComponentsDir),
+  nextBinPath: resolve(__dirname, '../node_modules/.bin/next'),
+  outPath,
 
   ignorePathsToSymlink: /^\.config$/,
   pathsSymlinkToSource: /^\.components$/,

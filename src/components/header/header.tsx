@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components/macro'
 import { Wrapper, Container, HamburgerButton, ColorModeSwitchButton } from './header.styled'
 import { ThemeContext as ThemeContextType } from 'theme/type'
 

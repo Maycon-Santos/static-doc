@@ -1,38 +1,16 @@
+const {
+  join
+} = require('path')
 const getUserConfig = require('../get-user-config')
 const extractPageData = require('./extract-page-data')
 const checkIsExternalLink = require('./check-is-external-link')
+const resolveCategory = require('./resolve-category')
 const resolveRoute = require('./resolve-route')
+const formatPage = require('./format-page')
 
-function resolveCategory (route, options) {
-  const isExternalLink = checkIsExternalLink(route)
-
-  if (isExternalLink) {
-    return options.category || ''
-  }
-
-  return options.category || route.split('/')[1].replace(/-/g, ' ')
-}
-
-function formatPage (options) {
-  const to = options.to || options
-  const isExternalLink = checkIsExternalLink(to)
-  const icon = options.icon || null
-  const route = resolveRoute(to)
-  const category = resolveCategory(route, options)
-  const data = extractPageData(options)
-
-  return {
-    path: to,
-    category,
-    route,
-    icon,
-    isExternalLink,
-    data
-  }
-}
+const userConfig = getUserConfig()
 
 module.exports = function resolveLinks (pages) {
-  const userConfig = getUserConfig()
   const menu = userConfig.menu || []
   const pagesCopy = [...pages]
   const sortedPages = []

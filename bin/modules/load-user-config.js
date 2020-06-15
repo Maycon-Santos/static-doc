@@ -13,10 +13,14 @@ const {
 
 const resolveAsset = require('./resolve-asset')
 
+const { argv } = require('yargs')
+
 module.exports = function loadUserConfig () {
   try {
+    const command = argv._[0]
     const configText = readFileSync(userConfigPath, { encoding: 'utf-8' })
     const config = JSON.parse(configText)
+    const baseUrl = (command === 'build' && config.baseUrl) || '/'
 
     if (config.menu) {
       config.menu = config.menu.map(item => {
@@ -27,8 +31,8 @@ module.exports = function loadUserConfig () {
           return {
             ...item,
             icon: {
-              light: resolveAsset(iconLight),
-              dark: resolveAsset(iconDark)
+              light: resolveAsset(iconLight, baseUrl),
+              dark: resolveAsset(iconDark, baseUrl)
             }
           }
         }
@@ -41,13 +45,16 @@ module.exports = function loadUserConfig () {
       const logoLight = config.logo.light || config.logo.dark || config.logo
       const logoDark = config.logo.dark || config.logo.light || config.logo
       config.logo = {
-        light: resolveAsset(logoLight),
-        dark: resolveAsset(logoDark)
+        light: resolveAsset(logoLight, baseUrl),
+        dark: resolveAsset(logoDark, baseUrl)
       }
     }
 
+    config.baseUrl = baseUrl
+
     return config
   } catch (e) {
+    console.log(e)
     return {}
   }
 }

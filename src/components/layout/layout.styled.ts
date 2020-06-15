@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { useSpacing } from 'hooks/use-spacing'
 
 export const Wrapper = styled.div`

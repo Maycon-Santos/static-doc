@@ -1,7 +1,7 @@
 // @ts-ignore
 import preval from 'babel-plugin-preval/macro'
 
-export default preval`module.exports = require('./get-pages')` as Array<{
+export type Page = {
   path: string
   route: string
   category: string
@@ -10,4 +10,6 @@ export default preval`module.exports = require('./get-pages')` as Array<{
     title: string
     name: string
   }
-}>
+}
+
+export default preval`module.exports = require('./get-pages')` as Page[]

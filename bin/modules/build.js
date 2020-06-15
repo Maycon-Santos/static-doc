@@ -3,40 +3,45 @@ const {
 } = require('path')
 
 const {
-  spawn
+  spawnSync
 } = require('child_process')
 
-const {
-  symlinkSync,
-  existsSync,
-  lstatSync,
-  realpathSync
-} = require('fs')
+const copydir = require('copy-dir')
 
 const {
   originPagesDir,
   sourcePath,
   docsOriginPath,
-  buildPath
+  buildPath,
+  nextBinPath,
+  outPath
 } = require('../../config/build-time')
 
+const rmRecursive = require('./rm-recursive')
 const loadUserConfig = require('./load-user-config')
 
-function resolveNextJsArgs () {
-  const nextBin = resolve(__dirname, '../../node_modules/.bin/next')
-
+function resolveNextJsBuildArgs () {
   return [
-    nextBin,
+    nextBinPath,
     'build',
     sourcePath
   ]
 }
 
+function resolveNextJsExportArgs () {
+  return [
+    nextBinPath,
+    'export',
+    sourcePath
+  ]
+}
+
 module.exports = function build () {
-  const nextJsArgs = resolveNextJsArgs()
+  const nextJsBuildArgs = resolveNextJsBuildArgs()
+  const nextJsExportArgs = resolveNextJsExportArgs()
   const userConfig = loadUserConfig(originPagesDir)
 
-  spawn('node', nextJsArgs, {
+  const spawnConfig = {
     stdio: 'inherit',
     shell: true,
     env: {
@@ -44,22 +49,17 @@ module.exports = function build () {
       NODE_ENV: 'production',
       config: JSON.stringify(userConfig)
     }
-  }).on('exit', () => {
-    const distDir = userConfig.distDir || '.docs_build'
-    const distPath = resolve(docsOriginPath, `../${distDir}`)
+  }
 
-    if (existsSync(distPath)) {
-      const isSymbolicLink = lstatSync(distPath).isSymbolicLink()
+  rmRecursive(outPath)
 
-      if (!isSymbolicLink || realpathSync(distPath) !== buildPath) {
-        process.stdout.write('\u001b[3J\u001b[2J\u001b[1J')
-        console.clear()
-        console.error(`The ${distDir} directory already exists. Change the "distDir" option in the file ${resolve(docsOriginPath, '.config')} (JSON Format)`)
-      }
+  spawnSync('node', nextJsBuildArgs, spawnConfig)
+  spawnSync('node', nextJsExportArgs, spawnConfig)
 
-      return
-    }
+  const distDir = userConfig.distDir || '.docs_build'
+  const distPath = resolve(docsOriginPath, `../${distDir}`)
 
-    symlinkSync(buildPath, distPath)
-  })
+  copydir.sync(outPath, distPath)
+
+  console.log('\n', '\x1b[30m\x1b[42m', 'Done! ')
 }

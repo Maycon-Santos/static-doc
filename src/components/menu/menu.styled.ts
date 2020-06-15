@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { useColor } from 'hooks/use-color'
 import { useSpacing } from 'hooks/use-spacing'
 import { useFontSize } from 'hooks/use-font-size'
