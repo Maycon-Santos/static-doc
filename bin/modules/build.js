@@ -23,6 +23,7 @@ const {
 
 const rmRecursive = require('./rm-recursive')
 const loadUserConfig = require('./load-user-config')
+const unlinkFiles = require('./unlink-files')
 
 function resolveNextJsBuildArgs () {
   return [
@@ -71,6 +72,8 @@ module.exports = function build () {
   }
 
   copydir.sync(outFiles, distPath)
+
+  unlinkFiles()
 
   console.log('\n', '\x1b[30m\x1b[42m', 'Done! ')
 }
