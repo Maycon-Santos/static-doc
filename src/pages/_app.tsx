@@ -21,10 +21,11 @@ interface Props extends AppProps {
 
 const App = (props: Props) => {
   const { Component, pageProps, initialColorMode } = props
-  const userPrefersDark = window.matchMedia ? (
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  ) : theme.colorMode
-  const [colorMode, setColorMode] = useState<Theme['colorMode']>(initialColorMode || userPrefersDark)
+  // const defaultColorMode = global?.matchMedia ? (
+  //   global.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  // ) : theme.colorMode
+  const defaultColorMode = 'dark'
+  const [colorMode, setColorMode] = useState<Theme['colorMode']>(initialColorMode || defaultColorMode)
   const [headings, setHeadings] = useState<Heading[]>([])
   const headingsMemo = useMemo<Heading[]>(() => [], [])
   const currentPage = useCurrentPageData()

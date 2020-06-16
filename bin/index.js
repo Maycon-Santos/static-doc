@@ -12,6 +12,7 @@ const {
 const { argv } = require('yargs')
   .command('dev', 'Run the development server')
   .command('build', 'Build the production project')
+  .command('build:static', 'Build the production project with static files')
   .option('port', {
     alias: 'p',
     default: '3000',
@@ -44,7 +45,7 @@ function main () {
 
   unlinkFiles()
 
-  if (['dev', 'build'].includes(command)) {
+  if (['dev', 'build', 'build:static'].includes(command)) {
     linkFiles()
     clearNextJsCache(command)
   }
@@ -58,6 +59,7 @@ function main () {
       startServer()
       break
     case 'build':
+    case 'build:static':
       build()
   }
 }
