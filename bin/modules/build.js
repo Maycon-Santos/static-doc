@@ -47,7 +47,7 @@ module.exports = function build () {
   const command = argv._[0]
   const nextJsBuildArgs = resolveNextJsBuildArgs()
   const nextJsExportArgs = resolveNextJsExportArgs()
-  const userConfig = loadUserConfig(originPagesDir)
+  const userConfig = loadUserConfig()
   const outFiles = command === 'build:static' ? outPath : buildPath
 
   const spawnConfig = {

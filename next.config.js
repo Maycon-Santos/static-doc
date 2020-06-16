@@ -30,7 +30,7 @@ const isDev = process.env.NODE_ENV !== 'production'
 module.exports = withMDX({
   pageExtensions: ['ts', 'tsx', 'mdx'],
   distDir: isDev ? devDir : buildDir,
-  assetPrefix: userConfig.baseUrl,
+  assetPrefix: userConfig.baseUrl !== '/' ? userConfig.baseUrl : '',
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
       return process.env.BUILD_ID

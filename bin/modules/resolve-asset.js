@@ -19,7 +19,7 @@ const {
   docsOriginPath
 } = require('../../config/build-time')
 
-module.exports = function resolveAsset (assetDir) {
+module.exports = function resolveAsset (assetDir, baseUrl) {
   if (!existsSync(assetsDestinyPath)) {
     mkdirSync(assetsDestinyPath)
   }
@@ -35,5 +35,5 @@ module.exports = function resolveAsset (assetDir) {
     // It has already been linked
   }
 
-  return join(assetsDir, assetName)
+  return join(baseUrl, assetsDir, assetName)
 }
