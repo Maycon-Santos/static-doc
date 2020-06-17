@@ -26,7 +26,7 @@ module.exports = function resolveAsset (assetDir, baseUrl) {
 
   const assetOriginPath = resolve(docsOriginPath, assetDir)
   const assetExt = assetOriginPath.match(/\.[0-9a-z]+$/i)[0]
-  const assetName = Buffer.from(assetOriginPath).toString('base64') + assetExt
+  const assetName = Buffer.from(assetOriginPath).toString('base64').replace(/=/g, '') + assetExt
   const assetPath = resolve(assetsDestinyPath, assetName)
 
   if (!existsSync(assetsDestinyPath)) {
