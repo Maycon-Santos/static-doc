@@ -29,6 +29,10 @@ module.exports = function resolveAsset (assetDir, baseUrl) {
   const assetName = Buffer.from(assetOriginPath).toString('base64') + assetExt
   const assetPath = resolve(assetsDestinyPath, assetName)
 
+  if (!existsSync(assetsDestinyPath)) {
+    mkdirSync(assetsDestinyPath)
+  }
+
   try {
     symlinkSync(assetOriginPath, assetPath)
   } catch (e) {
