@@ -12,6 +12,7 @@ const {
 const { argv } = require('yargs')
   .command('dev', 'Run the development server')
   .command('build', 'Build the production project')
+  .command('start', 'Start the development server')
   .command('build:static', 'Build the production project with static files')
   .option('port', {
     alias: 'p',
@@ -56,6 +57,7 @@ function main () {
 
   switch (command) {
     case 'dev':
+    case 'start':
       startServer()
       break
     case 'build':

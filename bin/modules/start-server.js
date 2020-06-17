@@ -7,6 +7,10 @@ const {
 } = require('child_process')
 
 const {
+  argv
+} = require('yargs')
+
+const {
   sourcePath,
   originPagesDir,
   nextBinPath
@@ -14,14 +18,12 @@ const {
 
 const loadUserConfig = require('./load-user-config')
 
-const {
-  argv
-} = require('yargs')
+const command = argv._[0]
 
 function resolveNextJsArgs () {
   return [
     nextBinPath,
-    'dev',
+    command,
     sourcePath,
     `--port ${argv.port}`
   ]
@@ -37,6 +39,7 @@ module.exports = function startServer () {
     shell: true,
     env: {
       ...process.env,
+      NODE_ENV: command === 'start' ? 'production' : 'development',
       config: JSON.stringify(userConfig)
     }
   })
