@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { IncomingMessage } from 'http'
-import cookie from 'cookie'
+// import { IncomingMessage } from 'http'
+// import cookie from 'cookie'
 import jsCookie from 'js-cookie'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components/macro'
@@ -86,10 +86,10 @@ const App = (props: Props) => {
   )
 }
 
-App.getInitialProps = async ({ ctx: { req } }: { ctx: { req: IncomingMessage }}) => {
-  const cookieString = req ? req.headers.cookie : document.cookie
-  const { colorMode } = cookie.parse(cookieString || '')
-  return { initialColorMode: colorMode }
-}
+// App.getInitialProps = async ({ ctx: { req } }: { ctx: { req: IncomingMessage }}) => {
+//   const cookieString = req ? req.headers.cookie : document.cookie
+//   const { colorMode } = cookie.parse(cookieString || '')
+//   return { initialColorMode: colorMode }
+// }
 
 export default App

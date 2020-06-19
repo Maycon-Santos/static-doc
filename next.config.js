@@ -28,7 +28,7 @@ const userConfig = loadUserConfig()
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = withMDX({
-  pageExtensions: ['ts', 'tsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   distDir: isDev ? devDir : buildDir,
   assetPrefix: userConfig.baseUrl !== '/' ? userConfig.baseUrl : '',
   generateBuildId: async () => {

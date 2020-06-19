@@ -9,8 +9,6 @@ module.exports = function resolveCategory (route, options) {
 
   const routeSplitted = route.split('/').filter(Boolean)
 
-  console.log(routeSplitted)
-
   if (routeSplitted.length >= 2) {
     return options.category || routeSplitted[0].replace(/-/g, ' ')
   }

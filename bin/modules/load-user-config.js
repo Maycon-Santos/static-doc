@@ -4,11 +4,13 @@ const {
 
 const {
   readFileSync,
-  realpathSync
+  realpathSync,
+  readdirSync
 } = require('fs')
 
 const {
-  userConfigPath
+  userConfigPath,
+  assetsDestinyPath
 } = require('../../config/build-time')
 
 const resolveAsset = require('./resolve-asset')
@@ -52,9 +54,11 @@ module.exports = function loadUserConfig () {
 
     config.baseUrl = baseUrl
 
+    console.log(readdirSync(assetsDestinyPath), '##################')
+
     return config
   } catch (e) {
-    console.log(e)
+    console.warning(e)
     return {}
   }
 }

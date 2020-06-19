@@ -19,22 +19,22 @@ const {
   docsOriginPath
 } = require('../../config/build-time')
 
-module.exports = function resolveAsset (assetDir, baseUrl) {
+module.exports = function resolveAsset (assetPath, baseUrl) {
   if (!existsSync(assetsDestinyPath)) {
     mkdirSync(assetsDestinyPath)
   }
 
-  const assetOriginPath = resolve(docsOriginPath, assetDir)
+  const assetOriginPath = resolve(docsOriginPath, assetPath)
   const assetExt = assetOriginPath.match(/\.[0-9a-z]+$/i)[0]
   const assetName = Buffer.from(assetOriginPath).toString('base64').replace(/=/g, '') + assetExt
-  const assetPath = resolve(assetsDestinyPath, assetName)
+  const assetDestinyPath = resolve(assetsDestinyPath, assetName)
 
   if (!existsSync(assetsDestinyPath)) {
     mkdirSync(assetsDestinyPath)
   }
 
   try {
-    symlinkSync(assetOriginPath, assetPath)
+    symlinkSync(assetOriginPath, assetDestinyPath)
   } catch (e) {
     // It has already been linked
   }

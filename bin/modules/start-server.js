@@ -32,6 +32,7 @@ function resolveNextJsArgs () {
 module.exports = function startServer () {
   const nextJsArgs = resolveNextJsArgs(argv)
   const userConfig = loadUserConfig()
+  const debug = argv.debug
 
   spawn('node', nextJsArgs, {
     cwd: resolve(sourcePath, '..'),
@@ -40,6 +41,7 @@ module.exports = function startServer () {
     env: {
       ...process.env,
       NODE_ENV: command === 'start' ? 'production' : 'development',
+      NODE_OPTIONS: debug ? '--inspect' : '',
       config: JSON.stringify(userConfig)
     }
   })
