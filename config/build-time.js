@@ -11,8 +11,8 @@ const sourcePath = resolve(__dirname, '../src')
 const buildDir = `.build/${Buffer.from(process.cwd()).toString('base64')}`
 const devDir = `.dev/${Buffer.from(process.cwd()).toString('base64')}`
 const userConfigPath = resolve(docsOriginPath, '.config')
-const assetsDir = '_assets'
-const assetsDestinyPath = resolve(sourcePath, `public/${assetsDir}`)
+const assetsDir = 'static/_assets'
+const assetsDestinyPath = resolve(sourcePath, assetsDir)
 const originalComponentsDir = 'components'
 const outDir = `.out/${Buffer.from(process.cwd()).toString('base64')}`
 

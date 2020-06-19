@@ -58,7 +58,7 @@ module.exports = function loadUserConfig () {
 
     return config
   } catch (e) {
-    console.warning(e)
+    console.warn(e)
     return {}
   }
 }
