@@ -27,8 +27,11 @@ const withMDX = require('@next/mdx')({
 const userConfig = loadUserConfig()
 const isDev = process.env.NODE_ENV !== 'production'
 
+console.log(userConfig.baseUrl !== '/' ? userConfig.baseUrl : '', '################')
+
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  exportTrailingSlash: true,
   distDir: isDev ? devDir : buildDir,
   assetPrefix: userConfig.baseUrl !== '/' ? userConfig.baseUrl : '',
   generateBuildId: async () => {

@@ -54,8 +54,6 @@ module.exports = function loadUserConfig () {
 
     config.baseUrl = baseUrl
 
-    console.log(readdirSync(assetsDestinyPath), '##################')
-
     return config
   } catch (e) {
     console.warn(e)
