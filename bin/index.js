@@ -46,7 +46,7 @@ function main () {
 
   unlinkFiles()
 
-  if (['dev', 'build', 'build:static'].includes(command)) {
+  if (command !== 'start') {
     linkFiles()
     clearNextJsCache(command)
   }
@@ -67,7 +67,9 @@ function main () {
 }
 
 process.on('SIGINT', () => {
-  clearNextJsCache(command)
+  if (command !== 'start') {
+    clearNextJsCache(command)
+  }
   unlinkFiles()
   process.exit()
 })

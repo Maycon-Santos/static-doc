@@ -1,5 +1,6 @@
 import React from 'react'
 import Document from 'next/document'
+import { AppProps } from 'next/app'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -8,10 +9,9 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage
 
     try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App: any) => (props: any) => sheet.collectStyles(<App {...props} />)
-        })
+      ctx.renderPage = () => originalRenderPage({
+        enhanceApp: (App: React.FC<AppProps>) => (props: AppProps) => sheet.collectStyles(<App {...props} />)
+      })
 
       const initialProps = await Document.getInitialProps(ctx)
       return {
