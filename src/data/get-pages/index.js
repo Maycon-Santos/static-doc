@@ -8,8 +8,6 @@ const {
 } = require('../../../config/build-time')
 
 const deepReaddir = require('./deep-readdir')
-const extractPageData = require('./extract-page-data')
-const resolveRoute = require('./resolve-route')
 const resolveLinks = require('./resolve-links')
 
 module.exports = () => {

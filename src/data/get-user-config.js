@@ -1,3 +1,5 @@
+const loadUserConfig = require('../../bin/modules/load-user-config')
+
 module.exports = function getUserConfig () {
-  return JSON.parse(process.env.config)
+  return loadUserConfig()
 }

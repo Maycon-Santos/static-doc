@@ -25,7 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .docs_build
-src/.dev
-src/.build
-src/.components
-src/.out
+.dev
+.build
+.components
+.out

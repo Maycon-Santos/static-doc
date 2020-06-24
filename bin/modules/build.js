@@ -1,5 +1,6 @@
 const {
-  resolve
+  resolve,
+  join
 } = require('path')
 
 const {
@@ -18,7 +19,8 @@ const {
   docsOriginPath,
   buildPath,
   nextBinPath,
-  outPath
+  outPath,
+  publicPath
 } = require('../../config/build-time')
 
 const rmRecursive = require('./rm-recursive')
@@ -28,8 +30,7 @@ const unlinkFiles = require('./unlink-files')
 function resolveNextJsBuildArgs () {
   return [
     nextBinPath,
-    'build',
-    sourcePath
+    'build'
   ]
 }
 
@@ -37,7 +38,6 @@ function resolveNextJsExportArgs () {
   return [
     nextBinPath,
     'export',
-    sourcePath,
     '-o',
     outPath
   ]
@@ -72,8 +72,6 @@ module.exports = function build () {
   }
 
   copydir.sync(outFiles, distPath)
-
-  unlinkFiles()
 
   console.log('\n', '\x1b[30m\x1b[42m', 'Done! ')
 }

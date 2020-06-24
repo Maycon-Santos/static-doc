@@ -3,6 +3,12 @@ const {
 } = require('path')
 
 const {
+  createServer
+} = require('http')
+
+const next = require('next')
+
+const {
   spawn
 } = require('child_process')
 
@@ -11,38 +17,30 @@ const {
 } = require('yargs')
 
 const {
-  sourcePath,
+  rootPath,
   originPagesDir,
-  nextBinPath
+  nextBinPath,
+  buildPath,
+  devPath
 } = require('../../config/build-time')
 
-const loadUserConfig = require('./load-user-config')
-
+const nextJsConfig = require('./nextjs-config')
+const dev = process.env.NODE_ENV !== 'production'
 const command = argv._[0]
 
-function resolveNextJsArgs () {
-  return [
-    nextBinPath,
-    command,
-    sourcePath,
-    `--port ${argv.port}`
-  ]
-}
-
 module.exports = function startServer () {
-  const nextJsArgs = resolveNextJsArgs(argv)
-  const userConfig = loadUserConfig()
-  const debug = argv.debug
+  const app = next({
+    dev,
+    dir: rootPath,
+    conf: nextJsConfig
+  })
 
-  spawn('node', nextJsArgs, {
-    cwd: resolve(sourcePath, '..'),
-    stdio: 'inherit',
-    shell: true,
-    env: {
-      ...process.env,
-      NODE_ENV: command === 'start' ? 'production' : 'development',
-      NODE_OPTIONS: debug ? '--inspect' : '',
-      config: JSON.stringify(userConfig)
-    }
+  const handle = app.getRequestHandler()
+
+  app.prepare().then(() => {
+    createServer((req, res) => handle(req, res, new URL(req.url, true)))
+      .listen(argv.port, (err) => {
+        if (err) throw err
+      })
   })
 }

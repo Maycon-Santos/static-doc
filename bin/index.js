@@ -27,6 +27,8 @@ const { argv } = require('yargs')
     type: 'string'
   })
 
+process.env.dir = argv.dir || 'docs'
+
 const linkFiles = require('./modules/link-files')
 const unlinkFiles = require('./modules/unlink-files')
 const clearNextJsCache = require('./modules/clear-nextjs-cache')
@@ -46,10 +48,8 @@ function main () {
 
   unlinkFiles()
 
-  if (command !== 'start') {
-    linkFiles()
-    clearNextJsCache(command)
-  }
+  linkFiles()
+  clearNextJsCache(command)
 
   const customComponentsAvailable = checkCustomComponents()
 
@@ -66,12 +66,10 @@ function main () {
   }
 }
 
-process.on('SIGINT', () => {
-  if (command !== 'start') {
-    clearNextJsCache(command)
-  }
-  unlinkFiles()
-  process.exit()
-})
+// process.on('SIGINT', () => {
+//   clearNextJsCache(command)
+//   unlinkFiles()
+//   process.exit()
+// })
 
 main()
