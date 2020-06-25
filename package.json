@@ -10,14 +10,8 @@
   "bin": {
     "static-doc": "./bin/index.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "node bin/index.js clear"
     ]
   },
   "dependencies": {
