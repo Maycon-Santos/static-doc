@@ -63,6 +63,7 @@ function main () {
       build()
       break
     case 'clear':
+      console.log('Cleaning...')
       clear()
   }
 }
