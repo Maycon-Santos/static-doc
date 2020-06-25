@@ -11,8 +11,7 @@
     "static-doc": "./bin/index.js"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-    ]
+    "*.{ts,tsx}": []
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.1",
