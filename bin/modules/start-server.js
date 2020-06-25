@@ -6,6 +6,11 @@ const {
   createServer
 } = require('http')
 
+const {
+  // eslint-disable-next-line
+  parse
+} = require('url')
+
 const next = require('next')
 
 const {
@@ -21,16 +26,16 @@ const {
   originPagesDir,
   nextBinPath,
   buildPath,
-  devPath
+  devPath,
+  isDev
 } = require('../../config/build-time')
 
-const nextJsConfig = require('./nextjs-config')
-const dev = process.env.NODE_ENV !== 'production'
+const nextJsConfig = require('../../next.config')
 const command = argv._[0]
 
 module.exports = function startServer () {
   const app = next({
-    dev,
+    dev: isDev,
     dir: rootPath,
     conf: nextJsConfig
   })
@@ -38,9 +43,13 @@ module.exports = function startServer () {
   const handle = app.getRequestHandler()
 
   app.prepare().then(() => {
-    createServer((req, res) => handle(req, res, new URL(req.url, true)))
-      .listen(argv.port, (err) => {
-        if (err) throw err
-      })
+    const server = createServer((req, res) => {
+      handle(req, res, parse(req.url, true))
+    })
+
+    server.listen(argv.port, (err) => {
+      if (err) throw err
+      console.log(`> Ready on localhost:${argv.port}`)
+    })
   })
 }

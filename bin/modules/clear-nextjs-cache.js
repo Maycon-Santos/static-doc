@@ -3,6 +3,10 @@ const {
 } = require('path')
 
 const {
+  argv
+} = require('yargs')
+
+const {
   sourcePath,
   devPath,
   buildPath
@@ -10,7 +14,9 @@ const {
 
 const rmRecursive = require('./rm-recursive')
 
-module.exports = function clearNextJsCache (command) {
-  const cachePath = command === 'dev' ? devPath : buildPath
+const command = argv._[0]
+
+module.exports = function clearNextJsCache () {
+  const cachePath = ['dev', 'clear'].includes(command) ? devPath : buildPath
   rmRecursive(cachePath)
 }

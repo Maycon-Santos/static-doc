@@ -7,12 +7,13 @@ const detectFrontmatter = require('remark-frontmatter')
 
 const {
   buildDir,
-  devDir
-} = require('../../config/build-time')
+  devDir,
+  isDev
+} = require('./config/build-time')
 
-const loadUserConfig = require('./load-user-config')
+const loadUserConfig = require('./bin/modules/load-user-config')
 
-const resolveCustomComponents = require('../../nextjs-utils/resolve-custom-components')
+const resolveCustomComponents = require('./nextjs-utils/resolve-custom-components')
 
 function removeYAML () {
   return tree => remove(tree, 'yaml')
@@ -25,12 +26,11 @@ const withMDX = require('@next/mdx')({
 })
 
 const userConfig = loadUserConfig()
-const dev = process.env.NODE_ENV !== 'production'
 
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   exportTrailingSlash: true,
-  distDir: dev ? devDir : buildDir,
+  distDir: isDev ? devDir : buildDir,
   assetPrefix: userConfig.baseUrl !== '/' ? userConfig.baseUrl : '',
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {

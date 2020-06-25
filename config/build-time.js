@@ -2,6 +2,12 @@ const {
   resolve
 } = require('path')
 
+const {
+  argv
+} = require('yargs')
+
+const command = argv._[0]
+
 const rootPath = process.cwd()
 const docsOriginPath = resolve(rootPath, process.env.dir)
 const sourcePath = resolve(rootPath, 'src')
@@ -36,5 +42,6 @@ module.exports = {
 
   ignorePathsToSymlink: /^\.config$/,
   pathsSymlinkToSource: /^\.components$/,
-  customComponents: ['logo']
+  customComponents: ['logo'],
+  isDev: !(['build', 'start'].includes(command))
 }

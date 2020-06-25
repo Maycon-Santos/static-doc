@@ -10,6 +10,16 @@
   "bin": {
     "static-doc": "./bin/index.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "node bin/index.js clear"
+    ]
+  },
   "dependencies": {
     "@mdx-js/loader": "^1.6.1",
     "@next/mdx": "^9.3.6",
@@ -51,6 +61,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "remark-frontmatter": "^2.0.0",
     "typescript": "^3.8.3",
     "unist-util-remove": "^2.0.0",

@@ -30,8 +30,7 @@ const { argv } = require('yargs')
 process.env.dir = argv.dir || 'docs'
 
 const linkFiles = require('./modules/link-files')
-const unlinkFiles = require('./modules/unlink-files')
-const clearNextJsCache = require('./modules/clear-nextjs-cache')
+const clear = require('./modules/clear')
 const startServer = require('./modules/start-server')
 const build = require('./modules/build')
 const checkCustomComponents = require('./modules/check-custom-components')
@@ -46,13 +45,12 @@ function main () {
     mkdirSync(docsDestinyPath)
   }
 
-  unlinkFiles()
-
-  linkFiles()
-  clearNextJsCache(command)
+  if (!(['start', 'clear'].includes(command))) {
+    clear()
+    linkFiles()
+  }
 
   const customComponentsAvailable = checkCustomComponents()
-
   process.env.CUSTOM_COMPONENTS = JSON.stringify(customComponentsAvailable)
 
   switch (command) {
@@ -63,13 +61,10 @@ function main () {
     case 'build':
     case 'build:static':
       build()
+      break
+    case 'clear':
+      clear()
   }
 }
-
-// process.on('SIGINT', () => {
-//   clearNextJsCache(command)
-//   unlinkFiles()
-//   process.exit()
-// })
 
 main()

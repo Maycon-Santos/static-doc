@@ -7,7 +7,7 @@ const {
   docsDestinyPath
 } = require('../../../config/build-time')
 
-const deepReaddir = require('./deep-readdir')
+const deepReaddir = require('../../../utils/deep-readdir')
 const resolveLinks = require('./resolve-links')
 
 module.exports = () => {
