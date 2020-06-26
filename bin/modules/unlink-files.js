@@ -10,13 +10,24 @@ const {
 } = require('fs')
 
 const {
+  execSync
+} = require('child_process')
+
+const {
+  argv
+} = require('yargs')
+
+const {
   docsDestinyPath,
   sourcePath,
   assetsDestinyPath
 } = require('../../config/build-time')
 
 module.exports = function unlinkFiles () {
-  [docsDestinyPath, sourcePath, assetsDestinyPath].forEach(dir => {
+  const command = argv._[0]
+  const pathsToUnlink = [docsDestinyPath, sourcePath, assetsDestinyPath]
+
+  pathsToUnlink.forEach(dir => {
     if (!existsSync(dir)) return
 
     const filenames = readdirSync(dir)
@@ -26,6 +37,11 @@ module.exports = function unlinkFiles () {
       const fileLstat = lstatSync(path)
       if (fileLstat.isSymbolicLink()) {
         unlinkSync(path)
+
+        if (command === 'clear') {
+          console.log(`git add ${path}`)
+          // execSync(`git add ${path}`)
+        }
       }
     })
   })
