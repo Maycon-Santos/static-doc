@@ -11,7 +11,11 @@ const {
   argv
 } = require('yargs')
 
-const copydir = require('copy-dir')
+const {
+  renameSync,
+  symlinkSync,
+  existsSync
+} = require('fs')
 
 const {
   originPagesDir,
@@ -60,18 +64,25 @@ module.exports = function build () {
     }
   }
 
-  rmRecursive(outFiles)
+  const distDir = command === 'build:static' ? (userConfig.buildStaticDir || '.docs_static_build') : (userConfig.buildDir || '.docs_build')
+  const distPath = resolve(docsOriginPath, `../${distDir}`)
+
+  if (existsSync(distPath)) {
+    rmRecursive(outFiles)
+  }
+
+  if (existsSync(distPath)) {
+    rmRecursive(distPath)
+  }
 
   spawnSync('node', nextJsBuildArgs, spawnConfig)
-
-  const distDir = userConfig.distDir || '.docs_build'
-  const distPath = resolve(docsOriginPath, `../${distDir}`)
 
   if (command === 'build:static') {
     spawnSync('node', nextJsExportArgs, spawnConfig)
   }
 
-  copydir.sync(outFiles, distPath)
+  renameSync(outFiles, distPath)
+  symlinkSync(distPath, outFiles)
 
   console.log('\n', '\x1b[30m\x1b[42m', 'Done! ')
 }

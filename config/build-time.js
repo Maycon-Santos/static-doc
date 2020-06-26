@@ -43,5 +43,5 @@ module.exports = {
   ignorePathsToSymlink: /^\.config$/,
   pathsSymlinkToSource: /^\.components$/,
   customComponents: ['logo'],
-  isDev: !(['build', 'start'].includes(command))
+  isDev: command === 'dev'
 }
