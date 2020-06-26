@@ -35,12 +35,11 @@ module.exports = function unlinkFiles () {
     filenames.forEach(filename => {
       const path = resolve(dir, filename)
       const fileLstat = lstatSync(path)
-      if (fileLstat.isSymbolicLink()) {
+      if (fileLstat.isSymbolicLink() && existsSync(path)) {
         unlinkSync(path)
 
         if (command === 'clear') {
-          console.log(`git add ${path}`)
-          // execSync(`git add ${path}`)
+          execSync(`git add ${path}`)
         }
       }
     })
