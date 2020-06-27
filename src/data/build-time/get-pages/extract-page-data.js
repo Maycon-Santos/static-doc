@@ -17,7 +17,7 @@ const detectFrontmatter = require('remark-frontmatter')
 
 const {
   docsDestinyPath
-} = require('../../../config/build-time')
+} = require('../../../../config/build-time')
 
 const resolveRoute = require('./resolve-route')
 const checkIsExternalLink = require('./check-is-external-link')

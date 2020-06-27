@@ -12,4 +12,4 @@ export type Page = {
   }
 }
 
-export default preval`module.exports = require('./get-pages')` as Page[]
+export default preval`module.exports = require('./build-time/get-pages')` as Page[]

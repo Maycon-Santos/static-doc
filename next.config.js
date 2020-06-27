@@ -12,8 +12,7 @@ const {
 } = require('./config/build-time')
 
 const loadUserConfig = require('./bin/modules/load-user-config')
-
-const resolveCustomComponents = require('./nextjs-utils/resolve-custom-components')
+const resolveCustomComponents = require('./utils/resolve-custom-components')
 
 function removeYAML () {
   return tree => remove(tree, 'yaml')
