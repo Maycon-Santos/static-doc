@@ -26,6 +26,7 @@ const withMDX = require('@next/mdx')({
 })
 
 const userConfig = loadUserConfig()
+const { name: projectName } = require('./package.json')
 
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
@@ -46,6 +47,12 @@ module.exports = withMDX({
 
       if (ruleContainsTs && rule.use && rule.use.loader === 'next-babel-loader') {
         rule.include = undefined
+        rule.exclude = (excludePath) => {
+          if ((new RegExp(`node_modules/${projectName}`)).test(excludePath)) {
+            return false
+          }
+          return /node_modules/.test(excludePath)
+        }
       }
     })
 

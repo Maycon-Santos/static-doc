@@ -18,6 +18,7 @@ const {
 } = require('fs')
 
 const {
+  rootPath,
   originPagesDir,
   sourcePath,
   docsOriginPath,
@@ -59,6 +60,7 @@ module.exports = function build () {
     shell: true,
     env: {
       ...process.env,
+      cwd: rootPath,
       NODE_ENV: 'production',
       config: JSON.stringify(userConfig)
     }

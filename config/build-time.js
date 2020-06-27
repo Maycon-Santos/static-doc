@@ -8,8 +8,8 @@ const {
 
 const command = argv._[0]
 
-const rootPath = process.cwd()
-const docsOriginPath = resolve(rootPath, process.env.dir)
+const rootPath = resolve(__dirname, '..')
+const docsOriginPath = resolve(process.cwd(), process.env.dir)
 const sourcePath = resolve(rootPath, 'src')
 const buildDir = `.build/${Buffer.from(process.cwd()).toString('base64')}`
 const devDir = `.dev/${Buffer.from(process.cwd()).toString('base64')}`

@@ -39,7 +39,9 @@ module.exports = function unlinkFiles () {
         unlinkSync(path)
 
         if (command === 'clear') {
-          execSync(`git add ${path}`)
+          try {
+            execSync(`git add ${path}`)
+          } catch (err) {}
         }
       }
     })
