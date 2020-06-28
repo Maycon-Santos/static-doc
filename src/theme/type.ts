@@ -12,14 +12,14 @@ export interface Theme {
     [key: string]: number
   }
   googleFonts?: Array<{
-    name: string,
+    name: string
     weights: number[]
   }>
   fontFamilies: {
     [key: string]: string[]
   }
   colors: {
-    light: { [key: string]: any },
+    light: { [key: string]: any }
     dark: { [key: string]: any }
   }
 }

@@ -9,5 +9,7 @@ module.exports = function resolveRoute (path) {
     return path
   }
 
-  return `${userConfig.baseUrl}${path.replace(/.mdx?$/, '').replace(/\/?index/, '')}`
+  return `${userConfig.baseUrl}${path
+    .replace(/.mdx?$/, '')
+    .replace(/\/?index/, '')}`
 }

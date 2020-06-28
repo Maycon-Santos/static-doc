@@ -24,7 +24,7 @@ docs/
 
 - You must not and cannot import content from outside the `.components` folder (Except packages in node_modules);
 - You can import the hooks as follows: `import { useMenu } from 'hooks'`.  
-The same goes for other components: `import Logo from 'components/logo'`;
+  The same goes for other components: `import Logo from 'components/logo'`;
 
 ## Hooks
 
@@ -52,7 +52,11 @@ export default function Logo () {
   return (
     <Wrapper>
       {logoImage ? (
-        <LogoImage src={logoImage} alt={userConfig.name} title={userConfig.name} />
+        <LogoImage
+          src={logoImage}
+          alt={userConfig.name}
+          title={userConfig.name}
+        />
       ) : (
         userConfig.name
       )}

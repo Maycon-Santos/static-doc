@@ -1,16 +1,20 @@
 import { rgba } from 'polished'
 import { useTheme } from './use-theme'
 
-export function useColor (colorName: string, type?: string | number, opacity = 1): string {
+export function useColor (
+  colorName: string,
+  type?: string | number,
+  opacity = 1
+): string {
   const theme = useTheme()
-  const colors = theme.colors[theme.colorMode]
-  let color = colors[colorName]
+  let color = theme.colors[theme.colorMode][colorName]
 
   if (!color) {
     const colorModes = Object.keys(theme.colors)
     colorModes.find(colorMode => {
-      if (colors[colorMode]?.[colorName]) {
-        color = colors[colorMode][colorName]
+      const colors = theme.colors[colorMode]
+      if (colors?.[colorName]) {
+        color = colors[colorName]
       }
     })
   }

@@ -1,15 +1,9 @@
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
 const remove = require('unist-util-remove')
 const detectFrontmatter = require('remark-frontmatter')
 
-const {
-  buildDir,
-  devDir,
-  isDev
-} = require('./config/build-time')
+const { buildDir, devDir, isDev } = require('./config/build-time')
 
 const loadUserConfig = require('./bin/modules/load-user-config')
 const resolveCustomComponents = require('./utils/resolve-custom-components')
@@ -44,10 +38,14 @@ module.exports = withMDX({
       const ruleString = rule.test ? rule.test.toString() : ''
       const ruleContainsTs = /tsx?/.test(ruleString)
 
-      if (ruleContainsTs && rule.use && rule.use.loader === 'next-babel-loader') {
+      if (
+        ruleContainsTs &&
+        rule.use &&
+        rule.use.loader === 'next-babel-loader'
+      ) {
         rule.include = undefined
-        rule.exclude = (excludePath) => {
-          if ((new RegExp(`node_modules/${projectName}`)).test(excludePath)) {
+        rule.exclude = excludePath => {
+          if (new RegExp(`node_modules/${projectName}`).test(excludePath)) {
             return false
           }
           return /node_modules/.test(excludePath)

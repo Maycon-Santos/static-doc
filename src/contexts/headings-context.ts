@@ -7,8 +7,10 @@ export type Heading = {
 }
 
 export type HeadingsContextType = {
-  register: (heading: Heading) => void,
+  register: (heading: Heading) => void
   items: Heading[]
 }
 
-export const HeadingsContext = createContext<HeadingsContextType>({} as HeadingsContextType)
+export const HeadingsContext = createContext<HeadingsContextType>(
+  {} as HeadingsContextType
+)

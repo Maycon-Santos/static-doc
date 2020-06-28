@@ -1,6 +1,4 @@
-const {
-  join
-} = require('path')
+const { join } = require('path')
 const getUserConfig = require('../get-user-config')
 const extractPageData = require('./extract-page-data')
 const checkIsExternalLink = require('./check-is-external-link')

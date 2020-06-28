@@ -1,18 +1,12 @@
-const {
-  resolve,
-  join
-} = require('path')
+const { resolve, join } = require('path')
 
-const {
-  readdirSync,
-  readFileSync
-} = require('fs')
+const { readdirSync, readFileSync } = require('fs')
 
 module.exports = function deepReaddir (baseDir) {
   const filenames = readdirSync(baseDir)
 
   function getSubpaths (dir) {
-    return (filename) => {
+    return filename => {
       try {
         const subpathFiles = readdirSync(resolve(dir, filename))
 

@@ -23,7 +23,7 @@ function headingFactory (tag: string) {
 
     return (
       <Component>
-        <span className="anchor-target" id={id} />
+        <span className='anchor-target' id={id} />
         {children}
       </Component>
     )
@@ -40,14 +40,18 @@ export const h6 = headingFactory('h6')
 export const table = ({ children }: { children: React.ReactNode }) => {
   return (
     <MDXComponents.tableWrapper>
-      <MDXComponents.table>
-        {children}
-      </MDXComponents.table>
+      <MDXComponents.table>{children}</MDXComponents.table>
     </MDXComponents.tableWrapper>
   )
 }
 
-export const code = ({ children = '', className }: { children: string, className: string }) => {
+export const code = ({
+  children = '',
+  className
+}: {
+  children: string
+  className: string
+}) => {
   const language = className?.replace(/language-/, '') as Language
   const syntaxHighlight = useSyntaxHighlight()
   const { backgroundColor } = syntaxHighlight.plain

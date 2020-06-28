@@ -19,14 +19,9 @@ export default function Layout (props: Props) {
 
   return (
     <Wrapper>
-      <Aside
-        open={asideOpen}
-        onClose={() => setAsideOpen(false)}
-      />
+      <Aside open={asideOpen} onClose={() => setAsideOpen(false)} />
       <MainSection>
-        <Header
-          openAside={() => setAsideOpen(true)}
-        />
+        <Header openAside={() => setAsideOpen(true)} />
         <Main>
           <TableOfContents />
           <Content>{children}</Content>

@@ -1,17 +1,8 @@
-const {
-  resolve,
-  join
-} = require('path')
+const { resolve, join } = require('path')
 
-const {
-  existsSync,
-  mkdirSync,
-  symlinkSync
-} = require('fs')
+const { existsSync, mkdirSync, symlinkSync } = require('fs')
 
-const {
-  argv
-} = require('yargs')
+const { argv } = require('yargs')
 
 const {
   assetsDir,
@@ -26,7 +17,10 @@ module.exports = function resolveAsset (assetPath, baseUrl) {
 
   const assetOriginPath = resolve(docsOriginPath, assetPath)
   const assetExt = assetOriginPath.match(/\.[0-9a-z]+$/i)[0]
-  const assetName = Buffer.from(assetOriginPath).toString('base64').replace(/=/g, '') + assetExt
+  const assetName =
+    Buffer.from(assetOriginPath)
+      .toString('base64')
+      .replace(/=/g, '') + assetExt
   const assetDestinyPath = resolve(assetsDestinyPath, assetName)
 
   if (!existsSync(assetsDestinyPath)) {

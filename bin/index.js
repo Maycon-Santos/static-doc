@@ -1,13 +1,8 @@
 #!/usr/bin/env node
 
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
-const {
-  existsSync,
-  mkdirSync
-} = require('fs')
+const { existsSync, mkdirSync } = require('fs')
 
 const { argv } = require('yargs')
   .command('dev', 'Run the development server')
@@ -27,7 +22,7 @@ const { argv } = require('yargs')
     type: 'string'
   })
 
-process.env.dir = argv.dir || 'docs'
+process.env.dir = argv.dir
 
 const linkFiles = require('./modules/link-files')
 const clear = require('./modules/clear')
@@ -36,16 +31,14 @@ const build = require('./modules/build')
 const checkCustomComponents = require('./modules/check-custom-components')
 const command = argv._[0]
 
-const {
-  docsDestinyPath
-} = require('../config/build-time')
+const { docsDestinyPath } = require('../config/build-time')
 
 function main () {
   if (!existsSync(docsDestinyPath)) {
     mkdirSync(docsDestinyPath)
   }
 
-  if (!(['start', 'clear'].includes(command))) {
+  if (!['start', 'clear'].includes(command)) {
     clear()
     linkFiles()
   }

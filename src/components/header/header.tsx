@@ -1,6 +1,11 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components/macro'
-import { Wrapper, Container, HamburgerButton, ColorModeSwitchButton } from './header.styled'
+import {
+  Wrapper,
+  Container,
+  HamburgerButton,
+  ColorModeSwitchButton
+} from './header.styled'
 import { ThemeContext as ThemeContextType } from 'theme/type'
 
 type Props = {
@@ -15,9 +20,7 @@ export default function Header (props: Props) {
   return (
     <Wrapper>
       <Container>
-        <HamburgerButton
-          onClick={openAside}
-        />
+        <HamburgerButton onClick={openAside} />
         <ColorModeSwitchButton
           className={colorMode}
           onClick={() => {

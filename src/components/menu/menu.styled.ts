@@ -62,6 +62,4 @@ export const Icon = styled.img`
   margin-right: ${() => useSpacing(3)};
 `
 
-export const externalLinkIcon = styled.img`
-
-`
+export const externalLinkIcon = styled.img``

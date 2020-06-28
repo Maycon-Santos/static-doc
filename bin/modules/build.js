@@ -1,21 +1,10 @@
-const {
-  resolve,
-  join
-} = require('path')
+const { resolve, join } = require('path')
 
-const {
-  spawnSync
-} = require('child_process')
+const { spawnSync } = require('child_process')
 
-const {
-  argv
-} = require('yargs')
+const { argv } = require('yargs')
 
-const {
-  renameSync,
-  symlinkSync,
-  existsSync
-} = require('fs')
+const { renameSync, symlinkSync, existsSync } = require('fs')
 
 const {
   rootPath,
@@ -33,19 +22,11 @@ const loadUserConfig = require('./load-user-config')
 const unlinkFiles = require('./unlink-files')
 
 function resolveNextJsBuildArgs () {
-  return [
-    nextBinPath,
-    'build'
-  ]
+  return [nextBinPath, 'build']
 }
 
 function resolveNextJsExportArgs () {
-  return [
-    nextBinPath,
-    'export',
-    '-o',
-    outPath
-  ]
+  return [nextBinPath, 'export', '-o', outPath]
 }
 
 module.exports = function build () {
@@ -66,7 +47,10 @@ module.exports = function build () {
     }
   }
 
-  const distDir = command === 'build:static' ? (userConfig.buildStaticDir || '.docs_static_build') : (userConfig.buildDir || '.docs_build')
+  const distDir =
+    command === 'build:static'
+      ? userConfig.buildStaticDir || '.docs_static_build'
+      : userConfig.buildDir || '.docs_build'
   const distPath = resolve(docsOriginPath, `../${distDir}`)
 
   if (existsSync(distPath)) {

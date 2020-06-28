@@ -1,17 +1,8 @@
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
-const {
-  readFileSync,
-  realpathSync,
-  readdirSync
-} = require('fs')
+const { readFileSync, realpathSync, readdirSync } = require('fs')
 
-const {
-  userConfigPath,
-  assetsDestinyPath
-} = require('../../config/build-time')
+const { userConfigPath, assetsDestinyPath } = require('../../config/build-time')
 
 const resolveAsset = require('./resolve-asset')
 

@@ -16,10 +16,10 @@ In the `.config` file you can write the style variables within the key theme:
 
 ```json
 {
-    "name": "⚡ Static Docs",
-    "theme": {
-        // Configuration here
-    }
+  "name": "⚡ Static Docs",
+  "theme": {
+    // Configuration here
+  }
 }
 ```
 
@@ -29,23 +29,25 @@ You can import fonts from google and then name where each font should be used:
 
 ```json
 {
-    "name": "⚡ Static Docs",
-    "theme": {
-        "googleFonts": [{
-            "name": "Open Sans",
-            "weights": [400, 600, 700]
-        }],
-        "fontFamilies": {
-            "primary": ["Open Sans", "sans-serif"],
-            "menu": ["Open Sans", "sans-serif"],
-            "logo": ["Open Sans", "sans-serif"]
-        },
-        "fontWeights": {
-            "body": 400,
-            "semiBold": 600,
-            "bold": 700
-        }
+  "name": "⚡ Static Docs",
+  "theme": {
+    "googleFonts": [
+      {
+        "name": "Open Sans",
+        "weights": [400, 600, 700]
+      }
+    ],
+    "fontFamilies": {
+      "primary": ["Open Sans", "sans-serif"],
+      "menu": ["Open Sans", "sans-serif"],
+      "logo": ["Open Sans", "sans-serif"]
+    },
+    "fontWeights": {
+      "body": 400,
+      "semiBold": 600,
+      "bold": 700
     }
+  }
 }
 ```
 
@@ -57,10 +59,10 @@ You can import fonts from google and then name where each font should be used:
 
 ```json
 {
-    "name": "⚡ Static Docs",
-    "theme": {
-      "colorMode": "dark"
-    }
+  "name": "⚡ Static Docs",
+  "theme": {
+    "colorMode": "dark"
+  }
 }
 ```
 
@@ -72,17 +74,17 @@ Below you will see the colors by color mode. It is worth remembering that if the
 
 ```json
 {
-    "name": "⚡ Static Docs",
-    "theme": {
-        "colors": {
-            "light": {
-              // Light mode colors
-            },
-            "dark": {
-              // Dark mode colors
-            }
-        }
+  "name": "⚡ Static Docs",
+  "theme": {
+    "colors": {
+      "light": {
+        // Light mode colors
+      },
+      "dark": {
+        // Dark mode colors
+      }
     }
+  }
 }
 ```
 
@@ -90,6 +92,6 @@ Below you will see the colors by color mode. It is worth remembering that if the
 
 With all this in mind, you can override or add new variables to the `theme`. Below you will see the original `theme`:
 
-<MDXComponents.code className="language-json">
-{JSON.stringify(theme, null, 4)}
+<MDXComponents.code className='language-json'>
+  {JSON.stringify(theme, null, 4)}
 </MDXComponents.code>

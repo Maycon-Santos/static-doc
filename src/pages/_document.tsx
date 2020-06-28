@@ -9,9 +9,11 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage
 
     try {
-      ctx.renderPage = () => originalRenderPage({
-        enhanceApp: (App: React.FC<AppProps>) => (props: AppProps) => sheet.collectStyles(<App {...props} />)
-      })
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App: React.FC<AppProps>) => (props: AppProps) =>
+            sheet.collectStyles(<App {...props} />)
+        })
 
       const initialProps = await Document.getInitialProps(ctx)
       return {

@@ -13,10 +13,7 @@ export default function Aside (props: Props) {
 
   return (
     <Wrapper>
-      <Overlay
-        open={open}
-        onClick={onClose}
-      />
+      <Overlay open={open} onClick={onClose} />
       <AsideWrapper open={open}>
         <Logo />
         <Menu />

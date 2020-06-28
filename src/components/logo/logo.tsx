@@ -12,7 +12,11 @@ export default function Logo () {
   return (
     <Wrapper>
       {logoImage ? (
-        <LogoImage src={logoImage} alt={userConfig.name} title={userConfig.name} />
+        <LogoImage
+          src={logoImage}
+          alt={userConfig.name}
+          title={userConfig.name}
+        />
       ) : (
         userConfig.name || 'Your logo here'
       )}

@@ -1,7 +1,4 @@
-const {
-  readdirSync,
-  existsSync
-} = require('fs')
+const { readdirSync, existsSync } = require('fs')
 
 const {
   customComponentsOriginPath,
@@ -10,15 +7,20 @@ const {
 
 module.exports = function checkCustomComponents () {
   const availableComponents = {}
-  const customComponentsFiles = existsSync(customComponentsOriginPath) ? readdirSync(customComponentsOriginPath) : []
+  const customComponentsFiles = existsSync(customComponentsOriginPath)
+    ? readdirSync(customComponentsOriginPath)
+    : []
 
   customComponents.forEach(componentName => {
     availableComponents[componentName] = false
   })
 
-  customComponentsFiles.forEach((filename) => {
+  customComponentsFiles.forEach(filename => {
     if (/.(jsx?|tsx)$/.test(filename)) {
-      const filenameWithoutExtension = filename.split('.').slice(0, -1).join('.')
+      const filenameWithoutExtension = filename
+        .split('.')
+        .slice(0, -1)
+        .join('.')
       if (customComponents.includes(filenameWithoutExtension)) {
         availableComponents[filenameWithoutExtension] = true
       }

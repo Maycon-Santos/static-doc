@@ -1,7 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { useHeadings } from 'hooks/use-headings'
-import { Wrapper, Title, List, Item, ItemLink } from './table-of-contents.styled'
+import {
+  Wrapper,
+  Title,
+  List,
+  Item,
+  ItemLink
+} from './table-of-contents.styled'
 
 export default function TableOfContents () {
   const { items } = useHeadings()
@@ -18,9 +24,7 @@ export default function TableOfContents () {
           return (
             <Item className={`level-${item.level}`} key={item.id}>
               <Link href={`#${item.id}`}>
-                <ItemLink>
-                  ● {item.text}
-                </ItemLink>
+                <ItemLink>● {item.text}</ItemLink>
               </Link>
             </Item>
           )

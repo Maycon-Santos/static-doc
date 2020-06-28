@@ -16,7 +16,11 @@ export const Wrapper = styled.header`
   padding: ${() => useSpacing(0, 4)};
   margin-bottom: ${() => useSpacing(4)};
   border-bottom: 1px ${() => useColor('gray', 200)} solid;
-  background-color: ${() => useColorMode({ dark: useColor('gray', 700), light: useColor('gray', 300) })};
+  background-color: ${() =>
+    useColorMode({
+      dark: useColor('gray', 700),
+      light: useColor('gray', 300)
+    })};
 
   @media (min-width: 768px) {
     height: 70px;
@@ -62,7 +66,8 @@ export const HamburgerButton = styled.button`
     display: block;
     width: 100%;
     height: 3px;
-    box-shadow: 0 -7px 0 ${() => useColor('dark')}, 0 7px 0 ${() => useColor('dark')};
+    box-shadow: 0 -7px 0 ${() => useColor('dark')},
+      0 7px 0 ${() => useColor('dark')};
     background: ${() => useColor('dark')};
   }
 

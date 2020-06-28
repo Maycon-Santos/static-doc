@@ -3,15 +3,17 @@
   "version": "0.0.9-alpha",
   "private": false,
   "scripts": {
-    "dev": "next dev ./src",
-    "build": "next build ./src",
-    "start": "next start ./src"
+    "test": "jest"
   },
   "bin": {
     "static-doc": "./bin/index.js"
   },
   "lint-staged": {
-    "*.{ts,tsx}": []
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier-standard",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.1",
@@ -50,6 +52,10 @@
     "yargs": "^15.3.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.4.3",
+    "@testing-library/react-hooks": "^3.3.0",
+    "@types/jest": "^26.0.3",
+    "babel-jest": "^26.1.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
@@ -58,6 +64,10 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11"
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "prettier-standard": "^16.3.0",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.1.1"
   }
 }

@@ -1,15 +1,11 @@
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
-const {
-  argv
-} = require('yargs')
+const { argv } = require('yargs')
 
 const command = argv._[0]
 
 const rootPath = resolve(__dirname, '..')
-const docsOriginPath = resolve(process.cwd(), process.env.dir)
+const docsOriginPath = resolve(process.cwd(), process.env.dir || 'docs')
 const sourcePath = resolve(rootPath, 'src')
 const buildDir = `.build/${Buffer.from(process.cwd()).toString('base64')}`
 const devDir = `.dev/${Buffer.from(process.cwd()).toString('base64')}`

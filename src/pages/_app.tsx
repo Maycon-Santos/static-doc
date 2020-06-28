@@ -25,7 +25,9 @@ const App = (props: Props) => {
   //   global.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   // ) : theme.colorMode
   const defaultColorMode = 'dark'
-  const [colorMode, setColorMode] = useState<Theme['colorMode']>(initialColorMode || defaultColorMode)
+  const [colorMode, setColorMode] = useState<Theme['colorMode']>(
+    initialColorMode || defaultColorMode
+  )
   const [headings, setHeadings] = useState<Heading[]>([])
   const headingsMemo = useMemo<Heading[]>(() => [], [])
   const currentPage = useCurrentPageData()
@@ -55,7 +57,9 @@ const App = (props: Props) => {
   }
 
   return (
-    <ThemeProvider theme={{ ...theme, setColorMode: themeProviderSetColorMode }}>
+    <ThemeProvider
+      theme={{ ...theme, setColorMode: themeProviderSetColorMode }}
+    >
       <Head>
         <title>{title}</title>
         <base href={baseUrl} />
@@ -69,13 +73,15 @@ const App = (props: Props) => {
             <link
               key={name}
               href={`https://fonts.googleapis.com/css2?family=${formattedName}:wght@${formattedWeight}&display=swap`}
-              rel="stylesheet"
+              rel='stylesheet'
             />
           )
         })}
       </Head>
       <GlobalStyle {...theme} />
-      <HeadingsContext.Provider value={{ register: headingsRegister, items: headings }}>
+      <HeadingsContext.Provider
+        value={{ register: headingsRegister, items: headings }}
+      >
         <Layout>
           <MDXProvider components={mdxComponents}>
             <Component {...pageProps} />

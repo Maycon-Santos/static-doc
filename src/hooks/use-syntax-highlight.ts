@@ -18,7 +18,11 @@ export function useSyntaxHighlight () {
   colorModes.forEach(colorMode => {
     if (theme.colors[colorMode]?.syntaxHighlight) {
       const newSyntaxHighlight = {}
-      merge(newSyntaxHighlight, theme.colors[colorMode].syntaxHighlight, syntaxHighlight)
+      merge(
+        newSyntaxHighlight,
+        theme.colors[colorMode].syntaxHighlight,
+        syntaxHighlight
+      )
       syntaxHighlight = newSyntaxHighlight
     }
   })

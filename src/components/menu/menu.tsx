@@ -17,9 +17,7 @@ export default function Menu () {
 
         return (
           <NavGroup key={menu}>
-            {menu && (
-              <NavName>{menu}</NavName>
-            )}
+            {menu && <NavName>{menu}</NavName>}
             <List>
               {pages.map(page => {
                 const iconSrc = useColorMode({
@@ -30,8 +28,8 @@ export default function Menu () {
                 return (
                   <Item key={page.route}>
                     {page.isExternalLink ? (
-                      <a href={page.route} target="_blank" rel="noreferrer">
-                        {iconSrc && <Icon src={iconSrc} alt="" />}
+                      <a href={page.route} target='_blank' rel='noreferrer'>
+                        {iconSrc && <Icon src={iconSrc} alt='' />}
                         {page.data.name}
                         &nbsp;
                         <ExternalLinkIcon />
@@ -39,7 +37,7 @@ export default function Menu () {
                     ) : (
                       <Link href={page.route}>
                         <a className={page === currentPage ? 'active' : ''}>
-                          {iconSrc && <Icon src={iconSrc} alt="" />}
+                          {iconSrc && <Icon src={iconSrc} alt='' />}
                           {page.data.name}
                         </a>
                       </Link>

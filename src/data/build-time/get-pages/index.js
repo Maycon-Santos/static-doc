@@ -1,11 +1,6 @@
-const {
-  resolve,
-  join
-} = require('path')
+const { resolve, join } = require('path')
 
-const {
-  docsDestinyPath
-} = require('../../../../config/build-time')
+const { docsDestinyPath } = require('../../../../config/build-time')
 
 const deepReaddir = require('../../../../utils/deep-readdir')
 const resolveLinks = require('./resolve-links')

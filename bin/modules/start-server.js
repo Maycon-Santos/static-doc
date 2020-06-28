@@ -1,10 +1,6 @@
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
-const {
-  createServer
-} = require('http')
+const { createServer } = require('http')
 
 const {
   // eslint-disable-next-line
@@ -13,13 +9,9 @@ const {
 
 const next = require('next')
 
-const {
-  spawn
-} = require('child_process')
+const { spawn } = require('child_process')
 
-const {
-  argv
-} = require('yargs')
+const { argv } = require('yargs')
 
 const {
   rootPath,
@@ -47,7 +39,7 @@ module.exports = function startServer () {
       handle(req, res, parse(req.url, true))
     })
 
-    server.listen(argv.port, (err) => {
+    server.listen(argv.port, err => {
       if (err) throw err
       console.log(`> Ready on localhost:${argv.port}`)
     })

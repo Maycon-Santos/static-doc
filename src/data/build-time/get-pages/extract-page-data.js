@@ -1,30 +1,22 @@
-const {
-  createCompiler
-} = require('@mdx-js/mdx')
+const { createCompiler } = require('@mdx-js/mdx')
 
-const {
-  join
-} = require('path')
+const { join } = require('path')
 
-const {
-  readFileSync
-} = require('fs')
+const { readFileSync } = require('fs')
 
 const visit = require('unist-util-visit')
 const remove = require('unist-util-remove')
 const yaml = require('yaml')
 const detectFrontmatter = require('remark-frontmatter')
 
-const {
-  docsDestinyPath
-} = require('../../../../config/build-time')
+const { docsDestinyPath } = require('../../../../config/build-time')
 
 const resolveRoute = require('./resolve-route')
 const checkIsExternalLink = require('./check-is-external-link')
 
 function extractFrontmatter () {
   return (tree, file) => {
-    visit(tree, 'yaml', (node) => {
+    visit(tree, 'yaml', node => {
       file.data.frontmatter = yaml.parse(node.value)
     })
     remove(tree, 'yaml')
@@ -46,7 +38,10 @@ function resolveData (data, options) {
     defaultName = path.match(domainRegex)[1]
   } else {
     defaultTitle = route.replace(/-/g, ' ').replace(/\//g, ' - ')
-    defaultName = route.replace(/^\/.*\//, '').replace(/(-|\/)/g, ' ').trim()
+    defaultName = route
+      .replace(/^\/.*\//, '')
+      .replace(/(-|\/)/g, ' ')
+      .trim()
   }
 
   const title = options.title || frontmatter.title || defaultTitle

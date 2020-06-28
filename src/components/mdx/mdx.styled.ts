@@ -100,7 +100,8 @@ export const ol = styled.ol`
 `
 
 export const li = styled.li`
-  ul, ol {
+  ul,
+  ol {
     margin: ${() => useSpacing(2, 0)};
   }
 `
@@ -114,7 +115,11 @@ export const inlineCode = styled.code`
   display: inline-block;
   margin: ${() => useSpacing(2, 1)};
   padding: ${() => useSpacing(2, 3)};
-  background-color: ${() => useColorMode({ light: useColor('gray', 300), dark: useColor('gray', 400) })};
+  background-color: ${() =>
+    useColorMode({
+      light: useColor('gray', 300),
+      dark: useColor('gray', 400)
+    })};
   border-radius: ${({ theme }) => theme.radii.radius}px;
   white-space: nowrap;
 `
@@ -145,8 +150,12 @@ export const table = styled.table`
 `
 
 export const tbody = styled.tbody`
-  tr:nth-child(2n+1) {
-    background-color: ${() => useColorMode({ dark: useColor('gray', 100), light: useColor('gray', 200) })};
+  tr:nth-child(2n + 1) {
+    background-color: ${() =>
+      useColorMode({
+        dark: useColor('gray', 100),
+        light: useColor('gray', 200)
+      })};
   }
 `
 

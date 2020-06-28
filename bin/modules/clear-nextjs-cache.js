@@ -1,16 +1,8 @@
-const {
-  resolve
-} = require('path')
+const { resolve } = require('path')
 
-const {
-  argv
-} = require('yargs')
+const { argv } = require('yargs')
 
-const {
-  sourcePath,
-  devPath,
-  buildPath
-} = require('../../config/build-time')
+const { sourcePath, devPath, buildPath } = require('../../config/build-time')
 
 const rmRecursive = require('./rm-recursive')
 
