@@ -19,7 +19,8 @@ const theme = {
       },
       only: {
         500: '#ffffff'
-      }
+      },
+      withoutVariations: '#ff0000'
     },
     dark: {
       text: {
@@ -30,7 +31,8 @@ const theme = {
         400: '#2E2B4C',
         500: '#25233F',
         600: '#211F3B'
-      }
+      },
+      withoutVariations: '#00ff00'
     }
   }
 }
@@ -47,19 +49,60 @@ describe('[hook] useColor', () => {
   })
 
   it.each(['light', 'dark'])(
-    'should return an transparent color of %s mode',
+    'should return an color without variation of %s mode',
     colorMode => {
       const wrapper: React.FC = ({ children }) => (
         <ThemeProvider theme={{ ...theme, colorMode }}>
           {children}
         </ThemeProvider>
       )
-      const { result } = renderHook(() => useColor('gray', 500, 0.5), {
+      const { result } = renderHook(() => useColor('withoutVariations'), {
         wrapper
       })
       const colors = theme.colors[colorMode]
 
-      expect(result.current).toBe(rgba(colors.gray[500], 0.5))
+      expect(result.current).toBe(colors.withoutVariations)
+    }
+  )
+
+  it.each([
+    ['gray', 500, 'light'],
+    ['text', 'variant1', 'dark']
+  ])(
+    'should return an color with variation fallback of %s mode',
+    (colorName, variantion, colorMode) => {
+      const wrapper: React.FC = ({ children }) => (
+        <ThemeProvider theme={{ ...theme, colorMode }}>
+          {children}
+        </ThemeProvider>
+      )
+      const { result } = renderHook(() => useColor(colorName), { wrapper })
+      const colors = theme.colors[colorMode]
+
+      expect(result.current).toBe(colors[colorName][variantion])
+    }
+  )
+
+  it.each([
+    ['gray', 500, 'light'],
+    ['gray', 500, 'dark'],
+    ['withoutVariations', undefined, 'light'],
+    ['withoutVariations', undefined, 'dark']
+  ])(
+    'should return an transparent color of %s mode',
+    (colorName, variation, colorMode) => {
+      const wrapper: React.FC = ({ children }) => (
+        <ThemeProvider theme={{ ...theme, colorMode }}>
+          {children}
+        </ThemeProvider>
+      )
+      const { result } = renderHook(() => useColor(colorName, 500, 0.5), {
+        wrapper
+      })
+      const colors = theme.colors[colorMode]
+      const color = variation ? colors[colorName][variation] : colors[colorName]
+
+      expect(result.current).toBe(rgba(color, 0.5))
     }
   )
 
