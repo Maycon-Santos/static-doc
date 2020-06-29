@@ -2,7 +2,7 @@ import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
 import { rgba } from 'polished'
-import { useColor } from '../use-color'
+import { useColor } from 'hooks/use-color'
 
 const theme = {
   colorMode: 'light',
@@ -38,7 +38,7 @@ const theme = {
 }
 
 describe('[hook] useColor', () => {
-  it.each(['light', 'dark'])('should return an color of %s mode', colorMode => {
+  it.each(['light', 'dark'])('should return a color of %s mode', colorMode => {
     const wrapper: React.FC = ({ children }) => (
       <ThemeProvider theme={{ ...theme, colorMode }}>{children}</ThemeProvider>
     )
@@ -49,7 +49,7 @@ describe('[hook] useColor', () => {
   })
 
   it.each(['light', 'dark'])(
-    'should return an color without variation of %s mode',
+    'should return a color without variation of %s mode',
     colorMode => {
       const wrapper: React.FC = ({ children }) => (
         <ThemeProvider theme={{ ...theme, colorMode }}>
@@ -69,7 +69,7 @@ describe('[hook] useColor', () => {
     ['gray', 500, 'light'],
     ['text', 'variant1', 'dark']
   ])(
-    'should return an color with variation fallback of %s mode',
+    'should return a color with variation fallback of %s mode',
     (colorName, variantion, colorMode) => {
       const wrapper: React.FC = ({ children }) => (
         <ThemeProvider theme={{ ...theme, colorMode }}>
@@ -84,27 +84,22 @@ describe('[hook] useColor', () => {
   )
 
   it.each([
-    ['gray', 500, 'light'],
-    ['gray', 500, 'dark'],
-    ['withoutVariations', undefined, 'light'],
-    ['withoutVariations', undefined, 'dark']
-  ])(
-    'should return an transparent color of %s mode',
-    (colorName, variation, colorMode) => {
-      const wrapper: React.FC = ({ children }) => (
-        <ThemeProvider theme={{ ...theme, colorMode }}>
-          {children}
-        </ThemeProvider>
-      )
-      const { result } = renderHook(() => useColor(colorName, 500, 0.5), {
-        wrapper
-      })
-      const colors = theme.colors[colorMode]
-      const color = variation ? colors[colorName][variation] : colors[colorName]
+    ['gray', 'light'],
+    ['gray', 'dark'],
+    ['withoutVariations', 'light'],
+    ['withoutVariations', 'dark']
+  ])('should return a transparent color of %s mode', (colorName, colorMode) => {
+    const wrapper: React.FC = ({ children }) => (
+      <ThemeProvider theme={{ ...theme, colorMode }}>{children}</ThemeProvider>
+    )
+    const { result } = renderHook(() => useColor(colorName, undefined, 0.5), {
+      wrapper
+    })
+    const colors = theme.colors[colorMode]
+    const color = colors[colorName][500] || colors[colorName]
 
-      expect(result.current).toBe(rgba(color, 0.5))
-    }
-  )
+    expect(result.current).toBe(rgba(color, 0.5))
+  })
 
   it.each([
     ['variant1', 'text', 'light'],
