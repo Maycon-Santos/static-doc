@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 
-const { readFileSync, realpathSync, readdirSync } = require('fs')
+const { readFileSync, realpathSync, readdirSync, existsSync } = require('fs')
 
 const { userConfigPath, assetsDestinyPath } = require('../../config/build-time')
 
@@ -8,12 +8,16 @@ const resolveAsset = require('./resolve-asset')
 
 const { argv } = require('yargs')
 
+const userPackageJson = require(`${process.cwd()}/package.json`)
+
 module.exports = function loadUserConfig () {
   try {
     const command = argv._[0]
-    const configText = readFileSync(userConfigPath, { encoding: 'utf-8' })
+    const configText = existsSync(userConfigPath) ? readFileSync(userConfigPath, { encoding: 'utf-8' }) : '{'
     const config = JSON.parse(configText)
-    const baseUrl = (command === 'build' && config.baseUrl) || '/'
+    const baseUrl = (['build', 'build:static'].includes(command) && config.baseUrl) || '/'
+
+    config.name = config.name || userPackageJson.name
 
     if (config.menu) {
       config.menu = config.menu.map(item => {
