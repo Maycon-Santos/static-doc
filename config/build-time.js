@@ -5,15 +5,16 @@ const { argv } = require('yargs')
 const command = argv._[0]
 
 const rootPath = resolve(__dirname, '..')
-const docsOriginPath = resolve(process.cwd(), process.env.dir || 'docs')
+const userRootPath = process.cwd()
+const docsOriginPath = resolve(userRootPath, process.env.dir || 'docs')
 const sourcePath = resolve(rootPath, 'src')
-const buildDir = `.build/${Buffer.from(process.cwd()).toString('base64')}`
-const devDir = `.dev/${Buffer.from(process.cwd()).toString('base64')}`
+const buildDir = `.build/${Buffer.from(userRootPath).toString('base64')}`
+const devDir = `.dev/${Buffer.from(userRootPath).toString('base64')}`
 const userConfigPath = resolve(docsOriginPath, '.config')
 const assetsDir = '_assets'
 const assetsDestinyPath = resolve(rootPath, `public/${assetsDir}`)
 const originalComponentsDir = 'components'
-const outDir = `.out/${Buffer.from(process.cwd()).toString('base64')}`
+const outDir = `.out/${Buffer.from(userRootPath).toString('base64')}`
 
 module.exports = {
   rootPath,
@@ -23,6 +24,7 @@ module.exports = {
   userConfigPath,
   assetsDir,
   assetsDestinyPath,
+  userRootPath,
   docsDestinyPath: resolve(sourcePath, 'pages'),
   publicPath: resolve(sourcePath, 'public'),
   devPath: resolve(sourcePath, devDir),

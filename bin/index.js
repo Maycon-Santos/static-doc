@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const { resolve } = require('path')
-
 const { existsSync, mkdirSync } = require('fs')
 
 const { argv } = require('yargs')
@@ -29,6 +27,7 @@ const clear = require('./modules/clear')
 const startServer = require('./modules/start-server')
 const build = require('./modules/build')
 const checkCustomComponents = require('./modules/check-custom-components')
+const resolveConfigurationFiles = require('./modules/resolve-configuration-files')
 const command = argv._[0]
 
 const { docsDestinyPath } = require('../config/build-time')
@@ -41,6 +40,7 @@ function main () {
   if (!['start', 'clear'].includes(command)) {
     clear()
     linkFiles()
+    resolveConfigurationFiles()
   }
 
   const customComponentsAvailable = checkCustomComponents()

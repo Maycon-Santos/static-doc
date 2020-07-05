@@ -9,12 +9,13 @@ const { argv } = require('yargs')
 const {
   docsDestinyPath,
   sourcePath,
-  assetsDestinyPath
+  assetsDestinyPath,
+  rootPath
 } = require('../../config/build-time')
 
 module.exports = function unlinkFiles () {
   const command = argv._[0]
-  const pathsToUnlink = [docsDestinyPath, sourcePath, assetsDestinyPath]
+  const pathsToUnlink = [docsDestinyPath, sourcePath, assetsDestinyPath, rootPath]
 
   pathsToUnlink.forEach(dir => {
     if (!existsSync(dir)) return
