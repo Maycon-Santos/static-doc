@@ -1,1 +1,0 @@
-/home/mayconsantos/dev/my-projects/static-doc/babel.config.default.js
