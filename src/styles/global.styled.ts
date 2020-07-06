@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components/macro'
 import { reset } from './reset'
-import { useColor } from 'hooks/use-color'
-import { useFontFamily } from 'hooks/use-font-family'
+import { useColor, useFontFamily } from '../hooks'
 
 export const GlobalStyle = createGlobalStyle<any>`
   ${reset}

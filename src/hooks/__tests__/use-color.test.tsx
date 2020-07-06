@@ -2,7 +2,7 @@ import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
 import { rgba } from 'polished'
-import { useColor } from 'hooks/use-color'
+import { useColor } from '../use-color'
 
 const theme = {
   colorMode: 'light',

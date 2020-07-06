@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import pages from 'data/pages'
-import userConfig from 'data/user-config'
+import pages from '../data/pages'
+import userConfig from '../data/user-config'
 
 export function useCurrentPageData () {
   const router = useRouter()

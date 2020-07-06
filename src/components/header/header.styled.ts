@@ -1,7 +1,5 @@
 import styled from 'styled-components/macro'
-import { useColor } from 'hooks/use-color'
-import { useSpacing } from 'hooks/use-spacing'
-import { useColorMode } from 'hooks/use-color-mode'
+import { useColor, useSpacing, useColorMode } from '../../hooks'
 
 export const Wrapper = styled.header`
   position: sticky;

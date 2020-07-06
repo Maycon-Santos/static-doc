@@ -6,7 +6,7 @@ import {
   HamburgerButton,
   ColorModeSwitchButton
 } from './header.styled'
-import { ThemeContext as ThemeContextType } from 'theme/type'
+import { ThemeContext as ThemeContextType } from '../../theme/type'
 
 type Props = {
   openAside: () => void

@@ -1,9 +1,11 @@
 import styled from 'styled-components/macro'
-import { useColor } from 'hooks/use-color'
-import { useSpacing } from 'hooks/use-spacing'
-import { useFontSize } from 'hooks/use-font-size'
-import { useFontFamily } from 'hooks/use-font-family'
-import { useRadii } from 'hooks/use-radii'
+import {
+  useColor,
+  useSpacing,
+  useFontSize,
+  useFontFamily,
+  useRadii
+} from '../../hooks'
 
 export const Wrapper = styled.div`
   font-family: ${() => useFontFamily('menu')};

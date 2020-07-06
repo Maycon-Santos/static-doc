@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useColorMode } from 'hooks/use-color-mode'
+import { useColorMode } from '../use-color-mode'
 
 describe('[hook] usecolorMode', () => {
   it.each(['light', 'dark'])('should return value on %s', colorMode => {

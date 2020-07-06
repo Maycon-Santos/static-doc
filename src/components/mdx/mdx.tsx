@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import resolveHeadingId from 'utils/resolve-heading-id'
-import { useSyntaxHighlight } from 'hooks/use-syntax-highlight'
-import { useHeadings } from 'hooks/use-headings'
+import resolveHeadingId from '../../utils/resolve-heading-id'
+import { useSyntaxHighlight, useHeadings } from '../../hooks'
 import * as MDXComponents from './mdx.styled'
 
 function headingFactory (tag: string) {

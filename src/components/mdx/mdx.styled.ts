@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components/macro'
-import { useColor } from 'hooks/use-color'
-import { useSpacing } from 'hooks/use-spacing'
-import { useFontSize } from 'hooks/use-font-size'
-import { useLineHeight } from 'hooks/use-line-height'
-import { useFontWeight } from 'hooks/use-font-weight'
-import { useColorMode } from 'hooks/use-color-mode'
+import {
+  useColor,
+  useSpacing,
+  useFontSize,
+  useLineHeight,
+  useFontWeight,
+  useColorMode
+} from '../../hooks'
 
 const heading = css`
   position: relative;

@@ -55,6 +55,9 @@ function main () {
     case 'build:static':
       build()
       break
+    case 'link':
+      console.log('All files have been linked!')
+      break
     case 'clear':
       console.log('Cleaning...')
       clear()

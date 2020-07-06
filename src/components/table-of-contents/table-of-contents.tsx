@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useHeadings } from 'hooks/use-headings'
+import { useHeadings } from '../../hooks'
 import {
   Wrapper,
   Title,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useFontFamily } from 'hooks/use-font-family'
+import { useFontFamily } from '../use-font-family'
 
 const theme = {
   fontFamilies: {

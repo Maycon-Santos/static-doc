@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { useCurrentPageData } from 'hooks/use-current-page-data'
-import pages from 'data/__mocks__/pages'
+import { useCurrentPageData } from '../use-current-page-data'
+import pages from '../../data/__mocks__/pages'
 
 jest.mock('data/pages')
 

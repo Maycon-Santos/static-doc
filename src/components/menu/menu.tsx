@@ -1,9 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { useColorMode } from 'hooks/use-color-mode'
-import { useMenu } from 'hooks/use-menu'
-import ExternalLinkIcon from 'assets/external-link-icon.svg'
-import { useCurrentPageData } from 'hooks/use-current-page-data'
+import { useColorMode, useMenu, useCurrentPageData } from '../../hooks'
+import ExternalLinkIcon from '../../assets/external-link-icon.svg'
 import { Wrapper, NavGroup, NavName, List, Item, Icon } from './menu.styled'
 
 export default function Menu () {

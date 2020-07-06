@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import Aside from 'components/aside'
+import Aside from '../aside'
 import { Main, Wrapper, MainSection, Content } from './layout.styled'
-import TableOfContents from 'components/table-of-contents'
-import Header from 'components/header'
+import TableOfContents from '../table-of-contents'
+import Header from '../header'
 
 type Props = {
   children: React.ReactNode

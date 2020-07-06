@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useFontWeight } from 'hooks/use-font-weight'
+import { useFontWeight } from '../use-font-weight'
 
 const theme = {
   fontWeights: {

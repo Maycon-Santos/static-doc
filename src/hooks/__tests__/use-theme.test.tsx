@@ -23,7 +23,7 @@ describe('[hook] useTheme', () => {
   })
 
   it('should return the theme', () => {
-    const { useTheme } = require('hooks/use-theme')
+    const { useTheme } = require('../use-theme')
     const wrapper: React.FC = ({ children }) => (
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     )
@@ -48,7 +48,7 @@ describe('[hook] useTheme', () => {
 
     Object.assign(userConfigMock, { theme: userTheme })
 
-    const { useTheme } = require('hooks/use-theme')
+    const { useTheme } = require('../use-theme')
     const { result } = renderHook(() => useTheme(), { wrapper })
 
     merge(mergedTheme, userTheme)

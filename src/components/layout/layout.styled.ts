@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { useSpacing } from 'hooks/use-spacing'
+import { useSpacing } from '../../hooks'
 
 export const Wrapper = styled.div`
   min-height: 100%;

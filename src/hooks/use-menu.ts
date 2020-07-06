@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import pages from 'data/pages'
+import pages from '../data/pages'
 
 type MenuTree = {
   [key: string]: Array<any>

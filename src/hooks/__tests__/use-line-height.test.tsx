@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useLineHeight } from 'hooks/use-line-height'
+import { useLineHeight } from '../use-line-height'
 
 const theme = {
   lineHeights: {

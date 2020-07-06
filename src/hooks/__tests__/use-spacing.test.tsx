@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useSpacing } from 'hooks/use-spacing'
+import { useSpacing } from '../use-spacing'
 
 const theme = {
   spacing: [0, 2, 4, 8, 16, 32, 48, 64, 80, 100]

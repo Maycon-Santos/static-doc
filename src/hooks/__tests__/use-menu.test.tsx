@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { useMenu } from 'hooks/use-menu'
+import { useMenu } from '../use-menu'
 
 jest.mock('data/pages')
 

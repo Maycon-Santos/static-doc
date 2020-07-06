@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useFontSize } from 'hooks/use-font-size'
+import { useFontSize } from '../use-font-size'
 
 const theme = {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64]

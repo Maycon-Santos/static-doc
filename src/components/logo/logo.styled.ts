@@ -1,8 +1,5 @@
 import styled from 'styled-components/macro'
-import { useSpacing } from 'hooks/use-spacing'
-import { useFontSize } from 'hooks/use-font-size'
-import { useColor } from 'hooks/use-color'
-import { useFontFamily } from 'hooks'
+import { useSpacing, useFontSize, useColor, useFontFamily } from '../../hooks'
 
 export const Wrapper = styled.div`
   display: flex;

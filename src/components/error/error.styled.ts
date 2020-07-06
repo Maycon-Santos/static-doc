@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { useFontSize, useFontWeight } from 'hooks'
+import { useFontSize, useFontWeight } from '../../hooks'
 
 export const Wrapper = styled.div`
   display: flex;

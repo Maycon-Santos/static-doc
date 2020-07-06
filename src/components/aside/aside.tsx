@@ -1,6 +1,6 @@
 import React from 'react'
-import Menu from 'components/menu'
-import Logo from 'components/logo'
+import Menu from '../menu'
+import Logo from '../logo'
 import { AsideWrapper, Overlay, Wrapper } from './aside.styled'
 
 type Props = {

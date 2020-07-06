@@ -1,9 +1,11 @@
 import styled from 'styled-components/macro'
-import { useSpacing } from 'hooks/use-spacing'
-import { useColor } from 'hooks/use-color'
-import { useFontSize } from 'hooks/use-font-size'
-import { useFontWeight } from 'hooks/use-font-weight'
-import { useRadii } from 'hooks/use-radii'
+import {
+  useSpacing,
+  useColor,
+  useFontSize,
+  useFontWeight,
+  useRadii
+} from '../../hooks'
 
 export const Wrapper = styled.div`
   width: 100%;

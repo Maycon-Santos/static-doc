@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
-import { HeadingsContext } from 'contexts/headings-context'
-import { useHeadings } from 'hooks/use-headings'
+import { HeadingsContext } from '../../contexts/headings-context'
+import { useHeadings } from '../use-headings'
 
 const headings = {
   items: [

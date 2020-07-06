@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { ThemeProvider } from 'styled-components/macro'
-import { useRadii } from 'hooks/use-radii'
+import { useRadii } from '../use-radii'
 
 const theme = {
   radii: {
