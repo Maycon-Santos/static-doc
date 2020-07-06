@@ -21,10 +21,8 @@ module.exports = function resolveAsset (assetPath, baseUrl) {
     mkdirSync(assetsDestinyPath)
   }
 
-  try {
+  if (!existsSync(assetsDestinyPath)) {
     symlinkSync(assetOriginPath, assetDestinyPath)
-  } catch (e) {
-    // It has already been linked
   }
 
   return join(baseUrl, assetsDir, assetName)

@@ -22,15 +22,7 @@ module.exports = function unlinkFiles () {
       const path = resolve(dir, filename)
       const fileLstat = lstatSync(path)
       if (fileLstat.isSymbolicLink() && existsSync(path)) {
-        if (command === 'clear') {
-          try {
-            execSync(`git rm -f ${path}`)
-          } catch (err) {
-            console.log(`[ git ] Could not remove ${path} file`)
-          }
-        } else {
-          unlinkSync(path)
-        }
+        unlinkSync(path)
       }
     })
   })
