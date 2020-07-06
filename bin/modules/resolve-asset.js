@@ -1,9 +1,6 @@
 const { resolve, join } = require('path')
-
 const { existsSync, mkdirSync, symlinkSync } = require('fs')
-
 const { argv } = require('yargs')
-
 const {
   assetsDir,
   assetsDestinyPath,

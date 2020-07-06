@@ -1,12 +1,10 @@
 const {
   resolve
 } = require('path')
-
 const {
   existsSync,
   symlinkSync
 } = require('fs')
-
 const {
   rootPath,
   userRootPath

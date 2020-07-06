@@ -1,11 +1,7 @@
 const { resolve } = require('path')
-
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
-
 const { execSync } = require('child_process')
-
 const { argv } = require('yargs')
-
 const {
   docsDestinyPath,
   sourcePath,

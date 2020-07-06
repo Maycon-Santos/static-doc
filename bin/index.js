@@ -22,7 +22,7 @@ const { argv } = require('yargs')
 
 process.env.dir = argv.dir
 
-const linkFiles = require('./modules/link-files')
+const linkPages = require('./modules/link-pages')
 const clear = require('./modules/clear')
 const startServer = require('./modules/start-server')
 const build = require('./modules/build')
@@ -39,7 +39,7 @@ function main () {
 
   if (!['start', 'clear'].includes(command)) {
     clear()
-    linkFiles()
+    linkPages()
     resolveConfigurationFiles()
   }
 

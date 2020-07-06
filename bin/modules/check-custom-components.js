@@ -1,5 +1,4 @@
 const { readdirSync, existsSync } = require('fs')
-
 const {
   customComponentsOriginPath,
   customComponents

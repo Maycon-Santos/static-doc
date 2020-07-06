@@ -1,5 +1,4 @@
 const { resolve } = require('path')
-
 const { symlinkSync, readdirSync, existsSync } = require('fs')
 
 const {

@@ -1,13 +1,8 @@
 const { resolve } = require('path')
-
 const { readFileSync, realpathSync, readdirSync, existsSync } = require('fs')
-
 const { userConfigPath, assetsDestinyPath } = require('../../config/build-time')
-
 const resolveAsset = require('./resolve-asset')
-
 const { argv } = require('yargs')
-
 const userPackageJson = require(`${process.cwd()}/package.json`)
 
 module.exports = function loadUserConfig () {

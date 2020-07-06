@@ -1,9 +1,6 @@
 const { resolve, join } = require('path')
-
 const { spawnSync } = require('child_process')
-
 const { argv } = require('yargs')
-
 const { renameSync, symlinkSync, existsSync } = require('fs')
 
 const {

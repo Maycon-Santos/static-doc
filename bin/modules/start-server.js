@@ -1,18 +1,12 @@
 const { resolve } = require('path')
-
 const { createServer } = require('http')
-
 const {
   // eslint-disable-next-line
   parse
 } = require('url')
-
 const next = require('next')
-
 const { spawn } = require('child_process')
-
 const { argv } = require('yargs')
-
 const {
   rootPath,
   originPagesDir,
