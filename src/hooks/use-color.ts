@@ -23,6 +23,8 @@ export function useColor (
     return opacity < 1 ? rgba(color, opacity) : color
   }
 
-  type = type || (color[500] && 500) || Object.keys(color)[0]
-  return opacity < 1 ? rgba(color[type], opacity) : color[type]
+  type = type || (color && ((color?.[500] && 500) || Object.keys(color)[0]))
+  color = color?.[type] || undefined
+
+  return color && (opacity < 1 ? rgba(color, opacity) : color)
 }

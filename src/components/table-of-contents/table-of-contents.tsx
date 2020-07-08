@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import { useHeadings } from '../../hooks'
 import {
   Wrapper,
@@ -23,9 +22,7 @@ export default function TableOfContents () {
         {items.map(item => {
           return (
             <Item className={`level-${item.level}`} key={item.id}>
-              <Link href={`#${item.id}`}>
-                <ItemLink>● {item.text}</ItemLink>
-              </Link>
+              <ItemLink href={`#${item.id}`}>● {item.text}</ItemLink>
             </Item>
           )
         })}

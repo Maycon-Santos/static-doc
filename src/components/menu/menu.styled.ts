@@ -23,7 +23,7 @@ export const NavName = styled.h4`
   margin-bottom: ${() => useSpacing(3)};
   color: ${() => useColor('primary')};
   font-size: ${() => useFontSize(2)};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights?.bold};
 `
 
 export const List = styled.ul`

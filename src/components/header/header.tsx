@@ -20,9 +20,10 @@ export default function Header (props: Props) {
   return (
     <Wrapper>
       <Container>
-        <HamburgerButton onClick={openAside} />
+        <HamburgerButton onClick={openAside} data-testid='HamburgerButton' />
         <ColorModeSwitchButton
           className={colorMode}
+          data-testid='ColorModeSwitchButton'
           onClick={() => {
             if (colorMode === 'dark') {
               setColorMode('light')

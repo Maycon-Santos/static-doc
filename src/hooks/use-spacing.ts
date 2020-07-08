@@ -8,7 +8,7 @@ export function useSpacing (...spaceIndices: Array<number | string>): string {
     .map(spaceIndex => {
       return typeof spaceIndex === 'string'
         ? spaceIndex
-        : `${spacing[spaceIndex]}px`
+        : `${spacing?.[spaceIndex]}px`
     })
     .join(' ')
 }

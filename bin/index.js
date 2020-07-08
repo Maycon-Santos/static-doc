@@ -61,6 +61,7 @@ function main () {
     case 'clear':
       console.log('Cleaning...')
       clear()
+      console.log('Clean!')
   }
 }
 

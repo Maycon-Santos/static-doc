@@ -171,7 +171,7 @@ export const tr = styled.tr`
 export const th = styled.th`
   padding: ${() => useSpacing(3)};
   text-align: left;
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights?.bold};
   border-bottom: 1px ${() => useColor('gray', 400)} solid;
 `
 

@@ -21,7 +21,7 @@ module.exports = function resolveAsset (assetPath, baseUrl) {
     mkdirSync(assetsDestinyPath)
   }
 
-  if (!existsSync(assetsDestinyPath)) {
+  if (!existsSync(assetDestinyPath)) {
     symlinkSync(assetOriginPath, assetDestinyPath)
   }
 

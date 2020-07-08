@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   font-family: ${() => useFontFamily('logo')};
   font-size: ${() => useFontSize(3)};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights?.bold};
   background-color: ${() => useColor('gray', 500)};
 `
 

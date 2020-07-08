@@ -68,6 +68,7 @@ export const ItemLink = styled.a`
   padding: ${() => useSpacing(1, 0)};
   color: ${() => useColor('link')};
   font-size: ${() => useFontSize(1)};
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;

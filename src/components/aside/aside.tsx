@@ -5,7 +5,7 @@ import { AsideWrapper, Overlay, Wrapper } from './aside.styled'
 
 type Props = {
   open: boolean
-  onClose: () => void
+  onClose?: () => void
 }
 
 export default function Aside (props: Props) {
@@ -13,8 +13,8 @@ export default function Aside (props: Props) {
 
   return (
     <Wrapper>
-      <Overlay open={open} onClick={onClose} />
-      <AsideWrapper open={open}>
+      <Overlay open={open} onClick={onClose} data-testid='Overlay' />
+      <AsideWrapper open={open} data-testid='Aside'>
         <Logo />
         <Menu />
       </AsideWrapper>
