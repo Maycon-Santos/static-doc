@@ -9,15 +9,10 @@ const { spawn } = require('child_process')
 const { argv } = require('yargs')
 const {
   rootPath,
-  originPagesDir,
-  nextBinPath,
-  buildPath,
-  devPath,
   isDev
 } = require('../../config/build-time')
 
 const nextJsConfig = require('../../next.config')
-const command = argv._[0]
 
 module.exports = function startServer () {
   const app = next({

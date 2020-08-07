@@ -1,7 +1,5 @@
 const { resolve } = require('path')
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
-const { execSync } = require('child_process')
-const { argv } = require('yargs')
 const {
   docsDestinyPath,
   sourcePath,
@@ -10,7 +8,6 @@ const {
 } = require('../../config/build-time')
 
 module.exports = function unlinkFiles () {
-  const command = argv._[0]
   const pathsToUnlink = [docsDestinyPath, sourcePath, assetsDestinyPath, rootPath]
 
   pathsToUnlink.forEach(dir => {

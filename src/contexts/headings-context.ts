@@ -6,11 +6,11 @@ export type Heading = {
   level: number
 }
 
-export type HeadingsContextType = {
+export type HeadingsContextValue = {
   register: (heading: Heading) => void
   items: Heading[]
 }
 
-export const HeadingsContext = createContext<HeadingsContextType>(
-  {} as HeadingsContextType
+export const HeadingsContext = createContext<HeadingsContextValue>(
+  {} as HeadingsContextValue
 )

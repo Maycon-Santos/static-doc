@@ -9,7 +9,7 @@ const userRootPath = process.cwd()
 const docsOriginPath = resolve(userRootPath, process.env.dir || 'docs')
 const sourcePath = resolve(rootPath, 'src')
 const buildDir = `.build/${Buffer.from(userRootPath).toString('base64')}`
-const devDir = `.dev/${Buffer.from(userRootPath).toString('base64')}`
+const devBuildDir = `.dev/${Buffer.from(userRootPath).toString('base64')}`
 const userConfigPath = resolve(docsOriginPath, '.config')
 const assetsDir = 'assets'
 const assetsDestinyPath = resolve(rootPath, `public/${assetsDir}`)
@@ -20,14 +20,14 @@ module.exports = {
   rootPath,
   docsOriginPath,
   sourcePath,
-  devDir,
+  devBuildDir,
   userConfigPath,
   assetsDir,
   assetsDestinyPath,
   userRootPath,
   docsDestinyPath: resolve(sourcePath, 'pages'),
   publicPath: resolve(rootPath, 'public'),
-  devPath: resolve(rootPath, devDir),
+  devBuildPath: resolve(rootPath, devBuildDir),
   customComponentsOriginPath: resolve(docsOriginPath, '.components'),
   customComponentsDestinyPath: resolve(sourcePath, '.components'),
   originalComponentsDir,
@@ -37,6 +37,9 @@ module.exports = {
   outDir,
   buildPath: resolve(rootPath, buildDir),
   outPath: resolve(rootPath, outDir),
+  userBuildDirDefault: '.docs_build',
+  userBuildStaticDirDefault: '.docs_build_static',
+  testEnvironmentsPath: resolve(rootPath, 'test-environments'),
 
   ignorePathsToSymlink: /^\.config$/,
   pathsSymlinkToSource: /^\.components$/,

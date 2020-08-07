@@ -5,10 +5,9 @@ const { argv } = require('yargs')
 const remove = require('unist-util-remove')
 const detectFrontmatter = require('remark-frontmatter')
 
-const { buildDir, devDir, isDev } = require('./config/build-time')
+const { buildDir, devBuildDir, isDev } = require('./config/build-time')
 
 const loadUserConfig = require('./bin/modules/load-user-config')
-const resolveCustomComponents = require('./utils/resolve-custom-components')
 
 function removeYAML () {
   return tree => remove(tree, 'yaml')
@@ -27,7 +26,7 @@ const { name: projectName } = require('./package.json')
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   exportTrailingSlash: command === 'build:static',
-  distDir: isDev ? devDir : buildDir,
+  distDir: isDev ? devBuildDir : buildDir,
   assetPrefix: userConfig.baseUrl !== '/' ? userConfig.baseUrl : '',
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {
@@ -64,11 +63,6 @@ module.exports = withMDX({
         }
       }
     })
-
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      ...resolveCustomComponents()
-    }
 
     config.module.rules.push({
       test: /\.svg$/,

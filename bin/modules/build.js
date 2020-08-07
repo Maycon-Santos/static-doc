@@ -1,37 +1,45 @@
-const { resolve, join } = require('path')
+const { resolve } = require('path')
 const { spawnSync } = require('child_process')
 const { argv } = require('yargs')
 const { renameSync, symlinkSync, existsSync } = require('fs')
 
 const {
   rootPath,
-  originPagesDir,
-  sourcePath,
   docsOriginPath,
   buildPath,
   nextBinPath,
   outPath,
-  publicPath
+  userBuildDirDefault,
+  userBuildStaticDirDefault
 } = require('../../config/build-time')
 
-const rmRecursive = require('./rm-recursive')
+const rmRecursive = require('../../utils/rm-recursive')
 const loadUserConfig = require('./load-user-config')
-const unlinkFiles = require('./unlink-files')
 
+/**
+ * Resolves `next build` cli opitons.
+ */
 function resolveNextJsBuildArgs () {
   return [nextBinPath, 'build']
 }
 
+/**
+ * Resolves `next export` cli opitons.
+ */
 function resolveNextJsExportArgs () {
   return [nextBinPath, 'export', '-o', outPath]
 }
 
+/**
+ * Build files with `next` cli
+ */
 module.exports = function build () {
   const command = argv._[0]
   const nextJsBuildArgs = resolveNextJsBuildArgs()
   const nextJsExportArgs = resolveNextJsExportArgs()
   const userConfig = loadUserConfig()
-  const outFiles = command === 'build:static' ? outPath : buildPath
+  const isStaticFiles = command === 'build:static'
+  const outFiles = isStaticFiles ? outPath : buildPath
 
   const spawnConfig = {
     stdio: 'inherit',
@@ -45,9 +53,9 @@ module.exports = function build () {
   }
 
   const distDir =
-    command === 'build:static'
-      ? userConfig.buildStaticDir || '.docs_static_build'
-      : userConfig.buildDir || '.docs_build'
+    isStaticFiles
+      ? userConfig.buildStaticDir || userBuildStaticDirDefault
+      : userConfig.buildDir || userBuildDirDefault
   const distPath = resolve(docsOriginPath, `../${distDir}`)
 
   if (existsSync(distPath)) {
@@ -60,7 +68,7 @@ module.exports = function build () {
 
   spawnSync('node', nextJsBuildArgs, spawnConfig)
 
-  if (command === 'build:static') {
+  if (isStaticFiles) {
     spawnSync('node', nextJsExportArgs, spawnConfig)
   }
 

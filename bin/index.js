@@ -26,8 +26,8 @@ const linkPages = require('./modules/link-pages')
 const clear = require('./modules/clear')
 const startServer = require('./modules/start-server')
 const build = require('./modules/build')
-const checkCustomComponents = require('./modules/check-custom-components')
 const resolveConfigurationFiles = require('./modules/resolve-configuration-files')
+const linkCustomComponents = require('./modules/link-custom-components')
 const command = argv._[0]
 
 const { docsDestinyPath } = require('../config/build-time')
@@ -37,14 +37,12 @@ function main () {
     mkdirSync(docsDestinyPath)
   }
 
-  if (!['start', 'clear'].includes(command)) {
+  if (!['start', 'clear', 'setup-test'].includes(command)) {
     clear()
     linkPages()
+    linkCustomComponents()
     resolveConfigurationFiles()
   }
-
-  const customComponentsAvailable = checkCustomComponents()
-  process.env.CUSTOM_COMPONENTS = JSON.stringify(customComponentsAvailable)
 
   switch (command) {
     case 'dev':
@@ -62,6 +60,10 @@ function main () {
       console.log('Cleaning...')
       clear()
       console.log('Clean!')
+      break
+    case 'setup-test':
+      clear()
+      resolveConfigurationFiles()
   }
 }
 

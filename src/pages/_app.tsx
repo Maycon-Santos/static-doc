@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
+import { useRouter } from 'next/dist/client/router'
 // import { IncomingMessage } from 'http'
 // import cookie from 'cookie'
 import jsCookie from 'js-cookie'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components/macro'
 import { HeadingsContext, Heading } from '../contexts/headings-context'
+import { LayoutContext } from '../contexts/layout-context'
 import { GlobalStyle } from '../styles/global.styled'
 import Layout from '../components/layout'
 import * as mdxComponents from '../components/mdx'
@@ -29,8 +31,10 @@ const App = (props: Props) => {
     initialColorMode || defaultColorMode
   )
   const [headings, setHeadings] = useState<Heading[]>([])
+  const [asideIsOpen, setAsideIsOpen] = useState<boolean>(false)
   const headingsMemo = useMemo<Heading[]>(() => [], [])
   const currentPage = useCurrentPageData()
+  const router = useRouter()
   const baseUrl = userConfig.baseUrl
   const { title } = currentPage?.data || {}
   theme.colorMode = colorMode
@@ -50,6 +54,10 @@ const App = (props: Props) => {
       setColorMode(savedColorMode || theme.colorMode)
     }
   }, [])
+
+  useEffect(() => {
+    setAsideIsOpen(false)
+  }, [router.pathname])
 
   const themeProviderSetColorMode = (colorMode: Theme['colorMode']) => {
     jsCookie.set('colorMode', colorMode)
@@ -82,11 +90,22 @@ const App = (props: Props) => {
       <HeadingsContext.Provider
         value={{ register: headingsRegister, items: headings }}
       >
-        <Layout>
-          <MDXProvider components={mdxComponents}>
-            <Component {...pageProps} />
-          </MDXProvider>
-        </Layout>
+        <LayoutContext.Provider
+          value={{
+            aside: {
+              isOpen: asideIsOpen,
+              toggle: () => setAsideIsOpen(!asideIsOpen),
+              close: () => setAsideIsOpen(false),
+              open: () => setAsideIsOpen(true)
+            }
+          }}
+        >
+          <Layout>
+            <MDXProvider components={mdxComponents}>
+              <Component {...pageProps} />
+            </MDXProvider>
+          </Layout>
+        </LayoutContext.Provider>
       </HeadingsContext.Provider>
     </ThemeProvider>
   )

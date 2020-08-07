@@ -26,7 +26,8 @@ yarn-error.log*
 
 .docs_build
 .docs_static_build
+.docs_build_static
 .dev
 .build
-.components
+src/.components
 .out

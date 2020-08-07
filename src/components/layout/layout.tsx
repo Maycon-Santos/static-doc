@@ -1,27 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/dist/client/router'
-import Aside from '../aside'
+import React from 'react'
+import dynamic from 'next/dynamic'
+import preval from 'babel-plugin-preval/macro'
 import { Main, Wrapper, MainSection, Content } from './layout.styled'
-import TableOfContents from '../table-of-contents'
-import Header from '../header'
+
+const Aside = dynamic(() =>
+  import(preval`
+  const importComponent = require('../../utils/build-time/import-component')
+  module.exports = importComponent('aside')
+`)
+)
+
+const Header = dynamic(() =>
+  import(preval`
+  const importComponent = require('../../utils/build-time/import-component')
+  module.exports = importComponent('header')
+`)
+)
+
+const TableOfContents = dynamic(() =>
+  import(preval`
+  const importComponent = require('../../utils/build-time/import-component')
+  module.exports = importComponent('table-of-contents')
+`)
+)
 
 type Props = {
   children: React.ReactNode
-  test?: string
 }
 
 export default function Layout (props: Props) {
   const { children } = props
-  const [asideOpen, setAsideOpen] = useState(false)
-  const router = useRouter()
-
-  useEffect(() => setAsideOpen(false), [router.pathname])
 
   return (
     <Wrapper>
-      <Aside open={asideOpen} onClose={() => setAsideOpen(false)} />
+      <Aside />
       <MainSection>
-        <Header openAside={() => setAsideOpen(true)} />
+        <Header />
         <Main>
           <TableOfContents />
           <Content>{children}</Content>

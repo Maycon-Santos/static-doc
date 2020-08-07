@@ -1,4 +1,3 @@
-// @ts-ignore
 import preval from 'babel-plugin-preval/macro'
 
 export type Page = {

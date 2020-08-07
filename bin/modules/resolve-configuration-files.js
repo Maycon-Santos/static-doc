@@ -38,16 +38,22 @@ module.exports = function resolveConfigurationFiles () {
     const { defaultFile, fallbackFile, possibleFiles } = configurationFiles[key]
 
     const hasConfigurationFile = possibleFiles.some(filename => {
-      const absolutePath = resolve(userRootPath, filename)
+      const originAbsolutePath = resolve(userRootPath, filename)
+      const destinyAbsolutePath = resolve(rootPath, filename)
 
-      if (existsSync(absolutePath)) {
-        symlinkSync(absolutePath, resolve(rootPath, filename))
+      if (existsSync(originAbsolutePath) && !existsSync(destinyAbsolutePath)) {
+        symlinkSync(originAbsolutePath, destinyAbsolutePath)
         return true
       }
     })
 
-    if (!hasConfigurationFile && defaultFile) {
-      symlinkSync(resolve(rootPath, fallbackFile), resolve(rootPath, defaultFile))
+    if (!hasConfigurationFile && fallbackFile && defaultFile) {
+      const fallbackPath = resolve(rootPath, fallbackFile)
+      const defaultOriginPath = resolve(rootPath, defaultFile)
+
+      if (!existsSync(defaultOriginPath)) {
+        symlinkSync(fallbackPath, defaultOriginPath)
+      }
     }
   })
 }

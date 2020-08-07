@@ -1,7 +1,7 @@
-const clearNextJsCache = require('./clear-nextjs-cache')
+const deleteNextJsBuilds = require('./delete-nextjs-builds')
 const unlinkFiles = require('./unlink-files')
 
 module.exports = function clear () {
-  clearNextJsCache()
+  deleteNextJsBuilds()
   unlinkFiles()
 }

@@ -1,20 +1,34 @@
 import React from 'react'
-import Menu from '../menu'
-import Logo from '../logo'
+import preval from 'babel-plugin-preval/macro'
+import dynamic from 'next/dynamic'
+import { useLayout } from '../../hooks'
 import { AsideWrapper, Overlay, Wrapper } from './aside.styled'
 
-type Props = {
-  open: boolean
-  onClose?: () => void
-}
+const Logo = dynamic(() =>
+  import(preval`
+  const importComponent = require('../../utils/build-time/import-component')
+  module.exports = importComponent('logo')
+`)
+)
 
-export default function Aside (props: Props) {
-  const { open, onClose } = props
+const Menu = dynamic(() =>
+  import(preval`
+  const importComponent = require('../../utils/build-time/import-component')
+  module.exports = importComponent('menu')
+`)
+)
+
+export default function Aside () {
+  const { aside } = useLayout()
 
   return (
     <Wrapper>
-      <Overlay open={open} onClick={onClose} data-testid='Overlay' />
-      <AsideWrapper open={open} data-testid='Aside'>
+      <Overlay
+        open={aside.isOpen}
+        onClick={aside.close}
+        data-testid='Overlay'
+      />
+      <AsideWrapper open={aside.isOpen} data-testid='Aside'>
         <Logo />
         <Menu />
       </AsideWrapper>
