@@ -10,50 +10,49 @@ const resolveConfigurationFiles = require('./modules/resolve-configuration-files
 const unlinkFiles = require('./modules/unlink-files')
 const command = argv._[0]
 
-async function main () {
-  if (command === 'setup-test') {
-    unlinkFiles()
-    resolveConfigurationFiles()
-  }
-
-  if (command === 'link') {
-    unlinkFiles()
-    linkPages()
-    resolveConfigurationFiles()
-    console.log('All files have been linked!')
-  }
-
-  if (command === 'clear') {
-    console.log('Cleaning...')
-    unlinkFiles()
-    await deleteIgnoredFiles()
-    console.log('Clean!')
-  }
-
-  if (command === 'dev') {
-    unlinkFiles()
-    linkPages()
-    resolveConfigurationFiles()
-    startServer()
-  }
-
-  if (command === 'build') {
-    unlinkFiles()
-    linkPages()
-    resolveConfigurationFiles()
-    build()
-  }
-
-  if (command === 'build:static') {
-    unlinkFiles()
-    linkPages()
-    resolveConfigurationFiles()
-    build()
-  }
-
-  if (command === 'start') {
-    startServer()
-  }
+if (command === 'setup-test') {
+  unlinkFiles()
+  resolveConfigurationFiles()
 }
 
-main()
+if (command === 'link') {
+  unlinkFiles()
+  linkPages()
+  resolveConfigurationFiles()
+  console.log('All files have been linked!')
+}
+
+if (command === 'clear') {
+  console.log('Cleaning...')
+  unlinkFiles()
+  deleteIgnoredFiles()
+  console.log('Clean!')
+}
+
+if (command === 'dev') {
+  deleteIgnoredFiles()
+  unlinkFiles()
+  linkPages()
+  resolveConfigurationFiles()
+  startServer()
+}
+
+if (command === 'build') {
+  deleteIgnoredFiles()
+  unlinkFiles()
+  linkPages()
+  resolveConfigurationFiles()
+  build()
+}
+
+if (command === 'build:static') {
+  deleteIgnoredFiles()
+  unlinkFiles()
+  linkPages()
+  resolveConfigurationFiles()
+  build()
+}
+
+if (command === 'start') {
+  startServer()
+}

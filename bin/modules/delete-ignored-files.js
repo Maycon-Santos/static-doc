@@ -1,25 +1,18 @@
 const { resolve } = require('path')
-const { promisify } = require('util')
-const { exec } = require('child_process')
+const { execSync } = require('child_process')
 const rmRecursive = require('../../utils/rm-recursive')
 const { root } = require('../../config')
 
-module.exports = promisify(function deleteIgnoredFiles (done) {
-  return exec('git ls-files . --ignored --exclude-standard --others', { maxBuffer: Infinity }, (error, stdout) => {
-    if (error) {
-      throw new Error(error)
+module.exports = function deleteIgnoredFiles () {
+  const stdout = execSync('git ls-files . --ignored --exclude-standard --others', { maxBuffer: Infinity })
+  const pathsString = stdout.toString()
+  const paths = pathsString.split(/\n/g)
+
+  paths.forEach(path => {
+    if (/^node_modules/.test(path) || !path) {
+      return
     }
 
-    const paths = stdout.split(/\n/g)
-
-    paths.forEach(path => {
-      if (/^node_modules/.test(path) || !path) {
-        return
-      }
-
-      rmRecursive(resolve(root.own, path))
-    })
-
-    done()
+    rmRecursive(resolve(root.own, path))
   })
-})
+}

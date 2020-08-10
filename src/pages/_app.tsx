@@ -15,6 +15,7 @@ import * as mdxComponents from '../components/mdx'
 import theme from '../theme'
 import { Theme } from '../theme/type'
 import userConfig from '../data/user-config'
+import getAsset from '../utils/get-asset'
 import { useCurrentPageData } from '../hooks'
 
 interface Props extends AppProps {
@@ -69,7 +70,12 @@ const App = (props: Props) => {
       theme={{ ...theme, setColorMode: themeProviderSetColorMode }}
     >
       <Head>
-        <title>{title}</title>
+        <title>
+          {userConfig.titlePrefix}
+          {title}
+          {userConfig.titleSuffix}
+        </title>
+        <link rel='shortcut icon' href={getAsset(userConfig.favicon)} />
         <base href={baseUrl} />
         {theme.googleFonts?.map(font => {
           const { name, weights } = font

@@ -1,9 +1,8 @@
 const { resolve } = require('path')
-const { promisify } = require('util')
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
 const { docs, source, root } = require('../../config')
 
-module.exports = promisify(function unlinkFiles () {
+module.exports = function unlinkFiles (done) {
   const pathsToUnlink = [docs.pages.destiny, source, root.own]
 
   pathsToUnlink.forEach(dir => {
@@ -19,4 +18,4 @@ module.exports = promisify(function unlinkFiles () {
       }
     })
   })
-})
+}
