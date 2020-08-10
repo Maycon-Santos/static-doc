@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import preval from 'babel-plugin-preval/macro'
 import dynamic from 'next/dynamic'
 import { useLayout } from '../../hooks'

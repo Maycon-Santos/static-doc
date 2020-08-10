@@ -1,5 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+// @ts-ignore
 import preval from 'babel-plugin-preval/macro'
 import { Main, Wrapper, MainSection, Content } from './layout.styled'
 

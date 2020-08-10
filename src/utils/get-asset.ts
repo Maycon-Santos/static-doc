@@ -1,3 +1,4 @@
+// @ts-ignore
 import preval from 'babel-plugin-preval/macro'
 
 const getAssets = preval`module.exports = require('./build-time/get-assets')`
