@@ -1,4 +1,4 @@
-const { docs } = require('../../../../config/build-time')
+const { docs } = require('../../../../config')
 
 const deepReaddir = require('../../../../utils/deep-readdir')
 const resolveLinks = require('./resolve-links')

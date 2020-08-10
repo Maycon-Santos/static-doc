@@ -9,7 +9,7 @@ const paths = {
   },
   root: {
     user: process.cwd(),
-    own: resolve(__dirname, '..')
+    own: resolve(__dirname)
   },
   docs: {
     get root () {
@@ -67,8 +67,6 @@ const paths = {
   userBuildDirDefault: '.docs_build',
   userBuildStaticDirDefault: '.docs_build_static',
 
-  ignorePathsToSymlink: /^\.config$/,
-  pathsSymlinkToSource: /^\.components$/,
   isDev: command === 'dev'
 }
 

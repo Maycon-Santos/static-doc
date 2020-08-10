@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 const { existsSync, symlinkSync } = require('fs')
-const { root } = require('../../config/build-time')
+const { root } = require('../../config')
 
 const configurationFiles = {
   ts: {

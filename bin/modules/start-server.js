@@ -3,7 +3,7 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 const { argv } = require('yargs')
-const { root, isDev } = require('../../config/build-time')
+const { root, isDev } = require('../../config')
 
 const nextJsConfig = require('../../next.config')
 

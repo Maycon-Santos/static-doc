@@ -1,5 +1,5 @@
 const { readFileSync, existsSync } = require('fs')
-const { useConfig } = require('../../config/build-time')
+const { useConfig } = require('../../config')
 const asset = require('./asset')
 const { argv } = require('yargs')
 const userPackageJson = require(`${process.cwd()}/package.json`)

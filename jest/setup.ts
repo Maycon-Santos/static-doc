@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { readdirSync } from 'fs'
 import { resolve } from 'path'
 import rmRecursive from '../utils/rm-recursive'
-import { testEnvironments } from '../config/build-time'
+import { testEnvironments } from '../config'
 
 const testEnvironmentsFiles = readdirSync(testEnvironments)
 

@@ -7,7 +7,7 @@ import {
   docs,
   userBuildDirDefault,
   userBuildStaticDirDefault
-} from '../../config/build-time'
+} from '../../config'
 
 describe('cli', () => {
   beforeEach(() => {

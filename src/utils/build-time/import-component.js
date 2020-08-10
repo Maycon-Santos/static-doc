@@ -1,6 +1,6 @@
 const { resolve, join } = require('path')
 const { readdirSync, statSync, existsSync } = require('fs')
-const { components } = require('../../../config/build-time')
+const { components } = require('../../../config')
 
 const ignore = ['__tests__']
 const extensions = ['js', 'jsx', 'ts', 'tsx']

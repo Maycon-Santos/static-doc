@@ -4,7 +4,7 @@ const allowGlobalCssImport = require('./next/allow-global-css-import')
 const allowAbsoluteImport = require('./next/allow-absolute-import')
 const generateBuildId = require('./next/generate-build-id')
 const { baseUrl } = require('./bin/modules/user-config')
-const { build, isDev } = require('./config/build-time')
+const { build, isDev } = require('./config')
 
 const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x)
 

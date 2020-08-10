@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { promisify } = require('util')
 const { exec } = require('child_process')
 const rmRecursive = require('../../utils/rm-recursive')
-const { root } = require('../../config/build-time')
+const { root } = require('../../config')
 
 module.exports = promisify(function deleteIgnoredFiles (done) {
   return exec('git ls-files . --ignored --exclude-standard --others', { maxBuffer: Infinity }, (error, stdout) => {

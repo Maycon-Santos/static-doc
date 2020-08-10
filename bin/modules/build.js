@@ -11,7 +11,7 @@ const {
   out,
   userBuildDirDefault,
   userBuildStaticDirDefault
-} = require('../../config/build-time')
+} = require('../../config')
 
 const rmRecursive = require('../../utils/rm-recursive')
 const userConfig = require('./user-config')

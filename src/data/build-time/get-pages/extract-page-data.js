@@ -9,7 +9,7 @@ const remove = require('unist-util-remove')
 const yaml = require('yaml')
 const detectFrontmatter = require('remark-frontmatter')
 
-const { docs } = require('../../../../config/build-time')
+const { docs } = require('../../../../config')
 
 const resolveRoute = require('./resolve-route')
 const checkIsExternalLink = require('./check-is-external-link')
