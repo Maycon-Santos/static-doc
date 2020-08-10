@@ -1,15 +1,9 @@
 const { createServer } = require('http')
-const {
-  // eslint-disable-next-line
-  parse
-} = require('url')
+// eslint-disable-next-line
+const { parse } = require('url')
 const next = require('next')
-const { spawn } = require('child_process')
 const { argv } = require('yargs')
-const {
-  root,
-  isDev
-} = require('../../config/build-time')
+const { root, isDev } = require('../../config/build-time')
 
 const nextJsConfig = require('../../next.config')
 

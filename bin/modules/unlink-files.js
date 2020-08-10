@@ -8,7 +8,7 @@ const {
 } = require('../../config/build-time')
 
 module.exports = promisify(function unlinkFiles () {
-  const pathsToUnlink = [docs.destiny, source, root.own]
+  const pathsToUnlink = [docs.pages.destiny, source, root.own]
 
   pathsToUnlink.forEach(dir => {
     if (!existsSync(dir)) return

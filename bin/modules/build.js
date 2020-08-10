@@ -55,7 +55,7 @@ module.exports = function () {
     isStaticFiles
       ? userConfig.buildStaticDir || userBuildStaticDirDefault
       : userConfig.buildDir || userBuildDirDefault
-  const distPath = resolve(docs.origin, `../${distDir}`)
+  const distPath = resolve(docs.root, `../${distDir}`)
 
   if (existsSync(distPath)) {
     rmRecursive(outFiles)

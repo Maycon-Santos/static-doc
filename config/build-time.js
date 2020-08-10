@@ -12,16 +12,21 @@ const paths = {
     own: resolve(__dirname, '..')
   },
   docs: {
-    get origin () {
+    get root () {
       return resolve(paths.root.user, argv.dir || 'docs')
     },
-    get destiny () {
-      return resolve(paths.source, 'pages')
+    pages: {
+      get origin () {
+        return resolve(paths.docs.root, 'pages')
+      },
+      get destiny () {
+        return resolve(paths.source, 'pages')
+      }
     }
   },
   components: {
     get user () {
-      return resolve(paths.docs.origin, '.components')
+      return resolve(paths.docs.root, '.components')
     },
     get own () {
       return resolve(paths.source, 'components')
@@ -51,7 +56,7 @@ const paths = {
     }
   },
   get useConfig () {
-    return resolve(paths.docs.origin, '.config')
+    return resolve(paths.docs.root, '.config')
   },
 
   get testEnvironments () {

@@ -61,7 +61,7 @@ module.exports = function extractPageData (options) {
     return resolveData(null, options)
   }
 
-  const content = readFileSync(join(docs.destiny, path))
+  const content = readFileSync(join(docs.pages.destiny, path))
   const mdxCompiler = createCompiler({
     remarkPlugins: [detectFrontmatter, extractFrontmatter]
   })

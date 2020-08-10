@@ -33,6 +33,7 @@ describe('cli', () => {
       'test-environments',
       userBuildDirDefault
     )
+    console.log(outputFiles)
     const buildDone = existsSync(outputFiles)
     expect(buildDone).toBe(true)
   })
@@ -55,8 +56,8 @@ describe('cli', () => {
 
   it('should link .mdx files in pages', () => {
     spawnSync('node', ['bin', 'link', '--dir', 'test-environments/simple'])
-    const mdxFiles = readdirSync(resolve(root.own, 'test-environments/simple'))
-    const pageFiles = readdirSync(docs.destiny)
+    const mdxFiles = readdirSync(resolve(root.own, 'test-environments/simple/pages'))
+    const pageFiles = readdirSync(docs.pages.destiny)
     mdxFiles.forEach(file => {
       expect(pageFiles.includes(file)).toBe(true)
     })
