@@ -1,69 +1,58 @@
 #!/usr/bin/env node
+const cli = require('./modules/cli')
+const { argv } = cli.init()
 
-const { existsSync, mkdirSync } = require('fs')
-
-const { argv } = require('yargs')
-  .command('dev', 'Run the development server')
-  .command('build', 'Build the production project')
-  .command('start', 'Start the development server')
-  .command('build:static', 'Build the production project with static files')
-  .option('port', {
-    alias: 'p',
-    default: '3000',
-    describe: 'Sets the server port',
-    type: 'number'
-  })
-  .option('dir', {
-    alias: 'd',
-    default: 'docs',
-    describe: 'Directory of MDX documents',
-    type: 'string'
-  })
-
-process.env.dir = argv.dir
-
+const deleteIgnoredFiles = require('./modules/delete-ignored-files')
 const linkPages = require('./modules/link-pages')
-const clear = require('./modules/clear')
 const startServer = require('./modules/start-server')
 const build = require('./modules/build')
 const resolveConfigurationFiles = require('./modules/resolve-configuration-files')
-const linkCustomComponents = require('./modules/link-custom-components')
+const unlinkFiles = require('./modules/unlink-files')
 const command = argv._[0]
 
-const { docsDestinyPath } = require('../config/build-time')
-
-function main () {
-  if (!existsSync(docsDestinyPath)) {
-    mkdirSync(docsDestinyPath)
-  }
-
-  if (!['start', 'clear', 'setup-test'].includes(command)) {
-    clear()
-    linkPages()
-    linkCustomComponents()
+async function main () {
+  if (command === 'setup-test') {
+    unlinkFiles()
     resolveConfigurationFiles()
   }
 
-  switch (command) {
-    case 'dev':
-    case 'start':
-      startServer()
-      break
-    case 'build':
-    case 'build:static':
-      build()
-      break
-    case 'link':
-      console.log('All files have been linked!')
-      break
-    case 'clear':
-      console.log('Cleaning...')
-      clear()
-      console.log('Clean!')
-      break
-    case 'setup-test':
-      clear()
-      resolveConfigurationFiles()
+  if (command === 'link') {
+    unlinkFiles()
+    linkPages()
+    resolveConfigurationFiles()
+    console.log('All files have been linked!')
+  }
+
+  if (command === 'clear') {
+    console.log('Cleaning...')
+    unlinkFiles()
+    await deleteIgnoredFiles()
+    console.log('Clean!')
+  }
+
+  if (command === 'dev') {
+    unlinkFiles()
+    linkPages()
+    resolveConfigurationFiles()
+    startServer()
+  }
+
+  if (command === 'build') {
+    unlinkFiles()
+    linkPages()
+    resolveConfigurationFiles()
+    build()
+  }
+
+  if (command === 'build:static') {
+    unlinkFiles()
+    linkPages()
+    resolveConfigurationFiles()
+    build()
+  }
+
+  if (command === 'start') {
+    startServer()
   }
 }
 

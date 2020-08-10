@@ -4,49 +4,48 @@ const { argv } = require('yargs')
 const { renameSync, symlinkSync, existsSync } = require('fs')
 
 const {
-  rootPath,
-  docsOriginPath,
-  buildPath,
-  nextBinPath,
-  outPath,
+  root,
+  docs,
+  build,
+  nextBin,
+  out,
   userBuildDirDefault,
   userBuildStaticDirDefault
 } = require('../../config/build-time')
 
 const rmRecursive = require('../../utils/rm-recursive')
-const loadUserConfig = require('./load-user-config')
+const userConfig = require('./user-config')
 
 /**
  * Resolves `next build` cli opitons.
  */
 function resolveNextJsBuildArgs () {
-  return [nextBinPath, 'build']
+  return [nextBin, 'build']
 }
 
 /**
  * Resolves `next export` cli opitons.
  */
 function resolveNextJsExportArgs () {
-  return [nextBinPath, 'export', '-o', outPath]
+  return [nextBin, 'export', '-o', out.path]
 }
 
 /**
  * Build files with `next` cli
  */
-module.exports = function build () {
+module.exports = function () {
   const command = argv._[0]
   const nextJsBuildArgs = resolveNextJsBuildArgs()
   const nextJsExportArgs = resolveNextJsExportArgs()
-  const userConfig = loadUserConfig()
   const isStaticFiles = command === 'build:static'
-  const outFiles = isStaticFiles ? outPath : buildPath
+  const outFiles = isStaticFiles ? out.path : build.prod.path
 
   const spawnConfig = {
     stdio: 'inherit',
     shell: true,
     env: {
       ...process.env,
-      cwd: rootPath,
+      cwd: root.own,
       NODE_ENV: 'production',
       config: JSON.stringify(userConfig)
     }
@@ -56,7 +55,7 @@ module.exports = function build () {
     isStaticFiles
       ? userConfig.buildStaticDir || userBuildStaticDirDefault
       : userConfig.buildDir || userBuildDirDefault
-  const distPath = resolve(docsOriginPath, `../${distDir}`)
+  const distPath = resolve(docs.origin, `../${distDir}`)
 
   if (existsSync(distPath)) {
     rmRecursive(outFiles)

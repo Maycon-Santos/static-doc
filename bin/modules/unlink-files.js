@@ -1,14 +1,14 @@
 const { resolve } = require('path')
+const { promisify } = require('util')
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
 const {
-  docsDestinyPath,
-  sourcePath,
-  assetsDestinyPath,
-  rootPath
+  docs,
+  source,
+  root
 } = require('../../config/build-time')
 
-module.exports = function unlinkFiles () {
-  const pathsToUnlink = [docsDestinyPath, sourcePath, assetsDestinyPath, rootPath]
+module.exports = promisify(function unlinkFiles () {
+  const pathsToUnlink = [docs.destiny, source, root.own]
 
   pathsToUnlink.forEach(dir => {
     if (!existsSync(dir)) return
@@ -23,4 +23,4 @@ module.exports = function unlinkFiles () {
       }
     })
   })
-}
+})

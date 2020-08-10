@@ -1,14 +1,13 @@
-const { resolve } = require('path')
-const { readFileSync, realpathSync, readdirSync, existsSync } = require('fs')
-const { userConfigPath, assetsDestinyPath } = require('../../config/build-time')
-const resolveAsset = require('./resolve-asset')
+const { readFileSync, existsSync } = require('fs')
+const { useConfig } = require('../../config/build-time')
+const asset = require('./asset')
 const { argv } = require('yargs')
 const userPackageJson = require(`${process.cwd()}/package.json`)
 
-module.exports = function loadUserConfig () {
+const userConfig = (() => {
   try {
     const command = argv._[0]
-    const configText = existsSync(userConfigPath) ? readFileSync(userConfigPath, { encoding: 'utf-8' }) : '{}'
+    const configText = existsSync(useConfig) ? readFileSync(useConfig, { encoding: 'utf-8' }) : '{}'
     const config = JSON.parse(configText)
     const baseUrl = (['build', 'build:static'].includes(command) && config.baseUrl) || '/'
 
@@ -23,8 +22,8 @@ module.exports = function loadUserConfig () {
           return {
             ...item,
             icon: {
-              light: resolveAsset(iconLight, baseUrl),
-              dark: resolveAsset(iconDark, baseUrl)
+              light: asset.resolve(iconLight, baseUrl),
+              dark: asset.resolve(iconDark, baseUrl)
             }
           }
         }
@@ -37,8 +36,8 @@ module.exports = function loadUserConfig () {
       const logoLight = config.logo.light || config.logo.dark || config.logo
       const logoDark = config.logo.dark || config.logo.light || config.logo
       config.logo = {
-        light: resolveAsset(logoLight, baseUrl),
-        dark: resolveAsset(logoDark, baseUrl)
+        light: asset.resolve(logoLight, baseUrl),
+        dark: asset.resolve(logoDark, baseUrl)
       }
     }
 
@@ -49,4 +48,6 @@ module.exports = function loadUserConfig () {
     console.warn(e)
     return {}
   }
-}
+})()
+
+module.exports = userConfig

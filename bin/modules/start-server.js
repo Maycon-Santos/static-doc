@@ -1,4 +1,3 @@
-const { resolve } = require('path')
 const { createServer } = require('http')
 const {
   // eslint-disable-next-line
@@ -8,7 +7,7 @@ const next = require('next')
 const { spawn } = require('child_process')
 const { argv } = require('yargs')
 const {
-  rootPath,
+  root,
   isDev
 } = require('../../config/build-time')
 
@@ -17,7 +16,7 @@ const nextJsConfig = require('../../next.config')
 module.exports = function startServer () {
   const app = next({
     dev: isDev,
-    dir: rootPath,
+    dir: root.own,
     conf: nextJsConfig
   })
 
@@ -42,7 +41,7 @@ module.exports = function startServer () {
 
     server.listen(argv.port, err => {
       if (err) throw err
-      console.log(`> Ready on localhost:${argv.port}`)
+      console.log(`> Ready on http://localhost:${argv.port}`)
     })
   })
 }

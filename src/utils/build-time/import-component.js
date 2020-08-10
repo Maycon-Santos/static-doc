@@ -1,11 +1,11 @@
 const { resolve, join } = require('path')
 const { readdirSync, statSync, existsSync } = require('fs')
-const { originalComponentsPath, customComponentsOriginPath } = require('../../../config/build-time')
+const { components } = require('../../../config/build-time')
 
 const ignore = ['__tests__']
 const extensions = ['js', 'jsx', 'ts', 'tsx']
 
-const originalComponents = readdirSync(originalComponentsPath).filter(f => !ignore.includes(f))
+const originalComponents = readdirSync(components.own).filter(f => !ignore.includes(f))
 const customComponents = []
 const componentsToFind = []
 
@@ -17,7 +17,7 @@ originalComponents.forEach(filename => {
 })
 
 componentsToFind.forEach(filename => {
-  const path = resolve(customComponentsOriginPath, filename)
+  const path = resolve(components.user, filename)
 
   if (existsSync(path)) {
     const isDir = statSync(path).isDirectory()
@@ -33,13 +33,11 @@ componentsToFind.forEach(filename => {
   }
 })
 
-console.log(customComponents)
-
 module.exports = function importComponent (componentName) {
   const foundCustomComponent = customComponents.find(({ name }) => name === componentName)
 
   if (!foundCustomComponent) {
-    return resolve(originalComponentsPath, componentName)
+    return resolve(components.own, componentName)
   }
 
   return foundCustomComponent.path

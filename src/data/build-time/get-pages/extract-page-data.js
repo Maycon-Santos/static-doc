@@ -9,7 +9,7 @@ const remove = require('unist-util-remove')
 const yaml = require('yaml')
 const detectFrontmatter = require('remark-frontmatter')
 
-const { docsDestinyPath } = require('../../../../config/build-time')
+const { docs } = require('../../../../config/build-time')
 
 const resolveRoute = require('./resolve-route')
 const checkIsExternalLink = require('./check-is-external-link')
@@ -61,7 +61,7 @@ module.exports = function extractPageData (options) {
     return resolveData(null, options)
   }
 
-  const content = readFileSync(join(docsDestinyPath, path))
+  const content = readFileSync(join(docs.destiny, path))
   const mdxCompiler = createCompiler({
     remarkPlugins: [detectFrontmatter, extractFrontmatter]
   })

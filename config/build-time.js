@@ -1,48 +1,70 @@
 const { resolve } = require('path')
-
 const { argv } = require('yargs')
 
 const command = argv._[0]
 
-const rootPath = resolve(__dirname, '..')
-const userRootPath = process.cwd()
-const docsOriginPath = resolve(userRootPath, process.env.dir || 'docs')
-const sourcePath = resolve(rootPath, 'src')
-const buildDir = `.build/${Buffer.from(userRootPath).toString('base64')}`
-const devBuildDir = `.dev/${Buffer.from(userRootPath).toString('base64')}`
-const userConfigPath = resolve(docsOriginPath, '.config')
-const assetsDir = 'assets'
-const assetsDestinyPath = resolve(rootPath, `public/${assetsDir}`)
-const originalComponentsDir = 'components'
-const outDir = `.out/${Buffer.from(userRootPath).toString('base64')}`
+const paths = {
+  get source () {
+    return resolve(paths.root.own, 'src')
+  },
+  root: {
+    user: process.cwd(),
+    own: resolve(__dirname, '..')
+  },
+  docs: {
+    get origin () {
+      return resolve(paths.root.user, argv.dir || 'docs')
+    },
+    get destiny () {
+      return resolve(paths.source, 'pages')
+    }
+  },
+  components: {
+    get user () {
+      return resolve(paths.docs.origin, '.components')
+    },
+    get own () {
+      return resolve(paths.source, 'components')
+    }
+  },
+  build: {
+    prod: {
+      get dir () {
+        return `.build/${Buffer.from(paths.root.user).toString('base64')}`
+      },
+      get path () {
+        return resolve(paths.root.own, paths.build.prod.dir)
+      }
+    },
+    dev: {
+      get dir () {
+        return `.dev/${Buffer.from(paths.root.user).toString('base64')}`
+      }
+    }
+  },
+  out: {
+    get dir () {
+      return `.out/${Buffer.from(paths.root.user).toString('base64')}`
+    },
+    get path () {
+      return resolve(paths.root.own, paths.out.dir)
+    }
+  },
+  get useConfig () {
+    return resolve(paths.docs.origin, '.config')
+  },
 
-module.exports = {
-  rootPath,
-  docsOriginPath,
-  sourcePath,
-  devBuildDir,
-  userConfigPath,
-  assetsDir,
-  assetsDestinyPath,
-  userRootPath,
-  docsDestinyPath: resolve(sourcePath, 'pages'),
-  publicPath: resolve(rootPath, 'public'),
-  devBuildPath: resolve(rootPath, devBuildDir),
-  customComponentsOriginPath: resolve(docsOriginPath, '.components'),
-  customComponentsDestinyPath: resolve(sourcePath, '.components'),
-  originalComponentsDir,
-  originalComponentsPath: resolve(sourcePath, originalComponentsDir),
-  nextBinPath: resolve(__dirname, '../node_modules/.bin/next'),
-  buildDir,
-  outDir,
-  buildPath: resolve(rootPath, buildDir),
-  outPath: resolve(rootPath, outDir),
+  get testEnvironments () {
+    return resolve(paths.root.own, 'test-environments')
+  },
+
+  nextBin: resolve(__dirname, '../node_modules/.bin/next'),
   userBuildDirDefault: '.docs_build',
   userBuildStaticDirDefault: '.docs_build_static',
-  testEnvironmentsPath: resolve(rootPath, 'test-environments'),
 
   ignorePathsToSymlink: /^\.config$/,
   pathsSymlinkToSource: /^\.components$/,
-  customComponents: ['logo'],
   isDev: command === 'dev'
 }
+
+module.exports = paths

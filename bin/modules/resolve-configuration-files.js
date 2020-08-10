@@ -1,14 +1,6 @@
-const {
-  resolve
-} = require('path')
-const {
-  existsSync,
-  symlinkSync
-} = require('fs')
-const {
-  rootPath,
-  userRootPath
-} = require('../../config/build-time')
+const { resolve } = require('path')
+const { existsSync, symlinkSync } = require('fs')
+const { root } = require('../../config/build-time')
 
 const configurationFiles = {
   ts: {
@@ -38,8 +30,8 @@ module.exports = function resolveConfigurationFiles () {
     const { defaultFile, fallbackFile, possibleFiles } = configurationFiles[key]
 
     const hasConfigurationFile = possibleFiles.some(filename => {
-      const originAbsolutePath = resolve(userRootPath, filename)
-      const destinyAbsolutePath = resolve(rootPath, filename)
+      const originAbsolutePath = resolve(root.user, filename)
+      const destinyAbsolutePath = resolve(root.own, filename)
 
       if (existsSync(originAbsolutePath) && !existsSync(destinyAbsolutePath)) {
         symlinkSync(originAbsolutePath, destinyAbsolutePath)
@@ -48,8 +40,8 @@ module.exports = function resolveConfigurationFiles () {
     })
 
     if (!hasConfigurationFile && fallbackFile && defaultFile) {
-      const fallbackPath = resolve(rootPath, fallbackFile)
-      const defaultOriginPath = resolve(rootPath, defaultFile)
+      const fallbackPath = resolve(root.own, fallbackFile)
+      const defaultOriginPath = resolve(root.own, defaultFile)
 
       if (!existsSync(defaultOriginPath)) {
         symlinkSync(fallbackPath, defaultOriginPath)

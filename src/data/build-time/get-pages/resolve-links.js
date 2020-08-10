@@ -1,9 +1,5 @@
-const { join } = require('path')
 const getUserConfig = require('../get-user-config')
-const extractPageData = require('./extract-page-data')
 const checkIsExternalLink = require('./check-is-external-link')
-const resolveCategory = require('./resolve-category')
-const resolveRoute = require('./resolve-route')
 const formatPage = require('./format-page')
 
 const userConfig = getUserConfig()

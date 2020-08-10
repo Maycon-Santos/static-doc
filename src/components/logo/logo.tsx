@@ -1,6 +1,7 @@
 import React from 'react'
 import userConfig from '../../data/user-config'
 import { useColorMode } from '../../hooks'
+import getAsset from '../../utils/get-asset'
 import { Wrapper, LogoImage } from './logo.styled'
 
 export default function Logo () {
@@ -13,7 +14,7 @@ export default function Logo () {
     <Wrapper>
       {logoImage ? (
         <LogoImage
-          src={logoImage}
+          src={getAsset(logoImage)}
           alt={userConfig.name}
           title={userConfig.name}
         />
