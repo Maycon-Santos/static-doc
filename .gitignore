@@ -32,3 +32,7 @@ yarn-error.log*
 src/.components
 .out
 .todo
+
+babel.config.js
+tsconfig.json
+jsconfig.json

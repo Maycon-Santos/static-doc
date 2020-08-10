@@ -1,11 +1,7 @@
 const { resolve } = require('path')
 const { promisify } = require('util')
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
-const {
-  docs,
-  source,
-  root
-} = require('../../config/build-time')
+const { docs, source, root } = require('../../config/build-time')
 
 module.exports = promisify(function unlinkFiles () {
   const pathsToUnlink = [docs.pages.destiny, source, root.own]
