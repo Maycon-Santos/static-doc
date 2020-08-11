@@ -29,7 +29,7 @@ module.exports = function resolveConfigurationFiles () {
   Object.keys(configurationFiles).forEach(key => {
     const { defaultFile, fallbackFile, possibleFiles } = configurationFiles[key]
 
-    const hasConfigurationFile = possibleFiles.some(filename => {
+    const hasConfigurationFile = /node_modules/.test(root.own) && possibleFiles.some(filename => {
       const originAbsolutePath = resolve(root.user, filename)
       const destinyAbsolutePath = resolve(root.own, filename)
 
