@@ -1,0 +1,32 @@
+{
+  "name": "@static-doc/default-theme",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Maycon-Santos <mayconsantos.dev@gmail.com>",
+  "homepage": "https://github.com/Maycon-Santos/static-doc#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maycon-Santos/static-doc.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Maycon-Santos/static-doc/issues"
+  },
+  "dependencies": {
+    "tsc": "^1.20150623.0"
+  }
+}
