@@ -33,6 +33,6 @@ src/.components
 .out
 .todo
 
-babel.config.js
-tsconfig.json
-jsconfig.json
+packages/static-doc/babel.config.js
+packages/static-doc/tsconfig.json
+packages/static-doc/jsconfig.json
