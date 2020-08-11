@@ -75,7 +75,9 @@ const App = (props: Props) => {
           {title}
           {userConfig.titleSuffix}
         </title>
-        <link rel='shortcut icon' href={getAsset(userConfig.favicon)} />
+        {userConfig.favicon && (
+          <link rel='shortcut icon' href={getAsset(userConfig.favicon)} />
+        )}
         <base href={baseUrl} />
         {theme.googleFonts?.map(font => {
           const { name, weights } = font

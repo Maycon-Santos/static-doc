@@ -10,8 +10,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
       "prettier-standard",
+      "eslint --fix",
       "jest --bail --findRelatedTests"
     ]
   },

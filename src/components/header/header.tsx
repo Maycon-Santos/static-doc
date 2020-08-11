@@ -1,7 +1,5 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components/macro'
-import { useLayout } from '../../hooks'
-import { ThemeContext as ThemeContextType } from '../../theme/type'
+import React from 'react'
+import { useLayout, useTheme } from '../../hooks'
 import {
   Wrapper,
   Container,
@@ -11,7 +9,7 @@ import {
 
 export default function Header () {
   const { aside } = useLayout()
-  const theme: ThemeContextType = useContext(ThemeContext)
+  const theme = useTheme()
   const { colorMode, setColorMode } = theme
 
   return (

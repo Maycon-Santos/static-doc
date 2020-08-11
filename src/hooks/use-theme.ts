@@ -3,7 +3,7 @@ import merge from 'lodash.merge'
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components/macro'
 import userConfig from '../data/user-config'
-import { Theme } from '../theme/type'
+import { Theme, ThemeContextValue } from '../theme/type'
 
 export function useTheme () {
   const theme: Theme = { ...useContext(ThemeContext) }
@@ -12,5 +12,5 @@ export function useTheme () {
     merge(theme, userConfig.theme)
   }
 
-  return theme
+  return theme as ThemeContextValue
 }

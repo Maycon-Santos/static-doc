@@ -24,6 +24,6 @@ export interface Theme {
   }
 }
 
-export interface ThemeContext extends Theme {
+export interface ThemeContextValue extends Theme {
   setColorMode: (colorMode: string) => void
 }
