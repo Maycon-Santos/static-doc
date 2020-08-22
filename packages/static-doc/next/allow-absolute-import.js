@@ -1,3 +1,4 @@
+const { theme } = require('../bin/modules/user-config')
 const { name: projectName } = require('../package.json')
 
 module.exports = function allowAbsoluteImport (nextConfig = {}) {
@@ -17,6 +18,7 @@ module.exports = function allowAbsoluteImport (nextConfig = {}) {
             if (new RegExp(`node_modules/${projectName}`).test(excludePath)) {
               return false
             }
+
             return /node_modules/.test(excludePath)
           }
         }

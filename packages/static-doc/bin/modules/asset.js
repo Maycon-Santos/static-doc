@@ -2,10 +2,15 @@ const { resolve } = require('path')
 const { docs } = require('../../config')
 
 module.exports = {
-  list: new Set(),
+  assets: [],
   resolve (assetPath) {
-    const fullPath = resolve(docs.root, assetPath)
-    this.list.add(fullPath)
-    return fullPath
+    const assetKey = `asset:${this.assets.length}`
+
+    this.assets.push({
+      key: assetKey,
+      path: resolve(docs.root, assetPath)
+    })
+
+    return assetKey
   }
 }

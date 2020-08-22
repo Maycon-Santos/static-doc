@@ -2,7 +2,10 @@
   "name": "root",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:Maycon-Santos/static-doc.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Maycon-Santos/static-doc.git"
+  },
   "author": "Maycon-Santos <mayconsantos.dev@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -17,22 +20,16 @@
     ]
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
     "@testing-library/react-hooks": "^3.3.0",
-    "@testing-library/jest-dom": "^5.11.0",
+    "@types/jest": "^26.0.3",
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "@types/styled-jsx": "^2.2.8",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-test-renderer": "^16.13.1",
-    "lerna": "^3.22.1",
-    "@types/jest": "^26.0.3",
     "babel-jest": "^26.1.0",
-    "jest": "^26.1.0",
-    "ts-jest": "^26.1.1",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "prettier-standard": "^16.3.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
@@ -40,7 +37,17 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.34"
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.2.11",
+    "prettier-standard": "^16.3.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.1.1"
+  },
+  "devDependencies": {
+    "eslint-plugin-jsx-a11y": "^6.3.1"
   }
 }

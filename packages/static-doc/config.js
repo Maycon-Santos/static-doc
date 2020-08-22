@@ -55,7 +55,7 @@ const paths = {
       return resolve(paths.root.own, paths.out.dir)
     }
   },
-  get useConfig () {
+  get userConfig () {
     return resolve(paths.docs.root, '.config')
   },
 

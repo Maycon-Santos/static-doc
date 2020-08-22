@@ -7,7 +7,6 @@ const {
   root,
   docs,
   build,
-  nextBin,
   out,
   userBuildDirDefault,
   userBuildStaticDirDefault
@@ -15,6 +14,8 @@ const {
 
 const rmRecursive = require('../../utils/rm-recursive')
 const userConfig = require('./user-config')
+
+const nextBin = require.resolve('.bin/next')
 
 /**
  * Resolves `next build` cli opitons.
@@ -56,6 +57,8 @@ module.exports = function () {
       ? userConfig.buildStaticDir || userBuildStaticDirDefault
       : userConfig.buildDir || userBuildDirDefault
   const distPath = resolve(docs.root, `../${distDir}`)
+
+  process.chdir(root.own)
 
   if (existsSync(distPath)) {
     rmRecursive(outFiles)

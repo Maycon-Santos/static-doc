@@ -2,6 +2,8 @@
 const cli = require('./modules/cli')
 const { argv } = cli.init()
 
+process.env.config = JSON.stringify(require('../config'))
+
 const deleteIgnoredFiles = require('./modules/delete-ignored-files')
 const linkPages = require('./modules/link-pages')
 const startServer = require('./modules/start-server')

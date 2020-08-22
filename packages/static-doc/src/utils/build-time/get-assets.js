@@ -1,5 +1,9 @@
+// Assets are resolved here
 require('../../../bin/modules/user-config')
 
-const assetsPath = Array.from(require('../../../bin/modules/asset').list)
+const { assets } = require('../../../bin/modules/asset')
 
-module.exports = assetsPath.map(d => `'${d}': require('${d}')`)
+module.exports = assets.map(({ key, path }) => {
+  console.log(key)
+  return `'${key}': require('${path}')`
+})
