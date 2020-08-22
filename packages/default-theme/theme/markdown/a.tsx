@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 
 export const a: React.FC = (props) => {
   const { children, ...rest } = props
@@ -7,25 +6,23 @@ export const a: React.FC = (props) => {
   return (
     <a {...rest} className="wrapper">
       {children}
-      <style jsx>{styles}</style>
+      <style jsx>{`
+        .wrapper {
+          text-decoration: none;
+        }
+
+        .wrapper:hover {
+          text-decoration: underline;
+        }
+
+        :global(.light-mode) .wrapper {
+          color: var(--color-light-primary-600);
+        }
+
+        :global(.dark-mode) .wrapper {
+          color: var(--color-dark-primary-600);
+        }
+      `}</style>
     </a>
   )
 }
-
-const styles = css`
-  .wrapper {
-    text-decoration: none;
-  }
-
-  .wrapper:hover {
-    text-decoration: underline;
-  }
-
-  :global(.light-mode) .wrapper {
-    color: var(--color-light-primary-600);
-  }
-
-  :global(.dark-mode) .wrapper {
-    color: var(--color-dark-primary-600);
-  }
-`

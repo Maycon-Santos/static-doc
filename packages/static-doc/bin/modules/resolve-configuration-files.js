@@ -5,7 +5,7 @@ const { root } = require('../../config')
 const configurationFiles = {
   ts: {
     defaultFile: 'tsconfig.json',
-    fallbackFile: 'tsconfig.default.json',
+    fallbackFile: null,
     possibleFiles: ['tsconfig.json']
   },
   js: {

@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 
 export const em: React.FC = (props) => {
   const { children } = props
@@ -7,13 +6,11 @@ export const em: React.FC = (props) => {
   return (
     <em className="wrapper">
       {children}
-      <style jsx>{styles}</style>
+      <style jsx>{`
+        .wrapper {
+          font-style: italic;
+        }  
+      `}</style>
     </em>
   )
 }
-
-const styles = css`
-  .wrapper {
-    font-style: italic;
-  }
-`

@@ -1,27 +1,25 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 
-export const ul: React.FC = (props) => {
-  const { children } = props
+function listFactory (Element: React.ElementType): React.FC {
+  return function List (props) {
+    const { children } = props
 
-  return (
-    <ul className="list">
-      {children}
-      <style jsx>{listStyles}</style>
-    </ul>
-  )
+    return (
+      <Element className="list">
+        {children}
+        <style jsx>{`
+          .list {
+            padding-left: 30px;
+            margin: var(--spacing-3) 0;
+          }
+        `}</style>
+      </Element>
+    )
+  }
 }
 
-export const ol: React.FC = (props) => {
-  const { children } = props
-
-  return (
-    <ol className="list">
-      {children}
-      <style jsx>{listStyles}</style>
-    </ol>
-  )
-}
+export const ul = listFactory('ul')
+export const ol = listFactory('ol')
 
 export const li: React.FC = (props) => {
   const { children } = props
@@ -29,21 +27,12 @@ export const li: React.FC = (props) => {
   return (
     <li className="item">
       {children}
-      <style jsx>{itemStyles}</style>
+      <style jsx>{`
+        .item > :global(ul),
+        .item > :global(ol) {
+          margin: var(--spacing-1) 0;
+        }
+      `}</style>
     </li>
   )
 }
-
-const listStyles = css`
-  .list {
-    padding-left: 30px;
-    margin: var(--spacing-3) 0;
-  }
-`
-
-const itemStyles = css`
-  .item > :global(ul),
-  .item > :global(ol) {
-    margin: var(--spacing-1) 0;
-  }
-`

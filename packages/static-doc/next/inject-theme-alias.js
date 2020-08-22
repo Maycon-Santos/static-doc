@@ -5,6 +5,8 @@ module.exports = function injectThemeAlias (nextConfig = {}) {
     webpack (config, options) {
       config.resolve.alias['@static-doc/user-theme'] = userConfig.theme
 
+      console.log(userConfig.theme)
+
       if (typeof nextConfig.webpack === 'function') {
         return nextConfig.webpack(config, options)
       }

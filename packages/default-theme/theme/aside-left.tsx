@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 import Logo from './logo'
 import Socials from './socials'
 import SearchBar from './search-bar'
@@ -18,28 +17,26 @@ const AsideLeft: React.FC = () => {
       </div>
       <SearchBar />
       <Menu />
-      <style jsx>{styles}</style>
+      <style jsx>{`
+        .wrapper {
+          flex: 0 0 250px;
+          margin-top: var(--spacing-4);
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          flex-wrap: wrap;
+          margin: calc(var(--spacing-2) * -1);
+        }
+
+        .header-item {
+          margin: var(--spacing-2);
+        }
+      `}</style>
     </div>
   )
 }
-
-const styles = css`
-  .wrapper {
-    flex: 0 0 250px;
-    margin-top: var(--spacing-4);
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    margin: calc(var(--spacing-2) * -1);
-  }
-
-  .header-item {
-    margin: var(--spacing-2);
-  }
-`
 
 export default AsideLeft

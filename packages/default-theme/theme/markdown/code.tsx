@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { useColorMode } from 'static-doc/theme-utils/color-mode'
 import syntaxHighlighting from '../../syntax-highlighting'
@@ -10,7 +9,24 @@ export const inlineCode: React.FC = (props) => {
   return (
     <code className="inlineCode">
       {children}
-      <style jsx>{inlineCodeStyles}</style>
+      <style jsx>{`
+        .inlineCode {
+          display: inline-block;
+          margin: var(--spacing-2) var(--spacing-0);
+          padding: var(--spacing-1) var(--spacing-2);
+          box-sizing: border-box;
+          border-radius: 5px;
+          white-space: nowrap;
+        }
+
+        :global(.light-mode) .inlineCode {
+          background-color: var(--color-light-gray-300);
+        }
+
+        :global(.dark-mode) .inlineCode {
+          background-color: var(--color-dark-gray-300);
+        }
+      `}</style>
     </code>
   )
 }
@@ -42,37 +58,16 @@ export const code: React.FC<{ children: string, className: string }> = (props) =
           </div>
         )}
       </Highlight>
-      <style jsx>{codeStyles}</style>
+      <style jsx>{`
+        .code {
+          display: block;
+          overflow: auto;
+          margin: var(--spacing-3) 0;
+          padding: var(--spacing-3);
+          box-sizing: border-box;
+          border-radius: 5px;
+        }
+      `}</style>
     </code>
   )
 }
-
-const inlineCodeStyles = css`
-  .inlineCode {
-    display: inline-block;
-    margin: var(--spacing-2) var(--spacing-0);
-    padding: var(--spacing-1) var(--spacing-2);
-    box-sizing: border-box;
-    border-radius: 5px;
-    white-space: nowrap;
-  }
-
-  :global(.light-mode) .inlineCode {
-    background-color: var(--color-light-gray-300);
-  }
-
-  :global(.dark-mode) .inlineCode {
-    background-color: var(--color-dark-gray-300);
-  }
-`
-
-const codeStyles = css`
-  .code {
-    display: block;
-    overflow: auto;
-    margin: var(--spacing-3) 0;
-    padding: var(--spacing-3);
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
-`

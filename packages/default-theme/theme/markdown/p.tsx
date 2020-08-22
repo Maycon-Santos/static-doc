@@ -1,5 +1,4 @@
 import React from 'react'
-import css from 'styled-jsx/css'
 
 export const p: React.FC = (props) => {
   const { children } = props
@@ -7,13 +6,11 @@ export const p: React.FC = (props) => {
   return (
     <p className="wrapper">
       {children}
-      <style jsx>{styles}</style>
+      <style jsx>{`
+        .wrapper {
+          margin: var(--spacing-3) 0;
+        }
+      `}</style>
     </p>
   )
 }
-
-const styles = css`
-  .wrapper {
-    margin: var(--spacing-3) 0;
-  }
-`
