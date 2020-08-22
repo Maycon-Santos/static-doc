@@ -1,6 +1,6 @@
 import React from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import { useColorMode } from 'static-doc/theme-utils/color-mode'
+import { useColorMode } from '@static-doc/theme-utils'
 import syntaxHighlighting from '../../syntax-highlighting'
 
 export const inlineCode: React.FC = (props) => {

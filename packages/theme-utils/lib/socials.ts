@@ -1,15 +1,12 @@
-const getConfig = require('next/config').default
-const getPkgRepo = require('get-pkg-repo')
+// @ts-ignore
+import getPkgRepo from 'get-pkg-repo'
+import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
 const { userPackage } = publicRuntimeConfig
 
-function useSocials () {
+export function useSocials () {
   return {
     repository: userPackage.repository && getPkgRepo(userPackage)
   }
-}
-
-module.exports = {
-  useSocials
 }

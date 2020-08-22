@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLogo } from 'static-doc/theme-utils'
+import { useLogo } from '@static-doc/theme-utils'
 
 const Logo: React.FC = () => {
   const { image, text } = useLogo()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSocials, useCurrentPage, useColorMode } from 'static-doc/theme-utils'
+import { useSocials, useCurrentPage, useColorMode } from '@static-doc/theme-utils'
 import PencilIcon from './vectors/pencil-icon'
 import MoonIcon from './vectors/moon-icon'
 import SunIcon from './vectors/sun-icon'

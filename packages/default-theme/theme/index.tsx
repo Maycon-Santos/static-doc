@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleVarsProvider, ColorModeProvider, Fonts, EssentialsProvider } from 'static-doc/theme-utils'
+import { StyleVarsProvider, ColorModeProvider, Fonts, EssentialsProvider } from '@static-doc/theme-utils'
 import { MDXProvider } from '@mdx-js/react'
 import 'normalize.css'
 import styleVars from '../style-vars'

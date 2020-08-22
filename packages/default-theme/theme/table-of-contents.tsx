@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHeading } from 'static-doc/theme-utils'
+import { useHeading } from '@static-doc/theme-utils'
 
 const TableOfContents: React.FC = () => {
   const { items } = useHeading()

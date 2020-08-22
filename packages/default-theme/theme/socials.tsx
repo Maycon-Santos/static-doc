@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSocials } from 'static-doc/theme-utils'
+import { useSocials } from '@static-doc/theme-utils'
 import BugsIcon from './vectors/bugs-icon'
 import GithubIcon from './vectors/github-icon'
 

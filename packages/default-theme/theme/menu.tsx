@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useMenu, useCurrentPage, useColorMode, useAsset } from 'static-doc/theme-utils'
+import { useMenu, useCurrentPage, useColorMode, useAsset } from '@static-doc/theme-utils'
 
 const Menu: React.FC = () => {
   const menuTree = useMenu()

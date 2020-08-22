@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHeading } from 'static-doc/theme-utils'
+import { useHeading } from '@static-doc/theme-utils'
 
 function headingFactory (element: string): React.FC<{ children: string }> {
   const Element = element as React.ElementType
