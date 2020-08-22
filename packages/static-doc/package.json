@@ -14,23 +14,15 @@
     "@next/mdx": "^9.3.6",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-preval": "^5.0.0",
-    "babel-plugin-react-remove-properties": "^0.3.0",
-    "babel-plugin-styled-components": "^1.10.7",
-    "cookie": "^0.4.1",
     "flat": "^5.0.2",
     "get-pkg-repo": "^4.1.1",
     "gray-matter": "^4.0.2",
-    "js-cookie": "^2.2.1",
     "lodash.merge": "^4.6.2",
     "next": "9.3.5",
     "next-images": "^1.4.1",
-    "normalize.css": "^8.0.1",
-    "polished": "^3.6.0",
-    "prism-react-renderer": "^1.1.1",
     "remark": "^12.0.0",
     "remark-frontmatter": "^2.0.0",
     "remark-html": "^11.0.1",
-    "styled-components": "^5.1.0",
     "typescript": "^3.8.3",
     "unist-util-remove": "^2.0.0",
     "unist-util-visit": "^2.0.2",
@@ -42,11 +34,6 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@static-doc/default-theme": "*",
-    "@types/cookie": "^0.4.0",
-    "@types/js-cookie": "^2.2.6",
-    "@types/mdx-js__react": "^1.5.2",
-    "@types/styled-components": "^5.1.0",
-    "@types/yargs": "^15.0.5"
+    "@static-doc/default-theme": "*"
   }
 }

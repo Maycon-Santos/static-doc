@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import getConfig from 'next/config'
 import Theme from '@static-doc/user-theme'
-import 'normalize.css'
 import getAsset from '../utils/get-asset'
 import resolveHeadingId from '../utils/resolve-heading-id'
 
