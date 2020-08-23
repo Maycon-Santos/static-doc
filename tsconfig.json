@@ -5,6 +5,7 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
+      "static-doc": ["packages/static-doc"],
       "@static-doc/theme-utils": ["packages/theme-utils/dist"]
     }
   }

@@ -33,7 +33,3 @@ dist
 src/.components
 .out
 .todo
-
-packages/static-doc/babel.config.js
-packages/static-doc/tsconfig.json
-packages/static-doc/jsconfig.json
