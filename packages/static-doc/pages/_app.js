@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import Theme from '@static-doc/user-theme'
-import getAsset from '../utils/get-asset'
-import resolveHeadingId from '../utils/resolve-heading-id'
+import getAsset from '../utils/run-time/get-asset'
+import resolveHeadingId from '../utils/run-time/resolve-heading-id'
 
 const App = props => {
   const { Component, pageProps } = props

@@ -21,7 +21,10 @@
     "url": "git+https://github.com/Maycon-Santos/static-doc.git"
   },
   "scripts": {
-    "build": "babel theme -d dist --extensions \".ts,.tsx\" && gulp"
+    "build": "yarn build:ts & yarn build:css",
+    "build:watch": "yarn build:ts --watch & yarn build:css --watch",
+    "build:ts": "babel theme --out-dir dist --extensions \".ts,.tsx\"",
+    "build:css": "gulp"
   },
   "bugs": {
     "url": "https://github.com/Maycon-Santos/static-doc/issues"

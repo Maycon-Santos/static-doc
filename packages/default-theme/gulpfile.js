@@ -9,4 +9,8 @@ function transformCss () {
     .pipe(gulp.dest('./dist'))
 }
 
+if (process.argv.includes('--watch')) {
+  gulp.watch(['./theme/**/*.css'], transformCss)
+}
+
 exports.default = transformCss

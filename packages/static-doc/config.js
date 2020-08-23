@@ -4,32 +4,21 @@ const { argv } = require('yargs')
 const command = argv._[0]
 
 const paths = {
-  get source () {
-    return resolve(paths.root.own, 'src')
-  },
   root: {
     user: process.cwd(),
     own: resolve(__dirname)
   },
   docs: {
     get root () {
-      return resolve(paths.root.user, argv.dir || 'docs')
+      return resolve(paths.root.user, argv.dir)
     },
     pages: {
       get origin () {
         return resolve(paths.docs.root, 'pages')
       },
       get destiny () {
-        return resolve(paths.source, 'pages')
+        return resolve(paths.root.own, 'pages')
       }
-    }
-  },
-  components: {
-    get user () {
-      return resolve(paths.docs.root, '.components')
-    },
-    get own () {
-      return resolve(paths.source, 'components')
     }
   },
   build: {
