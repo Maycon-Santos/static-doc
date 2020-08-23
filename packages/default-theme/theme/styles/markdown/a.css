@@ -1,0 +1,15 @@
+.anchor {
+  text-decoration: none;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+}
+
+:global(.light-mode) .anchor {
+  color: var(--color-light-primary-600);
+}
+
+:global(.dark-mode) .anchor {
+  color: var(--color-dark-primary-600);
+}

@@ -1,0 +1,25 @@
+.inlineCode {
+  display: inline-block;
+  margin: var(--spacing-2) var(--spacing-0);
+  padding: var(--spacing-1) var(--spacing-2);
+  box-sizing: border-box;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+:global(.light-mode) .inlineCode {
+  background-color: var(--color-light-gray-300);
+}
+
+:global(.dark-mode) .inlineCode {
+  background-color: var(--color-dark-gray-300);
+}
+
+.code {
+  display: block;
+  overflow: auto;
+  margin: var(--spacing-3) 0;
+  padding: var(--spacing-3);
+  box-sizing: border-box;
+  border-radius: 5px;
+}

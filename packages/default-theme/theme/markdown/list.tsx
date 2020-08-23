@@ -1,18 +1,13 @@
 import React from 'react'
+import styles from '../styles/markdown/list.css'
 
 function listFactory (Element: React.ElementType): React.FC {
   return function List (props) {
     const { children } = props
 
     return (
-      <Element className="list">
+      <Element className={styles.list}>
         {children}
-        <style jsx>{`
-          .list {
-            padding-left: 30px;
-            margin: var(--spacing-3) 0;
-          }
-        `}</style>
       </Element>
     )
   }
@@ -25,14 +20,8 @@ export const li: React.FC = (props) => {
   const { children } = props
 
   return (
-    <li className="item">
+    <li className={styles.item}>
       {children}
-      <style jsx>{`
-        .item > :global(ul),
-        .item > :global(ol) {
-          margin: var(--spacing-1) 0;
-        }
-      `}</style>
     </li>
   )
 }

@@ -16,7 +16,7 @@ module.exports = pipe(
   injectConfig,
   injectThemeAlias,
   allowGlobalCssImport,
-  allowAbsoluteImport,
+  // allowAbsoluteImport,
   generateBuildId
 )({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],

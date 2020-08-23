@@ -5,7 +5,7 @@
   "author": "Maycon-Santos <mayconsantos.dev@gmail.com>",
   "homepage": "https://github.com/Maycon-Santos/static-doc#readme",
   "license": "MIT",
-  "main": "dist/theme/index.jsx",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -21,19 +21,35 @@
     "url": "git+https://github.com/Maycon-Santos/static-doc.git"
   },
   "scripts": {
-    "build": "tsc ./theme/index.tsx --jsx preserve --outDir dist --esModuleInterop --module ESNext --moduleResolution node"
+    "build": "babel theme -d dist --extensions \".ts,.tsx\" && gulp"
   },
   "bugs": {
     "url": "https://github.com/Maycon-Santos/static-doc/issues"
   },
   "dependencies": {
+    "@static-doc/theme-utils": ">=0.0.0",
     "normalize.css": "^8.0.1",
-    "prism-react-renderer": "^1.1.1",
-    "@static-doc/theme-utils": ">=0.0.0"
+    "prism-react-renderer": "^1.1.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-typescript": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@static-doc/default-theme": "*",
     "@types/mdx-js__react": "^1.5.2",
-    "@types/react-dom": "^16.9.8"
+    "@types/react-dom": "^16.9.8",
+    "babel-plugin-transform-postcss": "^0.3.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.1",
+    "postcss-modules": "^3.2.1",
+    "postcss-nested": "^4.2.3",
+    "postcss-preset-env": "^6.7.0"
   }
 }

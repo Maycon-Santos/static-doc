@@ -1,16 +1,12 @@
 import React from 'react'
+import styles from '../styles/markdown/strong.css'
 
 export const strong: React.FC = (props) => {
   const { children } = props
 
   return (
-    <strong className="wrapper">
+    <strong className={styles.strong}>
       {children}
-      <style jsx>{`
-        .wrapper {
-          font-weight: var(--font-weight-semi-bold);
-        }
-      `}</style>
     </strong>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleVarsProvider, ColorModeProvider, Fonts, EssentialsProvider } from '@static-doc/theme-utils'
 import { MDXProvider } from '@mdx-js/react'
-import 'normalize.css'
-import styleVars from '../style-vars'
+import './styles/global.css'
+import styleVars from './config/style-vars'
 import * as MarkdownComponents from './markdown'
 import Layout from './layout'
 

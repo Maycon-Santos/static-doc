@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": ".",
     "paths": {
       "@static-doc/theme-utils": ["packages/theme-utils/dist"]
     }

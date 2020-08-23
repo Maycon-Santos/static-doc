@@ -2,6 +2,7 @@ import React from 'react'
 import { useSocials } from '@static-doc/theme-utils'
 import BugsIcon from './vectors/bugs-icon'
 import GithubIcon from './vectors/github-icon'
+import styles from './styles/socials.css'
 
 const Socials: React.FC = () => {
   const { repository } = useSocials()
@@ -9,36 +10,15 @@ const Socials: React.FC = () => {
   if (!repository) return null
 
   return (
-    <div className="wrapper">
-      <div className="list">
-        <a href={repository.bugs()} className="item" target="_blank" rel="noreferrer">
+    <div className={styles.wrapper}>
+      <div className={styles.list}>
+        <a href={repository.bugs()} className={styles.item} target="_blank" rel="noreferrer">
           <BugsIcon />
         </a>
-        <a href={repository.browse()} className="item" target="_blank" rel="noreferrer">
+        <a href={repository.browse()} className={styles.item} target="_blank" rel="noreferrer">
           <GithubIcon />
         </a>
       </div>
-      <style jsx>{`
-        .list, .item {
-          display: flex;
-        }
-
-        .item + .item {
-          margin-left: var(--spacing-2);
-        }
-
-        .item :global(svg) {
-          height: 22px;
-        }
-
-        :global(.light-mode) .item :global(svg) :global(path) {
-          fill: var(--color-light-text-500);
-        }
-
-        :global(.dark-mode) .item :global(svg) :global(path) {
-          fill: var(--color-dark-text-500);
-        }  
-      `}</style>
     </div>
   )
 }

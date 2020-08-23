@@ -1,0 +1,11 @@
+.hr {
+  border-style: solid;
+}
+
+:global(.light-mode) .hr {
+  border-color: var(--color-light-text-400);
+}
+
+:global(.dark-mode) .hr {
+  border-color: var(--color-dark-text-400);
+}

@@ -1,0 +1,15 @@
+.blockquote {
+  border-left: 4px solid;
+  padding: var(--spacing-0) 0 var(--spacing-0) var(--spacing-3);
+  margin: var(--spacing-3) 0;
+}
+
+:global(.light-mode) .blockquote {
+  color: var(--color-light-text-400);
+  border-color: var(--color-light-text-400);
+}
+
+:global(.dark-mode) .blockquote {
+  color: var(--color-dark-text-400);
+  border-color: var(--color-dark-text-400);
+}

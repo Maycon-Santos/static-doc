@@ -3,38 +3,21 @@ import Logo from './logo'
 import Socials from './socials'
 import SearchBar from './search-bar'
 import Menu from './menu'
+import styles from './styles/aside-left.css'
 
 const AsideLeft: React.FC = () => {
   return (
-    <div className="wrapper">
-      <div className="header">
-        <div className="header-item">
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <div className={styles.headerItem}>
           <Logo />
         </div>
-        <div className="header-item">
+        <div className={styles.headerItem}>
           <Socials />
         </div>
       </div>
       <SearchBar />
       <Menu />
-      <style jsx>{`
-        .wrapper {
-          flex: 0 0 250px;
-          margin-top: var(--spacing-4);
-        }
-
-        .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          flex-wrap: wrap;
-          margin: calc(var(--spacing-2) * -1);
-        }
-
-        .header-item {
-          margin: var(--spacing-2);
-        }
-      `}</style>
     </div>
   )
 }

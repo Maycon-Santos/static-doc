@@ -1,16 +1,12 @@
 import React from 'react'
+import styles from '../styles/markdown/p.css'
 
 export const p: React.FC = (props) => {
   const { children } = props
 
   return (
-    <p className="wrapper">
+    <p className={styles.paragraph}>
       {children}
-      <style jsx>{`
-        .wrapper {
-          margin: var(--spacing-3) 0;
-        }
-      `}</style>
     </p>
   )
 }

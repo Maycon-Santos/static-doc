@@ -1,16 +1,12 @@
 import React from 'react'
+import styles from '../styles/markdown/em.css'
 
 export const em: React.FC = (props) => {
   const { children } = props
 
   return (
-    <em className="wrapper">
+    <em className={styles.em}>
       {children}
-      <style jsx>{`
-        .wrapper {
-          font-style: italic;
-        }  
-      `}</style>
     </em>
   )
 }

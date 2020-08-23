@@ -1,0 +1,16 @@
+.wrapper {
+  flex: 0 0 250px;
+  margin-top: var(--spacing-4);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin: calc(var(--spacing-2) * -1);
+}
+
+.headerItem {
+  margin: var(--spacing-2);
+}

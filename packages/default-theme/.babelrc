@@ -1,0 +1,10 @@
+{
+  "presets": ["@babel/preset-env", ["@babel/preset-typescript", { "isTSX": true, "allExtensions": true }]],
+  "plugins": [
+    ["transform-postcss", {
+      "config": "postcss.config.js"
+    }],
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-transform-react-jsx"
+  ]
+}

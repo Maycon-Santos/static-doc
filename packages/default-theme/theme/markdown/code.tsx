@@ -1,32 +1,15 @@
 import React from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import { useColorMode } from '@static-doc/theme-utils'
-import syntaxHighlighting from '../../syntax-highlighting'
+import syntaxHighlighting from '../config/syntax-highlighting'
+import styles from '../styles/markdown/code.css'
 
 export const inlineCode: React.FC = (props) => {
   const { children } = props
 
   return (
-    <code className="inlineCode">
+    <code className={styles.inlineCode}>
       {children}
-      <style jsx>{`
-        .inlineCode {
-          display: inline-block;
-          margin: var(--spacing-2) var(--spacing-0);
-          padding: var(--spacing-1) var(--spacing-2);
-          box-sizing: border-box;
-          border-radius: 5px;
-          white-space: nowrap;
-        }
-
-        :global(.light-mode) .inlineCode {
-          background-color: var(--color-light-gray-300);
-        }
-
-        :global(.dark-mode) .inlineCode {
-          background-color: var(--color-dark-gray-300);
-        }
-      `}</style>
     </code>
   )
 }
@@ -39,7 +22,7 @@ export const code: React.FC<{ children: string, className: string }> = (props) =
   const { backgroundColor } = theme.plain
 
   return (
-    <code className="code" style={{ backgroundColor }}>
+    <code className={styles.code} style={{ backgroundColor }}>
       <Highlight
         {...defaultProps}
         code={children.trim()}
@@ -58,16 +41,6 @@ export const code: React.FC<{ children: string, className: string }> = (props) =
           </div>
         )}
       </Highlight>
-      <style jsx>{`
-        .code {
-          display: block;
-          overflow: auto;
-          margin: var(--spacing-3) 0;
-          padding: var(--spacing-3);
-          box-sizing: border-box;
-          border-radius: 5px;
-        }
-      `}</style>
     </code>
   )
 }

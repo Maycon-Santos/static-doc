@@ -1,0 +1,93 @@
+.wrapper {
+  flex: 0 0 250px;
+  margin-top: var(--spacing-4);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editPageLink {
+  display: flex;
+  align-items: center;
+  border-width: 1px 0 1px 0;
+  border-color: transparent;
+  border-style: solid;
+  text-decoration: none;
+  font-size: var(--font-size-2);
+}
+
+.editPageLink svg {
+  width: 14px;
+  margin-right: var(--spacing-2);
+}
+
+.colorModeSwitcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.colorModeSwitcher svg {
+  width: 18px;
+}
+
+:global(.light-mode) {
+  .editPageLink svg path {
+    fill: var(--color-light-primary-500);
+  }
+
+  .editPageLink {
+    color: var(--color-light-primary-500);
+  }
+
+  .editPageLink:hover {
+    border-bottom-color: var(--color-light-primary-500);
+  }
+
+  .colorModeSwitcher {
+    background-color: var(--color-light-gray-300);
+  }
+
+  .colorModeSwitcher:hover {
+    background-color: var(--color-light-gray-500);
+  }
+
+  .colorModeSwitcher svg path {
+    fill: var(--color-light-text-500);
+  }
+}
+
+:global(.dark-mode) {
+  .editPageLink svg path {
+    fill: var(--color-dark-primary-500);
+  }
+
+  .editPageLink {
+    color: var(--color-dark-primary-500);
+  }
+
+  .editPageLink:hover {
+    border-bottom-color: var(--color-dark-primary-500);
+  }
+
+  .colorModeSwitcher {
+    background-color: var(--color-dark-gray-500);
+  }
+
+  .colorModeSwitcher:hover {
+    background-color: var(--color-dark-gray-600);
+  }
+
+  .colorModeSwitcher svg path {
+    fill: var(--color-dark-text-500);
+  }
+}

@@ -1,0 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: var(--spacing-3);
+  line-height: var(--line-height-body);
+}
+
+:global(.light-mode) {
+  color: var(--color-light-text-500);
+  background: var(--color-light-background);
+}
+
+:global(.dark-mode) {
+  color: var(--color-dark-text-500);
+  background: var(--color-dark-background);
+}

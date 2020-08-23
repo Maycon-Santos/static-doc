@@ -1,0 +1,30 @@
+.heading {
+  margin-top: 1em;
+  margin-bottom: var(--spacing-3);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+h1.heading {
+  font-size: var(--font-size-6);
+}
+
+h2.heading {
+  font-size: var(--font-size-5);
+}
+
+h3.heading {
+  font-size: var(--font-size-4);
+}
+
+h4.heading {
+  font-size: var(--font-size-3);
+}
+
+h5.heading {
+  font-size: var(--font-size-2);
+}
+
+h6.heading {
+  font-size: var(--font-size-1);
+}

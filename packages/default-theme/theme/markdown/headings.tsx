@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHeading } from '@static-doc/theme-utils'
+import styles from '../styles/markdown/headings.css'
 
 function headingFactory (element: string): React.FC<{ children: string }> {
   const Element = element as React.ElementType
@@ -10,40 +11,8 @@ function headingFactory (element: string): React.FC<{ children: string }> {
     const { id } = register(children, element)
 
     return (
-      <Element className="heading" id={id}>
+      <Element className={styles.heading} id={id}>
         {children}
-        <style jsx>{`
-          .heading {
-            margin-top: 1em;
-            margin-bottom: var(--spacing-3);
-            line-height: var(--line-height-heading);
-            font-weight: var(--font-weight-bold);
-          }
-
-          h1.heading {
-            font-size: var(--font-size-6);
-          }
-
-          h2.heading {
-            font-size: var(--font-size-5);
-          }
-
-          h3.heading {
-            font-size: var(--font-size-4);
-          }
-
-          h4.heading {
-            font-size: var(--font-size-3);
-          }
-
-          h5.heading {
-            font-size: var(--font-size-2);
-          }
-
-          h6.heading {
-            font-size: var(--font-size-1);
-          }
-        `}</style>
       </Element>
     )
   }

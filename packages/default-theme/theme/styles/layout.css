@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-3);
+}
+
+.main {
+  flex: 1;
+  padding: var(--spacing-4) var(--spacing-4) 0 var(--spacing-4);
+}
+
+.main > :global(:nth-child(1)) {
+  margin-top: 0;
+}
