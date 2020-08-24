@@ -47,6 +47,8 @@ export const ColorModeProvider = (props: ColoModeProviderProps) => {
 
     if (persistedColorMode === 'light' || persistedColorMode === 'dark') {
       setColorMode(persistedColorMode)
+    } else {
+      setColorMode(initialColorMode || 'light')
     }
   }, [])
 
