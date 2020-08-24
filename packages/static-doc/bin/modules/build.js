@@ -21,7 +21,7 @@ const nextBin = require.resolve('.bin/next')
  * Resolves `next build` cli opitons.
  */
 function resolveNextJsBuildArgs () {
-  return [nextBin, 'build']
+  return [nextBin, 'build', root.own]
 }
 
 /**
@@ -39,16 +39,14 @@ module.exports = function () {
   const nextJsBuildArgs = resolveNextJsBuildArgs()
   const nextJsExportArgs = resolveNextJsExportArgs()
   const isStaticFiles = command === 'build:static'
-  const outFiles = isStaticFiles ? out.path : build.prod.path
 
   const spawnConfig = {
     stdio: 'inherit',
     shell: true,
     env: {
       ...process.env,
-      cwd: root.own,
-      NODE_ENV: 'production',
-      config: JSON.stringify(userConfig)
+      dir: argv.dir,
+      NODE_ENV: 'production'
     }
   }
 
@@ -58,7 +56,7 @@ module.exports = function () {
       : userConfig.buildDir || userBuildDirDefault
   const distPath = resolve(docs.root, `../${distDir}`)
 
-  process.chdir(root.own)
+  const outFiles = isStaticFiles ? out.path : build.prod.path
 
   if (existsSync(distPath)) {
     rmRecursive(outFiles)
@@ -77,5 +75,5 @@ module.exports = function () {
   renameSync(outFiles, distPath)
   symlinkSync(distPath, outFiles)
 
-  console.log('\n', '\x1b[30m\x1b[42m', 'Done! ')
+  console.log('\n', '\x1b[30m\x1b[42m', 'Done!', '\x1b[0m', '\n')
 }

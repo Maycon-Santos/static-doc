@@ -5,13 +5,11 @@ const next = require('next')
 const { argv } = require('yargs')
 const { root, isDev } = require('../../config')
 
-const nextJsConfig = require('../../next.config')
-
 module.exports = function startServer () {
   const app = next({
     dev: isDev,
     dir: root.own,
-    conf: nextJsConfig
+    conf: require('../../next.config')
   })
 
   const handle = app.getRequestHandler()

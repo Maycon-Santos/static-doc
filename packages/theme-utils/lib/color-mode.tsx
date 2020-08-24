@@ -23,6 +23,7 @@ type ColoModeProviderProps = {
 
 export const ColorModeProvider = (props: ColoModeProviderProps) => {
   const { bodyClassNames, children } = props
+  const initialColorMode = userConfig.colorMode && userConfig.colorMode.initial
   const [colorMode, setColorMode] = useState(undefined)
 
   useEffect(() => {
@@ -46,21 +47,13 @@ export const ColorModeProvider = (props: ColoModeProviderProps) => {
 
     if (persistedColorMode === 'light' || persistedColorMode === 'dark') {
       setColorMode(persistedColorMode)
-    } else if (userConfig.colorMode && userConfig.colorMode.initial) {
-      setColorMode(userConfig.colorMode.initial)
-    } else {
-      setColorMode('light')
     }
   }, [])
-
-  if (!colorMode) {
-    return children
-  }
 
   return (
     <ColorModeContext.Provider
       value={{
-        colorMode,
+        colorMode: colorMode || initialColorMode || 'light',
         toggle () {
           setColorMode(colorMode === 'light' ? 'dark' : 'light')
         }

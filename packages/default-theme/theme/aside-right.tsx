@@ -14,15 +14,17 @@ const AsideRight: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <a
-          href={currentPage && repository.browse(currentPage.path)}
-          target="_blank"
-          rel="noreferrer"
-          className={styles.editPageLink}
-        >
-          <PencilIcon />
-          Edit this page
-        </a>
+        {(currentPage && repository) && (
+          <a
+            href={repository.browse(currentPage.path)}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.editPageLink}
+          >
+            <PencilIcon />
+            Edit this page
+          </a>
+        )}
         <button
           type="button"
           className={styles.colorModeSwitcher}

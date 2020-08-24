@@ -5,12 +5,14 @@ const command = argv._[0]
 
 const paths = {
   root: {
-    user: process.cwd(),
+    get user () {
+      return process.cwd()
+    },
     own: resolve(__dirname)
   },
   docs: {
     get root () {
-      return resolve(paths.root.user, argv.dir)
+      return resolve(paths.root.user, argv.dir || process.env.dir || '')
     },
     pages: {
       get origin () {
