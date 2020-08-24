@@ -12,6 +12,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build": "yarn lerna exec yarn build",
+    "bootstrap": "lerna bootstrap"
+  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "prettier-standard",

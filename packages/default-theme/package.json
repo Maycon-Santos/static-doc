@@ -42,7 +42,6 @@
     "@babel/plugin-transform-typescript": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
-    "@static-doc/default-theme": "*",
     "@types/mdx-js__react": "^1.5.2",
     "@types/react-dom": "^16.9.8",
     "babel-plugin-transform-postcss": "^0.3.0",
