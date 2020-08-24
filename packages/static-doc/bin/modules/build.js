@@ -28,7 +28,7 @@ function resolveNextJsBuildArgs () {
  * Resolves `next export` cli opitons.
  */
 function resolveNextJsExportArgs () {
-  return [nextBin, 'export', '-o', out.path]
+  return [nextBin, 'export', root.own, '-o', out.path]
 }
 
 /**
@@ -38,7 +38,7 @@ module.exports = function () {
   const command = argv._[0]
   const nextJsBuildArgs = resolveNextJsBuildArgs()
   const nextJsExportArgs = resolveNextJsExportArgs()
-  const isStaticFiles = command === 'build:static'
+  const generateStaticFiles = command === 'build:static'
 
   const spawnConfig = {
     stdio: 'inherit',
@@ -51,12 +51,12 @@ module.exports = function () {
   }
 
   const distDir =
-    isStaticFiles
+    generateStaticFiles
       ? userConfig.buildStaticDir || userBuildStaticDirDefault
       : userConfig.buildDir || userBuildDirDefault
   const distPath = resolve(docs.root, `../${distDir}`)
 
-  const outFiles = isStaticFiles ? out.path : build.prod.path
+  const outFiles = generateStaticFiles ? out.path : build.prod.path
 
   if (existsSync(distPath)) {
     rmRecursive(outFiles)
@@ -68,7 +68,7 @@ module.exports = function () {
 
   spawnSync('node', nextJsBuildArgs, spawnConfig)
 
-  if (isStaticFiles) {
+  if (generateStaticFiles) {
     spawnSync('node', nextJsExportArgs, spawnConfig)
   }
 
