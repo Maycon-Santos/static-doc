@@ -3,7 +3,7 @@
   "version": "0.0.10-alpha",
   "private": false,
   "scripts": {
-    "test": "node bin/index.js setup-test && jest"
+    "build": "yarn static-doc build --dir ../../docs"
   },
   "bin": {
     "static-doc": "./bin/index.js"
