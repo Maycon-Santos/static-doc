@@ -1,9 +1,9 @@
 {
   "name": "static-doc",
-  "version": "0.0.10-alpha",
+  "version": "0.0.0",
   "private": false,
   "scripts": {
-    "build": "yarn static-doc build --dir ../../docs"
+    "build": "node bin/index.js build --dir ../../docs"
   },
   "bin": {
     "static-doc": "./bin/index.js"
