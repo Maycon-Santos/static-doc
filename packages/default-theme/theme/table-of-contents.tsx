@@ -5,6 +5,10 @@ import styles from './styles/table-of-contents.css'
 const TableOfContents: React.FC = () => {
   const { items } = useHeading()
 
+  if (items.length === 0) {
+    return null
+  }
+
   return (
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Table of contents</h4>
