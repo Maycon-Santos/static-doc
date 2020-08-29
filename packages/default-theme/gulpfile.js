@@ -17,11 +17,7 @@ function transformTs () {
 }
 
 if (process.argv.includes('--watch')) {
-  gulp.watch(['./theme/**/*.css'], transformCss)
-}
-
-if (process.argv.includes('--watch')) {
-  gulp.watch(['./theme/**/*.ts', './theme/**/*.tsx'], transformTs)
+  gulp.watch(['./theme/**/*.ts', './theme/**/*.tsx', './theme/**/*.css'], gulp.parallel(transformTs, transformCss))
 }
 
 exports.default = gulp.parallel(transformTs, transformCss)

@@ -10,9 +10,41 @@ body {
 :global(.light-mode) {
   color: var(--color-light-text-500);
   background: var(--color-light-background);
+
+  & {
+    scrollbar-color: rgba(0, 0, 0, .3) transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .3);
+  }
 }
 
 :global(.dark-mode) {
   color: var(--color-dark-text-500);
   background: var(--color-dark-background);
+
+  & {
+    scrollbar-color: rgba(255, 255, 255, .3) transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .3);
+  }
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
 }

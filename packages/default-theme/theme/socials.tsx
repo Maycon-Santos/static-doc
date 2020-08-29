@@ -12,10 +12,24 @@ const Socials: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.list}>
-        <a href={repository.bugs()} className={styles.item} target="_blank" rel="noreferrer">
+        <a
+          href={repository.bugs()}
+          className={styles.item}
+          target='_blank'
+          rel='noreferrer'
+          title='bugs'
+        >
+          Bugs
           <BugsIcon />
         </a>
-        <a href={repository.browse()} className={styles.item} target="_blank" rel="noreferrer">
+        <a
+          href={repository.browse()}
+          className={styles.item}
+          target='_blank'
+          rel='noreferrer'
+          title='Repository'
+        >
+          Repository
           <GithubIcon />
         </a>
       </div>

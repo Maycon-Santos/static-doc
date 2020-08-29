@@ -1,6 +1,17 @@
 .wrapper {
   flex: 0 0 250px;
-  margin-top: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacing-3);
+  padding-right: var(--spacing-3);
+  scroll-snap-align: start;
+  height: calc(100vh - var(--spacing-4));
+  
+  @media (min-width: 1200px) {
+    position: sticky;
+    top: var(--spacing-3);
+    padding-right: 0;
+  }
 }
 
 .header {

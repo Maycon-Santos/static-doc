@@ -46,10 +46,12 @@ function resolveData (data, options) {
 
   const title = options.title || frontmatter.title || defaultTitle
   const name = options.name || frontmatter.name || defaultName
+  const description = options.description || frontmatter.description || ''
 
   return {
     title,
-    name
+    name,
+    description
   }
 }
 

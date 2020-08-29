@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import getConfig from 'next/config'
 import Theme from '@static-doc/user-theme'
 import getAsset from '../utils/run-time/get-asset'
 import resolveHeadingId from '../utils/run-time/resolve-heading-id'
+import { useCurrentPage } from '@static-doc/theme-utils'
+
+const { publicRuntimeConfig } = getConfig()
+const { userConfig } = publicRuntimeConfig
 
 const App = props => {
   const { Component, pageProps } = props
@@ -11,6 +16,7 @@ const App = props => {
   const [headingItems, setHeadingItems] = useState([])
   const headingItemsMemo = useMemo(() => [], [])
   const router = useRouter()
+  const currentPage = useCurrentPage()
 
   const headings = {
     register (content, element) {
@@ -42,6 +48,13 @@ const App = props => {
     <Theme essentials={{ getAsset, headings }}>
       <Component {...pageProps} />
       <Head>
+        <title>
+          {userConfig.titlePrefix}
+          {currentPage?.data?.title}
+          {userConfig.titleSuffix}
+        </title>
+        <link rel="shortcut icon" href={getAsset(userConfig?.favicon)} />
+        <meta name="Description" content={currentPage?.data?.description} />
         <style>{`
           body {
             opacity: ${Number(initialized)};

@@ -1,6 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { useMenu, useCurrentPage, useColorMode, useAsset } from '@static-doc/theme-utils'
+import {
+  useMenu,
+  useCurrentPage,
+  useColorMode,
+  useAsset
+} from '@static-doc/theme-utils'
+import { Scrollbars } from 'react-custom-scrollbars'
 import styles from './styles/menu.css'
 
 const Menu: React.FC = () => {
@@ -9,7 +15,7 @@ const Menu: React.FC = () => {
   const { colorMode } = useColorMode()
 
   return (
-    <div className={styles.wrapper}>
+    <Scrollbars universal autoHide className={styles.wrapper}>
       {Object.keys(menuTree).map(menu => {
         const pages = menuTree[menu]
 
@@ -18,13 +24,19 @@ const Menu: React.FC = () => {
             {menu && <h3 className={styles.navName}>{menu}</h3>}
             <ul className={styles.navList}>
               {pages.map((page: any) => {
-                const activeClassName = currentPage && (page.route === currentPage.route ? styles.active : '')
-                const anchorClassName = [styles.navLink, activeClassName].join(' ')
+                const activeClassName =
+                  currentPage &&
+                  (page.route === currentPage.route ? styles.active : '')
+                const anchorClassName = [styles.navLink, activeClassName].join(
+                  ' '
+                )
                 const iconSrc = page.icon && useAsset(page.icon[colorMode])
 
                 const Child: React.FC = () => (
                   <>
-                    {iconSrc && <img src={iconSrc} alt="" className={styles.icon} />}
+                    {iconSrc && (
+                      <img src={iconSrc} alt='' className={styles.icon} />
+                    )}
                     {page.data.name}
                   </>
                 )
@@ -32,7 +44,12 @@ const Menu: React.FC = () => {
                 return (
                   <li key={page.route}>
                     {page.isExternalLink ? (
-                      <a href={page.route} target="_blank" rel="noreferrer" className={anchorClassName}>
+                      <a
+                        href={page.route}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={anchorClassName}
+                      >
                         <Child />
                       </a>
                     ) : (
@@ -49,7 +66,7 @@ const Menu: React.FC = () => {
           </div>
         )
       })}
-    </div>
+    </Scrollbars>
   )
 }
 
