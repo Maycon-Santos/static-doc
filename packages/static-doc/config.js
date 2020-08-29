@@ -25,29 +25,6 @@ const paths = {
       }
     }
   },
-  build: {
-    prod: {
-      get dir () {
-        return `.build/${Buffer.from(paths.root.user).toString('base64')}`
-      },
-      get path () {
-        return resolve(paths.root.own, paths.build.prod.dir)
-      }
-    },
-    dev: {
-      get dir () {
-        return `.dev/${Buffer.from(paths.root.user).toString('base64')}`
-      }
-    }
-  },
-  out: {
-    get dir () {
-      return `.out/${Buffer.from(paths.root.user).toString('base64')}`
-    },
-    get path () {
-      return resolve(paths.root.own, paths.out.dir)
-    }
-  },
   get userConfig () {
     return resolve(paths.docs.root, '.config')
   },
