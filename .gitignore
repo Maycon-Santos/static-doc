@@ -28,10 +28,9 @@ dist
 .docs_build
 .docs_static_build
 .docs_build_static
-.dev
-.build
 src/.components
-.out
-.todo
 
 .vercel
+
+.docs
+docs_out

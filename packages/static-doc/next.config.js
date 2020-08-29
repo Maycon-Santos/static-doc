@@ -1,25 +1,25 @@
+const { join } = require('path')
 const withImages = require('next-images')
 const withMDX = require('./next/mdx')
 const allowGlobalCssImport = require('./next/allow-global-css-import')
-const allowAbsoluteImport = require('./next/allow-absolute-import')
-const generateBuildId = require('./next/generate-build-id')
+// const allowAbsoluteImport = require('./next/allow-absolute-import')
 const injectConfig = require('./next/inject-config')
 const injectThemeAlias = require('./next/inject-theme-alias')
-const { baseUrl } = require('./bin/modules/user-config')
-const { build, isDev } = require('./config')
+const { baseUrl, buildDir } = require('./bin/modules/user-config')
+const { root } = require('./config')
 
 const pipe = (...fns) => (x) => fns.reduce((v, f) => f(v), x)
+const osRoot = root.own.split('/').map(() => '..').join('/')
 
 module.exports = pipe(
   withImages,
   withMDX,
   injectConfig,
   injectThemeAlias,
-  allowGlobalCssImport,
+  allowGlobalCssImport
   // allowAbsoluteImport,
-  generateBuildId
 )({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  distDir: isDev ? build.dev.dir : build.prod.dir,
+  distDir: join(osRoot, buildDir),
   assetPrefix: baseUrl !== '/' ? baseUrl : ''
 })

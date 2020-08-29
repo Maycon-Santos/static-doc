@@ -29,21 +29,18 @@ if (command === 'clear') {
 }
 
 if (command === 'dev') {
-  deleteIgnoredFiles()
   unlinkFiles()
   linkPages()
   startServer()
 }
 
 if (command === 'build') {
-  deleteIgnoredFiles()
   unlinkFiles()
   linkPages()
   build()
 }
 
 if (command === 'build:static') {
-  deleteIgnoredFiles()
   unlinkFiles()
   linkPages()
   build()

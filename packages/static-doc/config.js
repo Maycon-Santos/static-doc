@@ -1,18 +1,20 @@
 const { resolve } = require('path')
-const { argv } = require('yargs')
+let { argv } = require('yargs')
+
+if (!argv.dir) {
+  argv = JSON.parse(process.env.argv)
+}
 
 const command = argv._[0]
 
 const paths = {
   root: {
-    get user () {
-      return process.cwd()
-    },
-    own: resolve(__dirname)
+    user: process.cwd(),
+    own: __dirname
   },
   docs: {
     get root () {
-      return resolve(paths.root.user, argv.dir || process.env.dir || '')
+      return resolve(paths.root.user, argv.dir)
     },
     pages: {
       get origin () {
