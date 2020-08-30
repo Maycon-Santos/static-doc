@@ -52,7 +52,8 @@ const Search: React.FC<Props> = props => {
                   </span>
                   {Boolean(page.data.description) && (
                     <span className={styles.pageDescription}>
-                      {page.data.description}
+                      {page.data.description.slice(0, 100)}
+                      {page.data.description.length > 100 && '...'}
                     </span>
                   )}
                 </a>
