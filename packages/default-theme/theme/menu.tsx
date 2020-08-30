@@ -23,7 +23,7 @@ const Menu: React.FC = () => {
           <div key={menu} className={styles.navGroup}>
             {menu && <h3 className={styles.navName}>{menu}</h3>}
             <ul className={styles.navList}>
-              {pages.map((page: any) => {
+              {pages.map(page => {
                 const activeClassName =
                   currentPage &&
                   (page.route === currentPage.route ? styles.active : '')

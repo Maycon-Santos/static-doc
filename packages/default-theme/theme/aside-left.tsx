@@ -3,10 +3,12 @@ import Logo from './logo'
 import Socials from './socials'
 import SearchBar from './search-bar'
 import Menu from './menu'
+import Search from './search'
 import styles from './styles/aside-left.css'
 
 const AsideLeft: React.FC = () => {
   const [translationY, setTranslationY] = useState(0)
+  const [search, setSearch] = useState('')
 
   const resolveTranslationY = () => {
     if (window.innerWidth >= 1200) {
@@ -36,8 +38,8 @@ const AsideLeft: React.FC = () => {
           <Socials />
         </div>
       </div>
-      <SearchBar />
-      <Menu />
+      <SearchBar search={search} setSearch={setSearch} />
+      {search ? <Search search={search} /> : <Menu />}
     </div>
   )
 }

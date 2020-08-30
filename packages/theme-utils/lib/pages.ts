@@ -1,14 +1,16 @@
+import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
 const { userConfig } = publicRuntimeConfig
 
-type Page = {
+export type Page = {
   category: string
   data: {
     title: string
     name: string
+    description: string
   }
   icon: {
     light: string
@@ -22,7 +24,7 @@ type Page = {
 const pages = publicRuntimeConfig.pages as Page[]
 
 export function usePages () {
-  return pages
+  return useMemo(() => JSON.parse(JSON.stringify(pages)), [])
 }
 
 export function useCurrentPage (): Page | undefined {

@@ -19,7 +19,6 @@ module.exports = pipe(
   allowGlobalCssImport
   // allowAbsoluteImport,
 )({
-  target: 'serverless',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   distDir: join(osRoot, buildDir),
   assetPrefix: baseUrl !== '/' ? baseUrl : ''

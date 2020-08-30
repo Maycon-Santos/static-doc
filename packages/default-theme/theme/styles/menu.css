@@ -18,6 +18,10 @@
   margin: 0;
 }
 
+.searchItem  + .searchItem {
+  margin-top: var(--spacing-2);
+}
+
 .navLink {
   display: flex;
   align-items: center;
@@ -32,7 +36,8 @@
 
 .navLink:hover,
 .navLink.active {
-  padding: 0 var(--spacing-3);
+  padding-right: var(--spacing-3);
+  padding-left: var(--spacing-3);
   transition: padding 300ms, background 300ms;
 }
 
@@ -51,6 +56,10 @@
 
   .navLink {
     color: var(--color-light-gray-700);
+
+    &.navLinkSearch {
+      border-color: var(--color-light-gray-500);
+    }
   }
 
   .navLink:hover,
@@ -70,14 +79,18 @@
 
   .navLink {
     color: var(--color-dark-gray-700);
+
+    &.navLinkSearch {
+      border-color: var(--color-dark-gray-500);
+    }
   }
 
-  .navLink:hover,
-  .navLink.active {
+  .navLink:hover {
     color: var(--color-dark-text-500);
   }
 
-  .navLink.active {
+  .navLink.active,
+  .navLinkSearch:hover {
     background-color: var(--color-dark-gray-400);
   }
 }
