@@ -37,5 +37,6 @@ docs_out
 
 /static-doc
 packages/static-doc/pages
+packages/static-doc/public
 !packages/static-doc/pages/_app.js
 !packages/static-doc/pages/_document.js
