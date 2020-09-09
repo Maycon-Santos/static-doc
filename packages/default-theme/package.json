@@ -31,7 +31,8 @@
     "@static-doc/theme-utils": ">=0.0.0",
     "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.1.1",
-    "react-custom-scrollbars": "^4.2.1"
+    "react-custom-scrollbars": "^4.2.1",
+    "react-device-detect": "^1.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

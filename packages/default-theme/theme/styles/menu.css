@@ -18,7 +18,7 @@
   margin: 0;
 }
 
-.searchItem  + .searchItem {
+.searchItem + .searchItem {
   margin-top: var(--spacing-2);
 }
 

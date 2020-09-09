@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import MenuIcon from './vectors/menu-icon'
 import TextIcon from './vectors/text-icon'
 import ArrowRightIcon from './vectors/arrow-right-icon'
@@ -14,7 +14,8 @@ const MobileNavButtons: React.FC<Props> = props => {
   const [scrollX, setScrollX] = useState(0)
   const { layoutRef, mainRef } = props
 
-  const scrollXLimit = layoutRef?.current?.scrollWidth - global?.innerWidth || 0
+  const scrollXLimit =
+    layoutRef?.current?.scrollWidth - layoutRef?.current?.clientWidth || 0
   const scrollXHalf = scrollXLimit / 2
 
   const leftProgress = 1 - Math.min(scrollX / scrollXHalf, 1) || 0
@@ -53,7 +54,7 @@ const MobileNavButtons: React.FC<Props> = props => {
   useEffect(() => {
     const progress = leftProgress + rightProgress
 
-    if (window.innerWidth >= 1200) {
+    if (layoutRef?.current?.clientWidth >= 1200) {
       mainRef.current.style.opacity = '1'
       document.body.style.overflow = 'initial'
     } else {
@@ -66,6 +67,13 @@ const MobileNavButtons: React.FC<Props> = props => {
     window.addEventListener('resize', reset)
     return () => window.removeEventListener('resize', reset)
   }, [scrollX])
+
+  useEffect(() => {
+    const scrollXLimit =
+      layoutRef.current.scrollWidth - layoutRef.current.clientWidth
+    const scrollXHalf = scrollXLimit / 2
+    layoutRef.current.scrollTo(scrollXHalf, 0)
+  }, [])
 
   return (
     <>

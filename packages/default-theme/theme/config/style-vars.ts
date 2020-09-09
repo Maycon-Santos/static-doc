@@ -1,6 +1,26 @@
 const styleVars = {
-  spacing: ['2px', '4px', '8px', '16px', '32px', '48px', '64px', '80px', '100px'],
-  fontSize: ['10px', '12px', '14px', '16px', '20px', '24px', '32px', '48px', '64px'],
+  spacing: [
+    '2px',
+    '4px',
+    '8px',
+    '16px',
+    '32px',
+    '48px',
+    '64px',
+    '80px',
+    '100px'
+  ],
+  fontSize: [
+    '10px',
+    '12px',
+    '14px',
+    '16px',
+    '20px',
+    '24px',
+    '32px',
+    '48px',
+    '64px'
+  ],
   fontWeight: {
     semiBold: 600,
     bold: 700

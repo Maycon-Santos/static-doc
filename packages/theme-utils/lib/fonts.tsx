@@ -9,9 +9,9 @@ type FontsProps = {
   body: {
     family: string[]
     weight: number
-  },
+  }
   googleFonts: Array<{
-    family: string,
+    family: string
     weights: number[]
   }>
 }
@@ -22,10 +22,12 @@ export const Fonts: React.FC<FontsProps> = props => {
       family: [defaultFontFamily, 'sans-serif'],
       weight: 500
     },
-    googleFonts = [{
-      family: defaultFontFamily,
-      weights: [500]
-    }],
+    googleFonts = [
+      {
+        family: defaultFontFamily,
+        weights: [500]
+      }
+    ],
     children
   } = props
 
@@ -38,7 +40,7 @@ export const Fonts: React.FC<FontsProps> = props => {
       <link
         key={formattedFamily}
         href={`https://fonts.googleapis.com/css2?family=${formattedFamily}:wght@${formattedWeight}&display=swap`}
-        rel="stylesheet"
+        rel='stylesheet'
       />
     )
   })

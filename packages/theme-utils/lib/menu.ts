@@ -12,10 +12,12 @@ type MenuTree = {
       title: string
       name: string
     }
-    icon: null | {
-      dark: string
-      light: string
-    }
+    icon:
+      | null
+      | {
+          dark: string
+          light: string
+        }
     isExternalLink: boolean
     path: string
     route: string

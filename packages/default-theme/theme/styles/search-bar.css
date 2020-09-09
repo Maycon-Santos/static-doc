@@ -61,7 +61,7 @@
   .input {
     border-color: var(--color-light-gray-500);
   }
-  
+
   .input:focus {
     color: var(--color-light-text-500);
     border-color: var(--color-light-gray-700);
@@ -86,7 +86,7 @@
     border-color: var(--color-dark-gray-300);
     background-color: var(--color-dark-gray-300);
   }
-  
+
   .input:focus {
     color: var(--color-dark-text-500);
     border-color: var(--color-dark-gray-500);

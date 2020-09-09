@@ -4,7 +4,10 @@ const rmRecursive = require('../../utils/rm-recursive')
 const { root } = require('../../config')
 
 module.exports = function deleteIgnoredFiles () {
-  const stdout = execSync('git ls-files . --ignored --exclude-standard --others', { maxBuffer: Infinity })
+  const stdout = execSync(
+    'git ls-files . --ignored --exclude-standard --others',
+    { maxBuffer: Infinity }
+  )
   const pathsString = stdout.toString()
   const paths = pathsString.split(/\n/g)
 

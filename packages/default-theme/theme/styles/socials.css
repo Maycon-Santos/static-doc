@@ -1,4 +1,5 @@
-.list, .item {
+.list,
+.item {
   display: flex;
   font-size: 0;
 }

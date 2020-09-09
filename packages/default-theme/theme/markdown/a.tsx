@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/markdown/a.css'
 
-export const a: React.FC = (props) => {
+export const a: React.FC = props => {
   const { children, ...rest } = props
 
   return (

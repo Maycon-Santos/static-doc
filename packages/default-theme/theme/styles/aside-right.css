@@ -6,7 +6,7 @@
   padding-right: var(--spacing-3);
   scroll-snap-align: start;
   height: calc(100vh - var(--spacing-4));
-  
+
   @media (min-width: 1200px) {
     position: sticky;
     top: var(--spacing-3);

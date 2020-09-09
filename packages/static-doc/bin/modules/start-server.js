@@ -9,25 +9,6 @@ const { root, isDev } = require('../../config')
 module.exports = function startServer () {
   const nextConfig = require('../../next.config')
 
-  // if (isProd) {
-  //   console.log('roda!')
-  //   const spawnConfig = {
-  //     stdio: 'inherit',
-  //     shell: true,
-  //     env: {
-  //       ...process.env,
-  //       argv: JSON.stringify(argv),
-  //       NODE_ENV: 'production'
-  //     }
-  //   }
-
-  //   const nextBin = require.resolve('.bin/next')
-
-  //   spawnSync('node', [nextBin, 'start', root.own], spawnConfig)
-
-  //   return
-  // }
-
   const app = next({
     dev: isDev,
     dir: root.own,

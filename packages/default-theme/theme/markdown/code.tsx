@@ -4,17 +4,16 @@ import { useColorMode } from '@static-doc/theme-utils'
 import syntaxHighlighting from '../config/syntax-highlighting'
 import styles from '../styles/markdown/code.css'
 
-export const inlineCode: React.FC = (props) => {
+export const inlineCode: React.FC = props => {
   const { children } = props
 
-  return (
-    <code className={styles.inlineCode}>
-      {children}
-    </code>
-  )
+  return <code className={styles.inlineCode}>{children}</code>
 }
 
-export const code: React.FC<{ children: string, className: string }> = (props) => {
+export const code: React.FC<{
+  children: string
+  className: string
+}> = props => {
   const { children, className } = props
   const language = className?.replace(/language-/, '') as Language
   const { colorMode } = useColorMode()

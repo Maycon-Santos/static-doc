@@ -1,10 +1,8 @@
 import React from 'react'
 import styles from '../styles/markdown/img.css'
 
-export const img: React.FC = (props) => {
+export const img: React.FC = props => {
   const { ...rest } = props
 
-  return (
-    <img alt="" {...rest} className={styles.image} />
-  )
+  return <img alt='' {...rest} className={styles.image} />
 }

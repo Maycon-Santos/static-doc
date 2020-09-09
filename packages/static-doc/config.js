@@ -10,7 +10,11 @@ const command = argv._[0]
 const paths = {
   root: {
     user: process.cwd(),
-    own: __dirname
+    own: __dirname,
+    os: __dirname
+      .split('/')
+      .map(() => '..')
+      .join('/')
   },
   docs: {
     get root () {
@@ -23,10 +27,18 @@ const paths = {
       get destiny () {
         return resolve(paths.root.own, 'pages')
       }
+    },
+    public: {
+      get origin () {
+        return resolve(paths.docs.root, 'public')
+      },
+      get destiny () {
+        return resolve(paths.root.own, 'public')
+      }
     }
   },
   get userConfig () {
-    return resolve(paths.docs.root, '.config')
+    return resolve(paths.docs.root, 'config.js')
   },
 
   get testEnvironments () {

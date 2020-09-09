@@ -2,8 +2,6 @@
   display: flex;
   margin: 0 auto;
   padding: var(--spacing-3);
-  scroll-snap-type: x mandatory;
-  overflow-x: auto;
   scroll-behavior: smooth;
 
   @media (min-width: 1200px) {
@@ -13,14 +11,14 @@
 }
 
 .main {
-  width: 100vw;
-  flex: 0 0 100vw;
-  box-sizing: border-box;
+  width: 100%;
+  flex: 0 0 100%;
   padding: var(--spacing-6) var(--spacing-3) 0 var(--spacing-3);
   scroll-snap-align: start;
-  
+
   @media (min-width: 1200px) {
     flex: 1;
+    box-sizing: border-box;
     padding: var(--spacing-4) var(--spacing-4) 0 var(--spacing-4);
   }
 }

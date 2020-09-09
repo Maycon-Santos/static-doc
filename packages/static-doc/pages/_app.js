@@ -53,14 +53,24 @@ const App = props => {
           {currentPage?.data?.title}
           {userConfig.titleSuffix}
         </title>
-        <link rel="shortcut icon" href={getAsset(userConfig?.favicon)} />
-        <meta name="Description" content={currentPage?.data?.description} />
+        <link rel='shortcut icon' href={getAsset(userConfig?.favicon)} />
+        <meta name='Description' content={currentPage?.data?.description} />
         <style>{`
           body {
             opacity: ${Number(initialized)};
             transition: opacity 0ms 100ms;
           }
         `}</style>
+
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='keywords' content='Keywords' />
+        {!userConfig.pwa.disable && (
+          <link rel='manifest' href={userConfig.pwa.manifestUrl} />
+        )}
+        {/* <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' /> */}
+        {/* <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' /> */}
+        {/* <link rel="apple-touch-icon" href="/apple-icon.png" /> */}
+        {/* <meta name="theme-color" content="#317EFB"/> */}
       </Head>
     </Theme>
   )

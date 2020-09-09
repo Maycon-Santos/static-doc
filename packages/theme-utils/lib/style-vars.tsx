@@ -15,10 +15,14 @@ type StyleVars = {
 
 function injectStyleVars (styleVars: StyleVars) {
   return React.useMemo(() => {
-    const flattenStyleVars = flat(styleVars, { delimiter: '-' }) as { [key: string]: any }
+    const flattenStyleVars = flat(styleVars, { delimiter: '-' }) as {
+      [key: string]: any
+    }
 
     const StyleVarsArr = Object.keys(flattenStyleVars).map(varName => {
-      const varNameHyphenCase = varName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+      const varNameHyphenCase = varName
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .toLowerCase()
       return `--${varNameHyphenCase}: ${flattenStyleVars[varName]}`
     })
 

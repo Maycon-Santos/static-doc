@@ -5,10 +5,13 @@ module.exports = function allowGlobalCssImport (nextConfig = {}) {
         if (rule.oneOf) {
           rule.oneOf.forEach(ruleFragment => {
             const testIsRegex = ruleFragment.test && ruleFragment.test.test
-            const isErrorLoader = ruleFragment.issuer && ruleFragment.use.loader !== 'error-loader'
+            const isErrorLoader =
+              ruleFragment.issuer && ruleFragment.use.loader !== 'error-loader'
 
             if (testIsRegex) {
-              const ruleContainsGlobalCss = ruleFragment.test.test('css-file.css')
+              const ruleContainsGlobalCss = ruleFragment.test.test(
+                'css-file.css'
+              )
 
               if (ruleContainsGlobalCss && isErrorLoader) {
                 delete ruleFragment.issuer

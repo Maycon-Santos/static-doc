@@ -56,7 +56,9 @@ describe('cli', () => {
 
   it('should link .mdx files in pages', () => {
     spawnSync('node', ['bin', 'link', '--dir', 'test-environments/simple'])
-    const mdxFiles = readdirSync(resolve(root.own, 'test-environments/simple/pages'))
+    const mdxFiles = readdirSync(
+      resolve(root.own, 'test-environments/simple/pages')
+    )
     const pageFiles = readdirSync(docs.pages.destiny)
     mdxFiles.forEach(file => {
       expect(pageFiles.includes(file)).toBe(true)

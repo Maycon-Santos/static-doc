@@ -4,7 +4,11 @@ module.exports = {
     es6: true,
     jest: true
   },
-  extends: ['plugin:react/recommended', 'standard', 'plugin:jsx-a11y/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'standard',
+    'plugin:jsx-a11y/recommended'
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -21,10 +25,13 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'react/prop-types': 'off',
-    'jsx-a11y/anchor-is-valid': ['error', {
-      'components': ['Link'],
-      'specialLink': ['hrefLeft', 'hrefRight'],
-      'aspects': ['invalidHref', 'preferButton']
-    }]
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ]
   }
 }

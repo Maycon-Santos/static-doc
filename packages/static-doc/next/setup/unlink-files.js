@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { readdirSync, lstatSync, unlinkSync, existsSync } = require('fs')
 const { docs, root } = require('../../config')
 
-module.exports = function unlinkFiles (done) {
+module.exports = function unlinkFiles () {
   const pathsToUnlink = [docs.pages.destiny, root.own]
 
   pathsToUnlink.forEach(dir => {
