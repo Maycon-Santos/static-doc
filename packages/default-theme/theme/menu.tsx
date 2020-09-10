@@ -3,8 +3,7 @@ import Link from 'next/link'
 import {
   useMenu,
   useCurrentPage,
-  useColorMode,
-  useAsset
+  useColorMode
 } from '@static-doc/theme-utils'
 import { Scrollbars } from 'react-custom-scrollbars'
 import styles from './styles/menu.css'
@@ -30,7 +29,7 @@ const Menu: React.FC = () => {
                 const anchorClassName = [styles.navLink, activeClassName].join(
                   ' '
                 )
-                const iconSrc = page.icon && useAsset(page.icon[colorMode])
+                const iconSrc = page.icon && page.icon[colorMode]
 
                 const Child: React.FC = () => (
                   <>

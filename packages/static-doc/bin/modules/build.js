@@ -1,7 +1,7 @@
 const { spawnSync } = require('child_process')
 const { argv } = require('yargs')
 const { root } = require('../../config')
-const userConfig = require('./user-config')
+const userConfig = require('../../data/user-config')
 const nextBin = require.resolve('.bin/next')
 
 /**
@@ -15,7 +15,7 @@ function resolveNextJsBuildArgs () {
  * Resolves `next export` cli opitons.
  */
 function resolveNextJsExportArgs () {
-  return [nextBin, 'export', root.own, '-o', userConfig.buildStaticDir]
+  return [nextBin, 'export', root.own, '-o', userConfig.outDir]
 }
 
 /**

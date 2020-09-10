@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 
 export const EssentialsContext = createContext({
-  getAsset: (assetKey: string) => assetKey,
   headings: {
     register (content: string, element: string) {
       return { id: content + element }

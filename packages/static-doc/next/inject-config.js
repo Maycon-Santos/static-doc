@@ -6,7 +6,7 @@ module.exports = function injectConfig (nextConfig = {}) {
     publicRuntimeConfig: {
       pages: require('./pages'),
       userPackage: require(resolve(root.user, 'package.json')),
-      userConfig: require('../bin/modules/user-config')
+      userConfig: require('../data/user-config')
     }
   })
 }

@@ -1,5 +1,5 @@
 const { existsSync, symlinkSync } = require('fs')
-const { pwa } = require('../../bin/modules/user-config')
+const { pwa } = require('../../data/user-config')
 const { docs } = require('../../config')
 
 module.exports = function linkPublicDir () {

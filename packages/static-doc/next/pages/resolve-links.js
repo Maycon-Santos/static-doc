@@ -1,4 +1,4 @@
-const userConfig = require('../../bin/modules/user-config')
+const userConfig = require('../../data/user-config')
 const checkIsExternalLink = require('./check-is-external-link')
 const formatPage = require('./format-page')
 

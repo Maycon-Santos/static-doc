@@ -3,12 +3,14 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import getConfig from 'next/config'
 import Theme from '@static-doc/user-theme'
-import getAsset from '../utils/run-time/get-asset'
-import resolveHeadingId from '../utils/run-time/resolve-heading-id'
 import { useCurrentPage } from '@static-doc/theme-utils'
 
 const { publicRuntimeConfig } = getConfig()
 const { userConfig } = publicRuntimeConfig
+
+function resolveHeadingId (content = '') {
+  return content.replace(/ /g, '-')
+}
 
 const App = props => {
   const { Component, pageProps } = props
@@ -45,7 +47,7 @@ const App = props => {
   }, [])
 
   return (
-    <Theme essentials={{ getAsset, headings }}>
+    <Theme essentials={{ headings }}>
       <Component {...pageProps} />
       <Head>
         <title>
@@ -53,7 +55,7 @@ const App = props => {
           {currentPage?.data?.title}
           {userConfig.titleSuffix}
         </title>
-        <link rel='shortcut icon' href={getAsset(userConfig?.favicon)} />
+        <link rel='shortcut icon' href={userConfig?.favicon} />
         <meta name='Description' content={currentPage?.data?.description} />
         <style>{`
           body {

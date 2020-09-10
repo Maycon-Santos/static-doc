@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { usePages, useAsset, useColorMode, Page } from '@static-doc/theme-utils'
+import { usePages, useColorMode, Page } from '@static-doc/theme-utils'
 import styles from './styles/search.css'
 
 type Props = {
@@ -38,7 +38,7 @@ const Search: React.FC<Props> = props => {
       <ul className={styles.list}>
         {filteredPages.map(page => {
           if (page.isExternalLink) return null
-          const iconSrc = page.icon && useAsset(page.icon[colorMode])
+          const iconSrc = page.icon && page.icon[colorMode]
 
           return (
             <li key={page.route} className={styles.item}>
