@@ -26,5 +26,9 @@ module.exports = function resolveBaseUrl (config) {
     return config
   }
 
+  if (!(/\/$/.test(config.baseUrl))) {
+    config.baseUrl = `${config.baseUrl}/`
+  }
+
   return config
 }

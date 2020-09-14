@@ -23,14 +23,5 @@ module.exports = {
   ],
   colorMode: {
     initial: 'light'
-  },
-  styleVars: {
-    colors: {
-      light: {
-        body: {
-          background: 'red'
-        }
-      }
-    }
   }
 }
