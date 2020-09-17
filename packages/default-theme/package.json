@@ -1,6 +1,6 @@
 {
   "name": "@static-doc/default-theme",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "> TODO: description",
   "author": "Maycon-Santos <mayconsantos.dev@gmail.com>",
   "homepage": "https://github.com/Maycon-Santos/static-doc#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/Maycon-Santos/static-doc/issues"
   },
   "dependencies": {
-    "@static-doc/theme-utils": ">=0.0.0",
+    "@static-doc/theme-utils": "^0.0.1-alpha.0",
     "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.1.1",
     "react-custom-scrollbars": "^4.2.1",
