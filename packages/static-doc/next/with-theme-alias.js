@@ -1,6 +1,6 @@
 const { theme } = require('../data/user-config')
 
-module.exports = function injectThemeAlias (nextConfig = {}) {
+module.exports = function WithThemeAlias (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
     webpack (config, options) {
       config.resolve.alias['@static-doc/user-theme'] = theme

@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const { root } = require('../config')
 
-module.exports = function injectConfig (nextConfig = {}) {
+module.exports = function WithRuntimeConfig (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
     publicRuntimeConfig: {
       pages: require('../data/pages'),

@@ -1,4 +1,4 @@
-module.exports = function allowGlobalCssImport (nextConfig = {}) {
+module.exports = function withCssGlobalImport (nextConfig = {}) {
   return Object.assign({}, nextConfig, {
     webpack (config, options) {
       config.module.rules.forEach(rule => {
