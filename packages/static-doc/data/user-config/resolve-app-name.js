@@ -1,9 +1,9 @@
 const { existsSync } = require('fs')
 const { join } = require('path')
 const log = require('../../utils/log')
-const { root, userConfig } = require('../../config')
+const { USER_ROOT_PATH, USER_CONFIG_PATH } = require('../../constants')
 
-const userPackageJsonPath = join(root.user, 'package.json')
+const userPackageJsonPath = join(USER_ROOT_PATH, 'package.json')
 const userPackageJson = existsSync(userPackageJsonPath) ? require(userPackageJsonPath) : null
 
 function getAppNameByPackageJson () {
@@ -12,14 +12,14 @@ function getAppNameByPackageJson () {
   if (!userPackageJson) {
     log.warn(
       `${userPackageJsonPath} not found.`,
-      `You need to set your app name in ${userConfig}.`
+      `You need to set your app name in ${USER_CONFIG_PATH}.`
     )
   }
 
   if (!userPackageJson.name) {
     log.warn(
       'Name field not found in your package.json.',
-      `You need to set your app name in your package.json or ${userConfig}.`
+      `You need to set your app name in your package.json or ${USER_CONFIG_PATH}.`
     )
   }
 
@@ -42,7 +42,7 @@ module.exports = function resolveAppName (config) {
 
   log.error(
     'The name field must be a string or number.',
-    `Please review your configuration file: ${userConfig}`
+    `Please review your configuration file: ${USER_CONFIG_PATH}`
   )
 
   process.exit()

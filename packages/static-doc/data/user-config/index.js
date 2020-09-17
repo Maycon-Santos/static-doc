@@ -1,6 +1,6 @@
 const { existsSync } = require('fs')
 const pipe = require('../../utils/pipe')
-const { userConfig } = require('../../config')
+const { USER_CONFIG_PATH } = require('../../constants')
 const resolveTheme = require('./resolve-theme')
 const resolveBaseUrl = require('./resolve-base-url')
 const resolveBuildDirectories = require('./resolve-build-directories')
@@ -9,7 +9,7 @@ const resolveTitleAffixes = require('./resolve-title-affixes')
 const resolveAppName = require('./resolve-app-name')
 
 function getUserConfig () {
-  const config = existsSync(userConfig) ? require(userConfig) : {}
+  const config = existsSync(USER_CONFIG_PATH) ? require(USER_CONFIG_PATH) : {}
 
   return pipe(
     resolveTheme,

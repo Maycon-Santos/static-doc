@@ -1,7 +1,7 @@
 const pipe = require('../../utils/pipe')
 const deepReaddir = require('../../utils/deep-readdir')
 const log = require('../../utils/log')
-const { docs } = require('../../config')
+const { DOCS_PAGES_ORIGIN_PATH } = require('../../constants')
 const { menu = [] } = require('../user-config')
 const sortPages = require('./sort-pages')
 const resolveRoutes = require('./resolve-routes')
@@ -11,7 +11,7 @@ const resolveData = require('./resolve-data')
 const resolveIcon = require('./resolve-icon')
 
 function getPages () {
-  const pagesFilename = deepReaddir(docs.pages.origin)
+  const pagesFilename = deepReaddir(DOCS_PAGES_ORIGIN_PATH)
   const validPagesFilename = pagesFilename.filter(filename => {
     if (/.mdx?$/.test(filename)) return true
 

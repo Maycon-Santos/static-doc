@@ -1,6 +1,6 @@
 const { spawnSync } = require('child_process')
 const { argv } = require('yargs')
-const { root } = require('../../config')
+const { OWN_ROOT_PATH } = require('../../constants')
 const userConfig = require('../../data/user-config')
 const nextBin = require.resolve('.bin/next')
 
@@ -8,14 +8,14 @@ const nextBin = require.resolve('.bin/next')
  * Resolves `next build` cli opitons.
  */
 function resolveNextJsBuildArgs () {
-  return [nextBin, 'build', root.own]
+  return [nextBin, 'build', OWN_ROOT_PATH]
 }
 
 /**
  * Resolves `next export` cli opitons.
  */
 function resolveNextJsExportArgs () {
-  return [nextBin, 'export', root.own, '-o', userConfig.outDir]
+  return [nextBin, 'export', OWN_ROOT_PATH, '-o', userConfig.outDir]
 }
 
 /**
@@ -32,7 +32,7 @@ module.exports = function () {
     shell: true,
     env: {
       ...process.env,
-      argv: JSON.stringify(argv),
+      STATIC_DOCS_DIR: argv.dir,
       NODE_ENV: 'production'
     }
   }

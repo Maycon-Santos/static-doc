@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 const { execSync } = require('child_process')
 const rmRecursive = require('../../utils/rm-recursive')
-const { root } = require('../../config')
+const { OWN_ROOT_PATH } = require('../../constants')
 
 module.exports = function deleteIgnoredFiles () {
   const stdout = execSync(
@@ -16,6 +16,6 @@ module.exports = function deleteIgnoredFiles () {
       return
     }
 
-    rmRecursive(resolve(root.own, path))
+    rmRecursive(resolve(OWN_ROOT_PATH, path))
   })
 }

@@ -4,14 +4,17 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 const { argv } = require('yargs')
-const { root, isDev } = require('../../config')
+const { OWN_ROOT_PATH } = require('../../constants')
+
+const command = argv._[0]
+const isDev = command === 'dev'
 
 module.exports = function startServer () {
   const nextConfig = require('../../next.config')
 
   const app = next({
     dev: isDev,
-    dir: root.own,
+    dir: OWN_ROOT_PATH,
     conf: nextConfig
   })
 

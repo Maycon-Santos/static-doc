@@ -1,6 +1,8 @@
+const { DEFAULT_DOCS_DIR } = require('../../constants')
+
 const injectDirPositional = yargs => {
   yargs.positional('dir', {
-    default: 'docs',
+    default: DEFAULT_DOCS_DIR,
     describe: 'Directory of docs',
     type: 'string'
   })

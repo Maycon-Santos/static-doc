@@ -1,8 +1,16 @@
-const { symlinkSync } = require('fs')
+const { symlinkSync, existsSync } = require('fs')
 const { join } = require('path')
 const { argv } = require('yargs')
-const { root } = require('../../config')
+const log = require('../../utils/log')
+const { OWN_ROOT_PATH, USER_ROOT_PATH } = require('../../constants')
 
 module.exports = function link () {
-  symlinkSync(root.own, join(root.user, argv.dir))
+  const destiny = join(USER_ROOT_PATH, argv.dir)
+
+  if (existsSync(destiny)) {
+    log.warn(`${destiny} already exists`)
+    process.exit()
+  }
+
+  symlinkSync(OWN_ROOT_PATH, destiny)
 }

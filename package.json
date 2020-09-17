@@ -13,7 +13,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn --cwd \"packages/theme-utils\" build && yarn --cwd \"packages/default-theme\" build && yarn --cwd \"packages/static-doc\" build",
+    "build": "lerna run build",
     "bootstrap": "lerna bootstrap"
   },
   "lint-staged": {

@@ -5,13 +5,13 @@ const visit = require('unist-util-visit')
 const remove = require('unist-util-remove')
 const yaml = require('yaml')
 const detectFrontmatter = require('remark-frontmatter')
-const { docs } = require('../../config')
+const { DOCS_PAGES_ORIGIN_PATH } = require('../../constants')
 
 module.exports = function resolveData (pages) {
   return pages.map(page => {
     const { path } = page
 
-    const content = readFileSync(join(docs.pages.destiny, path))
+    const content = readFileSync(join(DOCS_PAGES_ORIGIN_PATH, path))
     const mdxCompiler = createCompiler({
       remarkPlugins: [detectFrontmatter, extractFrontmatter]
     })

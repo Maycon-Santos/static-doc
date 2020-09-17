@@ -1,5 +1,5 @@
 const log = require('../../utils/log')
-const { userConfig } = require('../../config')
+const { USER_CONFIG_PATH } = require('../../constants')
 const { menu = [] } = require('../user-config')
 
 module.exports = function resolveIcon (pages) {
@@ -33,7 +33,7 @@ module.exports = function resolveIcon (pages) {
 
     log.error(
       `${path} icon is a function, but it must be a string or an object like "{light: 'path', dark: 'path'}"`,
-      `Please review your configuration file: ${userConfig}`
+      `Please review your configuration file: ${USER_CONFIG_PATH}`
     )
     process.exit()
   })

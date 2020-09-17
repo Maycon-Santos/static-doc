@@ -1,5 +1,5 @@
 const log = require('../../utils/log')
-const { userConfig } = require('../../config')
+const { USER_CONFIG_PATH } = require('../../constants')
 
 function resolveManifestUrl (config) {
   if (typeof config.pwa.manifestUrl === 'undefined') {
@@ -9,7 +9,7 @@ function resolveManifestUrl (config) {
   if (typeof config.pwa.manifestUrl !== 'string') {
     log.error(
       'pwa.manifestUrl must be a string.',
-      `Please review your configuration file: ${userConfig}`
+      `Please review your configuration file: ${USER_CONFIG_PATH}`
     )
     process.exit()
   }
@@ -25,7 +25,7 @@ function resolveDisable (config) {
   if (typeof config.pwa.disable !== 'boolean') {
     log.error(
       'pwa.disable must be a string.',
-      `Please review your configuration file: ${userConfig}`
+      `Please review your configuration file: ${USER_CONFIG_PATH}`
     )
     process.exit()
   }
