@@ -30,10 +30,8 @@
   },
   "peerDependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
+    "react-dom": "^16.13.1",
     "@static-doc/default-theme": "^0.0.4-alpha.0"
   },
-  "gitHead": "fa7b4d95a0f92050dbcba736565c4bf675307fd7"
+  "gitHead": "7a48f226525de27fed457c0678a835771742d753"
 }
