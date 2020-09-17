@@ -1,6 +1,6 @@
 {
   "name": "static-doc",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.5-alpha.0",
   "private": false,
   "scripts": {
     "build": "node bin/index.js build --dir ../../docs"
@@ -29,9 +29,9 @@
     "yargs": "^15.3.1"
   },
   "peerDependencies": {
+    "@static-doc/default-theme": "^0.0.4-alpha.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "@static-doc/default-theme": "^0.0.4-alpha.0"
+    "react-dom": "^16.13.1"
   },
   "gitHead": "7a48f226525de27fed457c0678a835771742d753"
 }
