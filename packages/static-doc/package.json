@@ -8,6 +8,13 @@
   "bin": {
     "static-doc": "./bin/index.js"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maycon-Santos/static-doc.git"
+  },
   "dependencies": {
     "@mdx-js/loader": "^1.6.1",
     "@mdx-js/mdx": "^1.6.1",
