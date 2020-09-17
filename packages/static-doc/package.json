@@ -1,6 +1,6 @@
 {
   "name": "static-doc",
-  "version": "0.0.5-alpha.0",
+  "version": "0.0.1-alhpa.1",
   "private": false,
   "scripts": {
     "build": "node bin/index.js build --dir ../../docs"
