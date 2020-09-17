@@ -54,5 +54,6 @@
     "postcss-modules": "^3.2.1",
     "postcss-nested": "^4.2.3",
     "postcss-preset-env": "^6.7.0"
-  }
+  },
+  "gitHead": "fa7b4d95a0f92050dbcba736565c4bf675307fd7"
 }

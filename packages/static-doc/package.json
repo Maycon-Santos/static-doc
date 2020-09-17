@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "@static-doc/default-theme": "^0.0.3-alpha.0"
-  }
+  },
+  "gitHead": "fa7b4d95a0f92050dbcba736565c4bf675307fd7"
 }

@@ -30,5 +30,6 @@
   "devDependencies": {
     "@types/flat": "^5.0.1",
     "@types/lodash.merge": "^4.6.6"
-  }
+  },
+  "gitHead": "fa7b4d95a0f92050dbcba736565c4bf675307fd7"
 }
