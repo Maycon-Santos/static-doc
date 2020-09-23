@@ -22,7 +22,12 @@ module.exports = {
     'Customize/custom-components.mdx',
     'Customize/error-page.mdx'
   ],
-  colorMode: {
-    initial: 'light'
+  theme: {
+    path: '',
+    config: {
+      colorMode: {
+        initial: 'light'
+      }
+    }
   }
 }

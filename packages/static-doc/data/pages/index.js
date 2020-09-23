@@ -7,8 +7,8 @@ const sortPages = require('./sort-pages')
 const resolveRoutes = require('./resolve-routes')
 const resolveCategories = require('./resolve-categories')
 const checkIsExternalLink = require('./check-is-external-link')
-const resolveData = require('./resolve-data')
 const resolveIcon = require('./resolve-icon')
+const resolvePageData = require('./resolve-page-data')
 
 function getPages () {
   const pagesFilename = deepReaddir(DOCS_PAGES_ORIGIN_PATH)
@@ -38,7 +38,7 @@ function getPages () {
     sortPages,
     resolveRoutes,
     resolveCategories,
-    resolveData,
+    resolvePageData,
     resolveIcon
   )(pages)
 }
