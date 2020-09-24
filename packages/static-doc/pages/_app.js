@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import getConfig from 'next/config'
 import Theme from '@static-doc/user-theme'
-import { useCurrentPage } from '@static-doc/theme-utils'
+import { useCurrentPage, HeadingContext } from '@static-doc/theme-utils'
 
 const { publicRuntimeConfig } = getConfig()
 const { userConfig } = publicRuntimeConfig
@@ -47,34 +47,36 @@ const App = props => {
   }, [])
 
   return (
-    <Theme essentials={{ headings }}>
-      <Component {...pageProps} />
-      <Head>
-        <title>
-          {userConfig.titlePrefix}
-          {currentPage?.data?.title}
-          {userConfig.titleSuffix}
-        </title>
-        <link rel='shortcut icon' href={userConfig?.favicon} />
-        <meta name='Description' content={currentPage?.data?.description} />
-        <style>{`
-          body {
-            opacity: ${Number(initialized)};
-            transition: opacity 0ms 100ms;
-          }
-        `}</style>
+    <HeadingContext.Provider value={headings}>
+      <Theme>
+        <Component {...pageProps} />
+        <Head>
+          <title>
+            {userConfig.titlePrefix}
+            {currentPage?.data?.title}
+            {userConfig.titleSuffix}
+          </title>
+          <link rel='shortcut icon' href={userConfig?.favicon} />
+          <meta name='Description' content={currentPage?.data?.description} />
+          <style>{`
+            body {
+              opacity: ${Number(initialized)};
+              transition: opacity 0ms 100ms;
+            }
+          `}</style>
 
-        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <meta name='keywords' content='Keywords' />
-        {!userConfig.pwa.disable && (
-          <link rel='manifest' href={userConfig.pwa.manifestUrl} />
-        )}
-        {/* <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' /> */}
-        {/* <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' /> */}
-        {/* <link rel="apple-touch-icon" href="/apple-icon.png" /> */}
-        {/* <meta name="theme-color" content="#317EFB"/> */}
-      </Head>
-    </Theme>
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='keywords' content='Keywords' />
+          {!userConfig.pwa.disable && (
+            <link rel='manifest' href={userConfig.pwa.manifestUrl} />
+          )}
+          {/* <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' /> */}
+          {/* <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' /> */}
+          {/* <link rel="apple-touch-icon" href="/apple-icon.png" /> */}
+          {/* <meta name="theme-color" content="#317EFB"/> */}
+        </Head>
+      </Theme>
+    </HeadingContext.Provider>
   )
 }
 
