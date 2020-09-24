@@ -3,18 +3,23 @@ const log = require('../../utils/log')
 const { DOCS_ROOT_PATH, USER_CONFIG_PATH } = require('../../constants')
 
 module.exports = function resolveTheme (config) {
-  if (typeof config.theme === 'string') {
-    if (/^\./.test(config.theme)) {
-      config.theme = join(DOCS_ROOT_PATH, config.theme)
+  const themePath = typeof config.theme === 'object' ? config.theme.path : config.theme
+  const themeConfig = (typeof config.theme === 'object' && config.theme.config) || {}
+
+  config.theme = { config: themeConfig }
+
+  if (typeof themePath === 'string') {
+    if (/^\./.test(themePath)) {
+      config.theme.path = join(DOCS_ROOT_PATH, themePath)
     } else {
-      config.theme = require.resolve(config.theme)
+      config.theme.path = require.resolve(themePath)
     }
 
     return config
   }
 
-  if (typeof config.theme === 'undefined') {
-    config.theme = require.resolve('@static-doc/default-theme')
+  if (typeof themePath === 'undefined') {
+    config.theme.path = require.resolve('@static-doc/default-theme')
     return config
   }
 

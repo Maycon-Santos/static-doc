@@ -23,11 +23,8 @@ module.exports = {
     'Customize/error-page.mdx'
   ],
   theme: {
-    path: '',
     config: {
-      colorMode: {
-        initial: 'light'
-      }
+      initialColorMode: 'dark'
     }
   }
 }

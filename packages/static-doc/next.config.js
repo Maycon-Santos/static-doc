@@ -25,6 +25,6 @@ module.exports = pipe(
   distDir: join(OS_ROOT_PATH, buildDir),
   assetPrefix: baseUrl !== '/' ? baseUrl : '',
   pwa: {
-    dest: 'public'
+    dest: 'public/pwa'
   }
 })

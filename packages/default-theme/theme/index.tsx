@@ -3,7 +3,8 @@ import {
   StyleVarsProvider,
   ColorModeProvider,
   Fonts,
-  EssentialsProvider
+  EssentialsProvider,
+  useThemeConfig
 } from '@static-doc/theme-utils'
 import { MDXProvider } from '@mdx-js/react'
 import Head from 'next/head'
@@ -14,12 +15,14 @@ import Layout from './layout'
 
 const Theme: React.FC<{ essentials: any }> = props => {
   const { children, essentials } = props
+  const { initialColorMode = 'light' } = useThemeConfig()
 
   return (
     <EssentialsProvider value={essentials}>
       <StyleVarsProvider value={styleVars} cssVars>
         <ColorModeProvider
           bodyClassNames={{ light: 'light-mode', dark: 'dark-mode' }}
+          initial={initialColorMode}
         >
           <Head>
             <meta

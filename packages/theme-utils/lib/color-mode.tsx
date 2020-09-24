@@ -1,8 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import getConfig from 'next/config'
-
-const { publicRuntimeConfig } = getConfig()
-const { userConfig } = publicRuntimeConfig
 
 const ColorModeContext = createContext({
   colorMode: 'light',
@@ -14,16 +10,15 @@ export function useColorMode () {
 }
 
 type ColoModeProviderProps = {
-  children: React.ReactNode
+  initial?: 'light' | 'dark'
   bodyClassNames?: {
     light: string
     dark: string
   }
 }
 
-export const ColorModeProvider = (props: ColoModeProviderProps) => {
-  const { bodyClassNames, children } = props
-  const initialColorMode = userConfig.colorMode && userConfig.colorMode.initial
+export const ColorModeProvider: React.FC<ColoModeProviderProps> = props => {
+  const { bodyClassNames, initial, children } = props
   const [colorMode, setColorMode] = useState(undefined)
 
   useEffect(() => {
@@ -48,14 +43,14 @@ export const ColorModeProvider = (props: ColoModeProviderProps) => {
     if (persistedColorMode === 'light' || persistedColorMode === 'dark') {
       setColorMode(persistedColorMode)
     } else {
-      setColorMode(initialColorMode || 'light')
+      setColorMode(initial || 'light')
     }
   }, [])
 
   return (
     <ColorModeContext.Provider
       value={{
-        colorMode: colorMode || initialColorMode || 'light',
+        colorMode: colorMode || initial || 'light',
         toggle () {
           setColorMode(colorMode === 'light' ? 'dark' : 'light')
         }
