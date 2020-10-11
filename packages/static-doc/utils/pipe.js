@@ -1,7 +1,7 @@
 module.exports = function pipe (...fns) {
-  return initialParam => {
+  return param => {
     return fns
       .filter(Boolean)
-      .reduce((param, func) => func(param), initialParam)
+      .reduce((result, next) => next(result), param)
   }
 }

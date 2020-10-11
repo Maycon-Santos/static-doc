@@ -6,7 +6,7 @@ const withCssGlobalImport = require('./next/with-css-global-import')
 const WithRuntimeConfig = require('./next/with-runtime-config')
 const WithThemeAlias = require('./next/with-theme-alias')
 const { baseUrl, buildDir, pwa } = require('./data/user-config')
-const { OS_ROOT_PATH, DOCS_PUBLIC_ORIGIN_PATH } = require('./constants')
+const { OS_ROOT_PATH, DOCS_PUBLIC_ORIGIN_PATH, GENERATED_FILES_DIR } = require('./constants')
 const pipe = require('./utils/pipe')
 
 const allowPWA = existsSync(DOCS_PUBLIC_ORIGIN_PATH) && !pwa.disable
@@ -25,6 +25,6 @@ module.exports = pipe(
   distDir: join(OS_ROOT_PATH, buildDir),
   assetPrefix: baseUrl !== '/' ? baseUrl : '',
   pwa: {
-    dest: 'public/pwa'
+    dest: `public/${GENERATED_FILES_DIR}/pwa`
   }
 })

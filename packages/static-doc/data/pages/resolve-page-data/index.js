@@ -11,6 +11,7 @@ const resolveTitle = require('./resolve-title')
 const resolveName = require('./resolve-name')
 const resolveDescription = require('./resolve-description')
 const resolveRelatedPages = require('./resolve-related-pages')
+const resolveOgImage = require('./resolve-og-image')
 
 function extractFrontmatter () {
   return (tree, file) => {
@@ -42,10 +43,14 @@ function getPagesWithData (pages) {
 module.exports = function resolvePageData (pages) {
   const pagesWithData = getPagesWithData(pages)
 
-  return pipe(
+  const base = pipe(
     resolveTitle,
     resolveName,
     resolveRelatedPages,
     resolveDescription
   )(pagesWithData)
+
+  return pipe(
+    resolveOgImage
+  )(base)
 }

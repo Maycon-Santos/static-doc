@@ -35,8 +35,9 @@ src/.components
 .docs
 docs_out
 
+_staticdoc
+
 /static-doc
-docs/public/pwa
 packages/static-doc/pages
 packages/static-doc/public
 !packages/static-doc/pages/_app.js

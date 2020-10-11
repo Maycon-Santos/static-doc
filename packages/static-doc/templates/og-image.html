@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Generated Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+      * { margin: 0; padding: 0; }
+
+      html, body, #wrapper { height: 100%; }
+
+      body {
+        color: #333;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        background-color: #e1e1e1;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #logo {
+        font-size: 164px;
+      }
+
+      #title {
+        position: absolute;
+        left: 50%;
+        bottom: 160px;
+        transform: translateX(-50%);
+        font-size: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="logo">
+        {{#userConfig.logo}}
+          {{userConfig.logo && userConfig.logo.light}}
+        {{/userConfig.logo}}
+        {{^userConfig.logo}}
+          {{userConfig.name}}
+        {{/userConfig.logo}}
+      </div>
+      <div id="title">
+        - {{page.data.title}} -
+      </div>
+    </div>
+  </body>
+</html>

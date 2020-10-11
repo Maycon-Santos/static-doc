@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
-import getConfig from 'next/config'
 import Theme from '@static-doc/user-theme'
-import { useCurrentPage, HeadingContext } from '@static-doc/theme-utils'
-
-const { publicRuntimeConfig } = getConfig()
-const { userConfig } = publicRuntimeConfig
+import { HeadingContext } from '@static-doc/theme-utils'
+import SEO from '../components/seo'
 
 function resolveHeadingId (content = '') {
   return content.replace(/ /g, '-')
@@ -14,11 +10,9 @@ function resolveHeadingId (content = '') {
 
 const App = props => {
   const { Component, pageProps } = props
-  const [initialized, setInitialized] = useState(false)
   const [headingItems, setHeadingItems] = useState([])
   const headingItemsMemo = useMemo(() => [], [])
   const router = useRouter()
-  const currentPage = useCurrentPage()
 
   const headings = {
     register (content, element) {
@@ -42,39 +36,11 @@ const App = props => {
     headingItemsMemo.length = 0
   }, [router.pathname])
 
-  useEffect(() => {
-    setInitialized(true)
-  }, [])
-
   return (
     <HeadingContext.Provider value={headings}>
+      <SEO />
       <Theme>
         <Component {...pageProps} />
-        <Head>
-          <title>
-            {userConfig.titlePrefix}
-            {currentPage?.data?.title}
-            {userConfig.titleSuffix}
-          </title>
-          <link rel='shortcut icon' href={userConfig?.favicon} />
-          <meta name='Description' content={currentPage?.data?.description} />
-          <style>{`
-            body {
-              opacity: ${Number(initialized)};
-              transition: opacity 0ms 100ms;
-            }
-          `}</style>
-
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <meta name='keywords' content='Keywords' />
-          {!userConfig.pwa.disable && (
-            <link rel='manifest' href={userConfig.pwa.manifestUrl} />
-          )}
-          {/* <link href='/favicon-16x16.png' rel='icon' type='image/png' sizes='16x16' /> */}
-          {/* <link href='/favicon-32x32.png' rel='icon' type='image/png' sizes='32x32' /> */}
-          {/* <link rel="apple-touch-icon" href="/apple-icon.png" /> */}
-          {/* <meta name="theme-color" content="#317EFB"/> */}
-        </Head>
       </Theme>
     </HeadingContext.Provider>
   )

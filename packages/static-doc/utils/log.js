@@ -20,5 +20,16 @@ module.exports = {
       '\x1b[0m',
       '\n'
     )
+  },
+  success (...data) {
+    console.log(
+      '\x1b[36m',
+      '\n',
+      '[static-doc]',
+      '\x1b[32m',
+      ...data,
+      '\x1b[0m',
+      '\n'
+    )
   }
 }

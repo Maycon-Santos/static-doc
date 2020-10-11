@@ -21,5 +21,6 @@ exports.DOCS_PAGES_DESTINY_PATH = join(OWN_ROOT_PATH, 'pages')
 exports.DOCS_PUBLIC_ORIGIN_PATH = join(DOCS_ROOT_PATH, 'public')
 exports.DOCS_PUBLIC_DESTINY_PATH = join(OWN_ROOT_PATH, 'public')
 exports.USER_CONFIG_PATH = join(DOCS_ROOT_PATH, 'config.js')
+exports.GENERATED_FILES_DIR = '_staticdoc'
 
 exports.NEXT_BIN_PATH = join(dirname(require.resolve('next/package.json')), 'dist/bin/next')

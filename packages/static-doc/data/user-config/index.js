@@ -7,6 +7,7 @@ const resolveBuildDirectories = require('./resolve-build-directories')
 const resolvePwa = require('./resolve-pwa')
 const resolveTitleAffixes = require('./resolve-title-affixes')
 const resolveAppName = require('./resolve-app-name')
+const resolveGenerateOgImages = require('./resolve-generate-og-images')
 
 function getUserConfig () {
   const config = existsSync(USER_CONFIG_PATH) ? require(USER_CONFIG_PATH) : {}
@@ -17,7 +18,8 @@ function getUserConfig () {
     resolveBuildDirectories,
     resolvePwa,
     resolveTitleAffixes,
-    resolveAppName
+    resolveAppName,
+    resolveGenerateOgImages
   )(config)
 }
 

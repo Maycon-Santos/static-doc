@@ -62,5 +62,5 @@ export const StyleVarsProvider: React.FC<StyleVarsProviderProps> = props => {
 }
 
 export function useStyleVars () {
-  return useContext(StyleVarsContext)
+  return useContext(StyleVarsContext) as any
 }
