@@ -51,7 +51,7 @@
 
 :global(.light-mode) {
   .navName {
-    color: var(--color-light-primary-600);
+    color: var(--color-light-text-500);
   }
 
   .navLink {
@@ -74,7 +74,7 @@
 
 :global(.dark-mode) {
   .navName {
-    color: var(--color-dark-primary-600);
+    color: var(--color-dark-text-500);
   }
 
   .navLink {

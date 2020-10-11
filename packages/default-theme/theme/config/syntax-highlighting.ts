@@ -2,7 +2,7 @@ const syntaxHighlighting = {
   light: {
     plain: {
       color: '#07070d',
-      backgroundColor: '#f9f9f9'
+      backgroundColor: '#EAEAEA'
     },
     styles: [
       {
@@ -82,7 +82,7 @@ const syntaxHighlighting = {
   dark: {
     plain: {
       color: '#f8f8f2',
-      backgroundColor: '#161e21'
+      backgroundColor: '#1c2323'
     },
     styles: [
       {

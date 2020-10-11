@@ -23,6 +23,9 @@ module.exports = function resolveCategories (pages) {
       }
     }
 
-    return page
+    return {
+      ...page,
+      category: ''
+    }
   })
 }
