@@ -27,7 +27,7 @@
   text-decoration: none;
   padding: var(--spacing-3);
   border: 1px solid;
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
 .pageName {

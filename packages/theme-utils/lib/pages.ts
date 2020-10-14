@@ -11,6 +11,7 @@ export type Page = {
     title: string
     name: string
     description: string
+    related: Page[]
   }
   icon: {
     light: string

@@ -4,10 +4,12 @@ import {
   useCurrentPage,
   useColorMode
 } from '@static-doc/theme-utils'
+import { Scrollbars } from 'react-custom-scrollbars'
 import PencilIcon from './vectors/pencil-icon'
 import MoonIcon from './vectors/moon-icon'
 import SunIcon from './vectors/sun-icon'
 import TableOfContents from './table-of-contents'
+import Related from './related'
 import styles from './styles/aside-right.css'
 
 const AsideRight: React.FC = () => {
@@ -57,7 +59,10 @@ const AsideRight: React.FC = () => {
           {colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
         </button>
       </div>
-      <TableOfContents />
+      <Scrollbars universal autoHide tagName='div' className={styles.body}>
+        <TableOfContents />
+        <Related />
+      </Scrollbars>
     </div>
   )
 }

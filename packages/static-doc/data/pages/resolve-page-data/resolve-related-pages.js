@@ -6,7 +6,15 @@ module.exports = function resolveRelatedPages (pages) {
   return pages.map(page => {
     const { path, data } = page
 
-    if (!data.related) return page
+    if (!data.related) {
+      return {
+        ...page,
+        data: {
+          ...data,
+          related: []
+        }
+      }
+    }
 
     const absolutePath = join(DOCS_PAGES_ORIGIN_PATH, path)
     const absolutePathDirName = dirname(absolutePath)

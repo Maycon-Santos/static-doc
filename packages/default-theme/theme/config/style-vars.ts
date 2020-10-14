@@ -33,12 +33,12 @@ const styleVars = {
     light: {
       background: 'white',
       primary: {
-        400: '#FF8197',
-        500: '#FF385C',
-        600: '#DD1163'
+        400: '#7B62FF',
+        500: '#5738ff',
+        600: '#2A0FB9'
       },
       gray: {
-        300: '#EAEAEA',
+        300: '#e8e8e8',
         400: '#D9DEDF',
         500: '#BFC7C9',
         600: '#939FA0',
@@ -57,9 +57,9 @@ const styleVars = {
     dark: {
       background: '#171b1b',
       primary: {
-        400: '#FF8197',
-        500: '#FF385C',
-        600: '#DD1163'
+        400: '#2A0FB9',
+        500: '#7B62FF',
+        600: '#8a75ff'
       },
       gray: {
         300: '#182222',
