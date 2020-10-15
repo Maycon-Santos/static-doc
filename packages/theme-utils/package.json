@@ -23,7 +23,7 @@
     "url": "git+https://github.com/Maycon-Santos/static-doc.git"
   },
   "scripts": {
-    "build": "tsc ./lib/index.ts --jsx react --outDir dist --esModuleInterop --module CommonJS --moduleResolution node --declaration",
+    "build": "tsc ./lib/index.ts --jsx react --outDir dist --esModuleInterop --module CommonJS --moduleResolution node --declaration --traceResolution",
     "build:watch": "yarn build --watch"
   },
   "bugs": {
