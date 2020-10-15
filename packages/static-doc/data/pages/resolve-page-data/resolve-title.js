@@ -6,12 +6,6 @@ module.exports = function resolveTitle (pages) {
 
     const title = path.replace(/-/g, ' ').replace(/\//g, ' - ').replace(/.mdx?$/, '')
 
-    return {
-      ...page,
-      data: {
-        ...data,
-        title
-      }
-    }
+    return Object.assign(page, { data: { ...data, title } })
   })
 }

@@ -1,14 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
-import { useCurrentPage } from '@static-doc/theme-utils'
+import { useCurrentPage, useColorMode } from '@static-doc/theme-utils'
 import styles from './styles/related.css'
 
 const Related: React.FC = () => {
   const { data } = useCurrentPage()
+  const { colorMode } = useColorMode()
 
   if (data.related.length === 0) {
     return null
   }
+
+  console.log(data)
 
   return (
     <div className={styles.wrapper}>
@@ -17,7 +20,16 @@ const Related: React.FC = () => {
         {data.related.map(page => (
           <Link href={page.route} key={page.route}>
             <a className={styles.item}>
-              <h3 className={styles.pageName}>{page.data.name}</h3>
+              <h3 className={styles.pageName}>
+                {page.icon && (
+                  <img
+                    src={page.icon[colorMode]}
+                    alt=''
+                    className={styles.icon}
+                  />
+                )}
+                {page.data.name}
+              </h3>
               {Boolean(page.data.description) && (
                 <div className={styles.pageDescription}>
                   {page.data.description}

@@ -6,10 +6,7 @@ module.exports = function resolveCategories (pages) {
     const options = menu.find(item => item.to === path)
 
     if (options && options.category) {
-      return {
-        ...page,
-        category: options.category
-      }
+      return Object.assign(page, { category: options.category })
     }
 
     if (isExternalLink) return page
@@ -17,15 +14,9 @@ module.exports = function resolveCategories (pages) {
     const pathSplit = path.split('/')
 
     if (pathSplit.length > 1) {
-      return {
-        ...page,
-        category: pathSplit[0].replace(/-/g, ' ')
-      }
+      return Object.assign(page, { category: pathSplit[0].replace(/-/g, ' ') })
     }
 
-    return {
-      ...page,
-      category: ''
-    }
+    return Object.assign(page, { category: '' })
   })
 }

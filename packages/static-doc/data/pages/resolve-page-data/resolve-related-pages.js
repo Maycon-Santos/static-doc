@@ -7,13 +7,7 @@ module.exports = function resolveRelatedPages (pages) {
     const { path, data } = page
 
     if (!data.related) {
-      return {
-        ...page,
-        data: {
-          ...data,
-          related: []
-        }
-      }
+      return Object.assign(page, { data: { ...data, related: [] } })
     }
 
     const absolutePath = join(DOCS_PAGES_ORIGIN_PATH, path)
@@ -37,12 +31,6 @@ module.exports = function resolveRelatedPages (pages) {
 
     const related = sanitizedRelatedPageIndexes.map(index => pages[index])
 
-    return {
-      ...page,
-      data: {
-        ...data,
-        related
-      }
-    }
+    return Object.assign(page, { data: { ...data, related } })
   })
 }

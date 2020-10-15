@@ -29,13 +29,23 @@
 }
 
 .pageName {
+  display: flex;
+  align-items: center;
   font-size: var(--font-size-1);
   font-weight: var(--font-weight-bold);
   margin: 0;
 }
 
+.icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  object-position: center;
+  margin-right: var(--spacing-2);
+}
+
 .pageDescription {
-  margin-top: var(--spacing-1);
+  margin-top: var(--spacing-2);
   font-size: var(--font-size-1);
 }
 

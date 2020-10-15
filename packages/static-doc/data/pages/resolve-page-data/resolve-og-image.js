@@ -26,12 +26,6 @@ module.exports = function resolveOgImage (pages) {
     process.stdout.clearLine()
     process.stdout.cursorTo(0)
 
-    return {
-      ...page,
-      data: {
-        ...data,
-        image: imageFilename
-      }
-    }
+    return Object.assign(page, { data: { ...data, image: imageFilename } })
   })
 }

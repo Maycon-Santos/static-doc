@@ -13,8 +13,6 @@ const Search: React.FC<Props> = props => {
   const { colorMode } = useColorMode()
   const search = rawSearch.toLowerCase()
 
-  console.log(pages, 'lalalala')
-
   const foundPagesByCategory = pages
     .filter(page => page.category.toLocaleLowerCase().includes(search))
     .sort((a, b) => (a.category > b.category ? 1 : -1))

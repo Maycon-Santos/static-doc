@@ -12,23 +12,21 @@ module.exports = function resolveIcon (pages) {
     const { icon } = options
 
     if (typeof icon === 'object') {
-      return {
-        ...page,
+      return Object.assign(page, {
         icon: {
           light: icon.light || icon.dark,
           dark: icon.dark || icon.light
         }
-      }
+      })
     }
 
     if (typeof icon === 'string') {
-      return {
-        ...page,
+      return Object.assign(page, {
         icon: {
           light: icon,
           dark: icon
         }
-      }
+      })
     }
 
     log.error(

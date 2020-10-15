@@ -2,14 +2,8 @@ module.exports = function resolveDescription (pages) {
   return pages.map(page => {
     const { data } = page
 
-    if (data.description) return page
+    if (typeof data.description === 'number' || typeof data.description === 'string') return page
 
-    return {
-      ...page,
-      data: {
-        ...data,
-        description: ''
-      }
-    }
+    return Object.assign(page, { data: { ...data, description: '' } })
   })
 }

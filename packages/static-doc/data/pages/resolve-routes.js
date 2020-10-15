@@ -12,9 +12,6 @@ module.exports = function resolveRoutes (pages) {
 
     const formattedTo = path.replace(/.mdx?$/, '').replace(/\/?index/, '')
 
-    return {
-      ...page,
-      route: baseUrl + formattedTo
-    }
+    return Object.assign(page, { route: baseUrl + formattedTo })
   })
 }
