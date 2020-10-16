@@ -3,8 +3,7 @@
   "version": "0.0.1-alhpa.1",
   "private": false,
   "scripts": {
-    "build": "node bin/index.js build --dir ../../docs",
-    "pre-deploy": "yarn build"
+    "build": "node bin/index.js build --dir ../../docs"
   },
   "bin": {
     "static-doc": "./bin/index.js"

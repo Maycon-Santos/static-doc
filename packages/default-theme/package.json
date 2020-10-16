@@ -25,7 +25,7 @@
   "scripts": {
     "build": "gulp",
     "build:watch": "gulp --watch",
-    "pre-deploy": "sucrase ./theme -d ./dist --transforms typescript,imports,jsx"
+    "pre-deploy": "sucrase ./theme -d ./dist --transforms typescript,imports,jsx && gulp --pre-deploy"
   },
   "bugs": {
     "url": "https://github.com/Maycon-Santos/static-doc/issues"
@@ -47,6 +47,7 @@
     "@babel/plugin-transform-typescript": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
+    "@sucrase/gulp-plugin": "^2.0.0",
     "@types/mdx-js__react": "^1.5.2",
     "@types/react-dom": "^16.9.8",
     "babel-plugin-transform-postcss": "^0.3.0",

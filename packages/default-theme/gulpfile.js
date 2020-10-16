@@ -25,4 +25,8 @@ if (process.argv.includes('--watch')) {
   )
 }
 
-exports.default = gulp.parallel(transformTs, transformCss)
+const tasks = process.argv.includes('--pre-deploy')
+  ? gulp.parallel(transformCss)
+  : gulp.parallel(transformTs, transformCss)
+
+exports.default = tasks

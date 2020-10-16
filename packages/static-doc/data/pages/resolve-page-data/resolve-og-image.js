@@ -10,22 +10,26 @@ module.exports = function resolveOgImage (pages) {
 
     if (image || !ogImageTemplate) return page
 
-    process.stdout.write('\r Generating OG image for ' + page.route)
+    try {
+      process.stdout.write('\r Generating OG image for ' + page.route)
 
-    const imageFilename = execSync(
-      `node ${join(__dirname, './generate-og-image')}`,
-      {
-        env: {
-          ...process.env,
-          PAGE: JSON.stringify(page),
-          USER_CONFIG: JSON.stringify(userConfig)
+      const imageFilename = execSync(
+        `node ${join(__dirname, './generate-og-image')}`,
+        {
+          env: {
+            ...process.env,
+            PAGE: JSON.stringify(page),
+            USER_CONFIG: JSON.stringify(userConfig)
+          }
         }
-      }
-    ).toString().trim()
+      ).toString().trim()
 
-    process.stdout.clearLine()
-    process.stdout.cursorTo(0)
+      process.stdout.clearLine()
+      process.stdout.cursorTo(0)
 
-    return Object.assign(page, { data: { ...data, image: imageFilename } })
+      return Object.assign(page, { data: { ...data, image: imageFilename } })
+    } catch (e) {
+      return page
+    }
   })
 }
