@@ -24,7 +24,8 @@
   },
   "scripts": {
     "build": "gulp",
-    "build:watch": "gulp --watch"
+    "build:watch": "gulp --watch",
+    "pre-deploy": "sucrase ./theme -d ./dist --transforms typescript,imports,jsx"
   },
   "bugs": {
     "url": "https://github.com/Maycon-Santos/static-doc/issues"

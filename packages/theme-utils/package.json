@@ -24,7 +24,8 @@
   },
   "scripts": {
     "build": "tsc ./lib/index.ts --jsx react --outDir dist --esModuleInterop --module CommonJS --moduleResolution node --declaration --traceResolution",
-    "build:watch": "yarn build --watch"
+    "build:watch": "yarn build --watch",
+    "pre-deploy": "sucrase ./lib -d ./dist --transforms typescript,imports,jsx"
   },
   "bugs": {
     "url": "https://github.com/Maycon-Santos/static-doc/issues"
