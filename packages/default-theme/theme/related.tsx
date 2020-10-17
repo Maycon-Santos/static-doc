@@ -4,20 +4,18 @@ import { useCurrentPage, useColorMode } from '@static-doc/theme-utils'
 import styles from './styles/related.css'
 
 const Related: React.FC = () => {
-  const { data } = useCurrentPage()
+  const currentPage = useCurrentPage()
   const { colorMode } = useColorMode()
 
-  if (data.related.length === 0) {
+  if (!currentPage || currentPage.data.related.length === 0) {
     return null
   }
-
-  console.log(data)
 
   return (
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Related</h4>
       <div className={styles.list}>
-        {data.related.map(page => (
+        {currentPage.data.related.map(page => (
           <Link href={page.route} key={page.route}>
             <a className={styles.item}>
               <h3 className={styles.pageName}>
