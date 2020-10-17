@@ -14,6 +14,8 @@ const withPWA = allowPWA && require('next-pwa')
 
 warmup()
 
+console.log(baseUrl)
+
 module.exports = pipe(
   withMDX,
   withPWA,

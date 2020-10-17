@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "build": "yarn --cwd 'packages/theme-utils' build && yarn --cwd 'packages/default-theme' build && yarn --cwd 'packages/static-doc' build",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "deploy": "yarn build && gh-pages -d docs_out"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -53,6 +54,7 @@
     "typescript": "^4.0.2"
   },
   "devDependencies": {
-    "eslint-plugin-jsx-a11y": "^6.3.1"
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "gh-pages": "^3.1.0"
   }
 }

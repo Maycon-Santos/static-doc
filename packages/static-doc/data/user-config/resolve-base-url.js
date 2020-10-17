@@ -2,9 +2,6 @@ const { argv } = require('yargs')
 const log = require('../../utils/log')
 const { USER_CONFIG_PATH } = require('../../constants')
 
-// TODO: Checar se funciona
-const command = argv._[0]
-
 module.exports = function resolveBaseUrl (config) {
   if (
     typeof config.baseUrl !== 'undefined' &&
@@ -17,17 +14,13 @@ module.exports = function resolveBaseUrl (config) {
     process.exit()
   }
 
-  if (
-    command === 'build' ||
-    command === 'build:static' ||
-    typeof config.baseUrl === 'undefined'
-  ) {
+  if (typeof config.baseUrl === 'undefined') {
     config.baseUrl = '/'
     return config
   }
 
   if (!(/\/$/.test(config.baseUrl))) {
-    config.baseUrl = `${config.baseUrl}/`
+    config.baseUrl = `${config.baseUrl}/`.replace(/(\/\/)$/, '/')
   }
 
   return config

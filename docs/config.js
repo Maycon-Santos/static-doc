@@ -5,7 +5,8 @@ module.exports = {
   favicon: '/assets/favicon.ico',
   titlePrefix: 'Static Doc | ',
   buildDir: './.docs',
-  ogImageTemplate: process.env.NODE_ENV === 'production' ? undefined : null,
+  baseUrl: isProd ? '/static-doc' : '/',
+  ogImageTemplate: isProd ? undefined : null,
   pwa: {
     disable: !isProd,
     manifestUrl: 'manifest.json'
