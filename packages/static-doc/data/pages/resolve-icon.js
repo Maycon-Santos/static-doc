@@ -1,6 +1,7 @@
+const { join } = require('path')
 const log = require('../../utils/log')
 const { USER_CONFIG_PATH } = require('../../constants')
-const { menu = [] } = require('../user-config')
+const { menu = [], baseUrl } = require('../user-config')
 
 module.exports = function resolveIcon (pages) {
   return pages.map(page => {
@@ -14,8 +15,8 @@ module.exports = function resolveIcon (pages) {
     if (typeof icon === 'object') {
       return Object.assign(page, {
         icon: {
-          light: icon.light || icon.dark,
-          dark: icon.dark || icon.light
+          light: join(baseUrl, icon.light || icon.dark),
+          dark: join(baseUrl, icon.dark || icon.light)
         }
       })
     }
@@ -23,8 +24,8 @@ module.exports = function resolveIcon (pages) {
     if (typeof icon === 'string') {
       return Object.assign(page, {
         icon: {
-          light: icon,
-          dark: icon
+          light: join(baseUrl, icon),
+          dark: join(baseUrl, icon)
         }
       })
     }

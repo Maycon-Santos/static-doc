@@ -15,7 +15,7 @@
   "scripts": {
     "build": "yarn --cwd 'packages/theme-utils' build && yarn --cwd 'packages/default-theme' build && yarn --cwd 'packages/static-doc' build",
     "bootstrap": "lerna bootstrap",
-    "deploy": "yarn build && gh-pages -d docs_out"
+    "deploy": "yarn build && gh-pages -d docs_out -t true"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

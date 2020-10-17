@@ -1,4 +1,3 @@
-const { baseUrl } = require('../user-config')
 const checkIsExternalLink = require('./check-is-external-link')
 
 module.exports = function resolveRoutes (pages) {
@@ -12,6 +11,6 @@ module.exports = function resolveRoutes (pages) {
 
     const formattedTo = path.replace(/.mdx?$/, '').replace(/\/?index/, '')
 
-    return Object.assign(page, { route: baseUrl + formattedTo })
+    return Object.assign(page, { route: '/' + formattedTo })
   })
 }

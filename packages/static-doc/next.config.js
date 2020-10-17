@@ -9,12 +9,11 @@ const { baseUrl, buildDir, pwa } = require('./data/user-config')
 const { OS_ROOT_PATH, DOCS_PUBLIC_ORIGIN_PATH, GENERATED_FILES_DIR } = require('./constants')
 const pipe = require('./utils/pipe')
 
+const formattedBaseUrl = baseUrl !== '/' ? baseUrl : ''
 const allowPWA = existsSync(DOCS_PUBLIC_ORIGIN_PATH) && !pwa.disable
 const withPWA = allowPWA && require('next-pwa')
 
 warmup()
-
-console.log(baseUrl)
 
 module.exports = pipe(
   withMDX,
@@ -25,7 +24,8 @@ module.exports = pipe(
 )({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   distDir: join(OS_ROOT_PATH, buildDir),
-  assetPrefix: baseUrl !== '/' ? baseUrl : '',
+  assetPrefix: formattedBaseUrl,
+  basePath: formattedBaseUrl.replace(/\/$/, ''),
   pwa: {
     dest: `public/${GENERATED_FILES_DIR}/pwa`
   }

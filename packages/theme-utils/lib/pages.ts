@@ -30,7 +30,10 @@ export function usePages () {
 
 export function useCurrentPage (): Page | undefined {
   const router = useRouter()
-  const pathname = router.pathname.replace(/^\//, userConfig.baseUrl || '/')
+  const pathname = router.pathname.replace(
+    new RegExp(`^${userConfig.baseUrl.replace(/\//g, '\\/')}`),
+    '/'
+  )
 
   const foundPage = pages.find(page => pathname === page.route)
 
