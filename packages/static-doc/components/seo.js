@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import getConfig from 'next/config'
 import { useCurrentPage } from '@static-doc/theme-utils'
+import urlJoin from '../utils/url-join'
 
 const { publicRuntimeConfig } = getConfig()
 const { userConfig } = publicRuntimeConfig
@@ -39,16 +40,16 @@ const SEO = () => {
 
       {typeof userConfig?.favicon === 'object' ? (
         <>
-          {userConfig.favicon.normal && <link rel="shortcut icon" href={userConfig.favicon.normal} />}
-          {userConfig.favicon.normal && <link rel="icon" type="image/png" href={userConfig.favicon.normal} />}
-          {userConfig.favicon.x16 && <link href={userConfig.favicon.x16} rel="icon" type="image/png" sizes="16x16" />}
-          {userConfig.favicon.x32 && <link href={userConfig.favicon.x32} rel="icon" type="image/png" sizes="32x32" />}
+          {userConfig.favicon.normal && <link rel="shortcut icon" href={urlJoin(userConfig.baseUrl, userConfig.favicon.normal)} />}
+          {userConfig.favicon.normal && <link rel="icon" type="image/png" href={urlJoin(userConfig.baseUrl, userConfig.favicon.normal)} />}
+          {userConfig.favicon.x16 && <link href={urlJoin(userConfig.baseUrl, userConfig.favicon.x16)} rel="icon" type="image/png" sizes="16x16" />}
+          {userConfig.favicon.x32 && <link href={urlJoin(userConfig.baseUrl, userConfig.favicon.x32)} rel="icon" type="image/png" sizes="32x32" />}
         </>
       ) : (
         userConfig.favicon && (
           <>
-            <link rel="icon" type="image/png" href={userConfig.favicon} />
-            <link rel="shortcut icon" href={userConfig.favicon} />
+            <link rel="icon" type="image/png" href={urlJoin(userConfig.baseUrl, userConfig.favicon)} />
+            <link rel="shortcut icon" href={urlJoin(userConfig.baseUrl, userConfig.favicon)} />
           </>
         )
       )}

@@ -1,6 +1,7 @@
 const { join } = require('path')
 const { execSync } = require('child_process')
 const userConfig = require('../../user-config')
+const urlJoin = require('../../../utils/url-join')
 
 const { ogImageTemplate } = userConfig
 
@@ -27,7 +28,7 @@ module.exports = function resolveOgImage (pages) {
       process.stdout.clearLine()
       process.stdout.cursorTo(0)
 
-      return Object.assign(page, { data: { ...data, image: imageFilename } })
+      return Object.assign(page, { data: { ...data, image: urlJoin(userConfig.baseUrl, imageFilename) } })
     } catch (e) {
       return page
     }
