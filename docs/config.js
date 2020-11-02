@@ -6,7 +6,6 @@ module.exports = {
   titlePrefix: 'Static Doc | ',
   buildDir: './.docs',
   baseUrl: isProd ? '/static-doc' : '/',
-  ogImageTemplate: isProd ? undefined : null,
   pwa: {
     disable: !isProd,
     manifestUrl: 'manifest.json'
