@@ -54,7 +54,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^8.0.0",
-    "postcss": "^7.0.32",
+    "postcss": "^8.2.10",
     "postcss-cli": "^7.1.1",
     "postcss-modules": "^3.2.1",
     "postcss-nested": "^4.2.3",
